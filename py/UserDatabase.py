@@ -59,18 +59,19 @@ def NewAccount(username="",password="",email=""):
 		a=User(username=username, password=hash_str(password), email=email)
 		a.put()
 		users(True)
-<<<<<<< HEAD
 		b=Resources(username=username,currency=0,combat_units=0)
-=======
-		b=Possessions(username=username,currency=0,combat_units=0)
->>>>>>> database fix
 		b.put()
 		return {} 
-	return errors
+	else:
+		return errors
 
 def get_Login_Cookie(username=""):
 	return make_secure_val(username)
 
+def set_Password(username,password):
 
+def set_Email(username,email):
+
+def set_Prefs(username,)
 
 

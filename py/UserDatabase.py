@@ -71,14 +71,28 @@ def get_Login_Cookie(username=""):
 		return
 	accs=users()
 	for i in accs:
-		if i.username is username:
+		if i is username:
 			return make_secure_val(i.key)
 
+def is_Valid_Login(username,password):
+	accs=users()
+	for i in accs:
+		if i is username:
+			cpassword=i.password
+			if i.password is hash_str(password):
+				return i.key
+	return None
+	
 def set_Password(key,password):
-
+	account=key.get()
+	account.password=hash_str(password)
+	
 def set_Email(key,email):
+	account=key.get()
+	account.email=email
 
 def set_Prefs(username,json):
-	
+	account=key.get()
+	account.prefs=json
 
 

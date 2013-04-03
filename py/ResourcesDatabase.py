@@ -41,7 +41,20 @@ def set_Resources(username,currency,combat_units):
 			entity.currency=currency
 			entity.combat_units=combat_units
 
-def add_Combat_Units()
+def add_Combat_Units(username,num):
+	poss=resources()
+	if not username or not currency or not combat_units:
+		return
+	for i in poss:
+		if i.username is username:
+			entity=i.key.get()
+			entity.combat_units+=num
 
-
-
+def add_Currency(username,num):
+	poss=resources()
+	if not username or not currency or not combat_units:
+		return
+	for i in poss:
+		if i.username is username:
+			entity=i.key.get()
+			entity.currency+=num

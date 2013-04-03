@@ -30,3 +30,4 @@ def get_Resources(username=""):
 	for i in poss:
 		if i is username:
 			return [currency,combat_units]
+	

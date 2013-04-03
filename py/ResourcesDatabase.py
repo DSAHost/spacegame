@@ -23,38 +23,23 @@ def resources(update=False):
 		memcache.set(key,poss)
 	return poss
 	
-def get_Resources(username):
-	poss=resources()
-	if not username:
-		return []
-	for i in poss:
-		if i.username is username:
-			return [i.currency,i.combat_units]
+def get_Resources(key):
+	resources=key.get()
+	return [resources.currency,resources.combat_units]
 
-def set_Resources(username,currency,combat_units):
-	poss=resources()
-	if not username or not currency or not combat_units:
-		return
-	for i in poss:
-		if i.username is username:
-			entity=i.key.get()
-			entity.currency=currency
-			entity.combat_units=combat_units
+def set_Resources(key,currency,combat_units):
+	resources=key.get()
+	resources.currency=currency
+	resources.combat_units=combat_units
+	resources.put()
 
-def add_Combat_Units(username,num):
-	poss=resources()
-	if not username or not currency or not combat_units:
-		return
-	for i in poss:
-		if i.username is username:
-			entity=i.key.get()
-			entity.combat_units+=num
+def add_Combat_Units(key,num):
+	resources=key.get()
+	resources.combat_units+=num
+	resources.put()
 
-def add_Currency(username,num):
-	poss=resources()
-	if not username or not currency or not combat_units:
-		return
-	for i in poss:
-		if i.username is username:
-			entity=i.key.get()
-			entity.currency+=num
+def add_Currency(key,num):
+	resources=key.get()
+	resources.currency+=num
+	resources.put()
+	

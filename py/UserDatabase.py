@@ -15,6 +15,7 @@ class User(ndb.Model):
 	email=ndb.StringProperty(required=True)
 	prefs=ndb.JsonProperty()
 	last_login=ndb.DateTimeProperty(auto_now_add=True)
+	resource_key=ndb.StringProperty()
 
 SECRET = 'M82D94M'
 
@@ -57,21 +58,27 @@ def NewAccount(username="",password="",email=""):
 
 	if not errors:
 		a=User(username=username, password=hash_str(password), email=email)
+		b=Resources(username=username,currency=0,combat_units=0)
+		a.resource_key=b.put()
 		a.put()
 		users(True)
-		b=Resources(username=username,currency=0,combat_units=0)
-		b.put()
 		return {} 
 	else:
 		return errors
 
 def get_Login_Cookie(username=""):
-	return make_secure_val(username)
+	if not username:
+		return
+	accs=users()
+	for i in accs:
+		if i.username is username:
+			return make_secure_val(i.key)
 
-def set_Password(username,password):
+def set_Password(key,password):
 
-def set_Email(username,email):
+def set_Email(key,email):
 
-def set_Prefs(username,)
+def set_Prefs(username,json):
+	
 
 

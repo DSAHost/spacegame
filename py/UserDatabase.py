@@ -59,7 +59,11 @@ def NewAccount(username="",password="",email=""):
 		a=User(username=username, password=hash_str(password), email=email)
 		a.put()
 		users(True)
+<<<<<<< HEAD
 		b=Resources(username=username,currency=0,combat_units=0)
+=======
+		b=Possessions(username=username,currency=0,combat_units=0)
+>>>>>>> database fix
 		b.put()
 		return {} 
 	return errors

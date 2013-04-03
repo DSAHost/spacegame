@@ -15,4 +15,5 @@ def combat(attacking_troops, defending_troops):
 			defending_troops-=1
 		else:
 			attacking_troops-=1
-	return attacking_troops,defending_troops
+		i+=1
+	return (attacking_troops,defending_troops)

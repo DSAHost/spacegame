@@ -8,23 +8,23 @@ import logging
 import json
 from google.appengine.api import memcache
 
-class Possessions(ndb.Model):
+class Resources(ndb.Model):
 	username=ndb.StringProperty(required=True)
 	currency=ndb.IntegerProperty(required=True)
 	combat_units=ndb.IntegerProperty(required=True)
 
-def possessions(update=False):
-	key="possessions"
+def resources(update=False):
+	key="resources"
 	poss=memcache.get(key)
 	if poss is None or update:
 		logging.error("POSS QUERY")
-		poss=ndb.gql("SELECT * FROM Possessions")
+		poss=ndb.gql("SELECT * FROM Resources")
 		poss=list(poss)
 		memcache.set(key,poss)
 	return poss
 	
-def get_Possessions(username=""):
-	poss=possessions()
+def get_Resources(username=""):
+	poss=resources()
 	if not username:
 		return []
 	for i in poss:

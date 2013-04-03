@@ -8,6 +8,7 @@ import logging
 import json
 from google.appengine.api import memcache
 from ResourcesDatabase import *
+from datetime import *
 
 class User(ndb.Model):
 	username=ndb.StringProperty(required=True)
@@ -60,19 +61,14 @@ def NewAccount(username="",password="",email=""):
 		a=User(username=username, password=hash_str(password), email=email)
 		b=Resources(username=username,currency=0,combat_units=0)
 		a.resource_key=b.put()
-		a.put()
+		key=a.put()
 		users(True)
-		return {} 
+		return {'key':key} 
 	else:
 		return errors
 
-def get_Login_Cookie(username=""):
-	if not username:
-		return
-	accs=users()
-	for i in accs:
-		if i is username:
-			return make_secure_val(i.key)
+def get_Login_Cookie(key):
+	return make_secure_val(key)
 
 def is_Valid_Login(username,password):
 	accs=users()
@@ -82,7 +78,7 @@ def is_Valid_Login(username,password):
 			if i.password is hash_str(password):
 				return i.key
 	return None
-	
+
 def set_Password(key,password):
 	account=key.get()
 	account.password=hash_str(password)
@@ -91,8 +87,12 @@ def set_Email(key,email):
 	account=key.get()
 	account.email=email
 
-def set_Prefs(username,json):
+def set_Prefs(key,json):
 	account=key.get()
 	account.prefs=json
+
+def set_Last_Login(key,time):
+	account=key.get()
+	account.last_login=datetime.now()
 
 

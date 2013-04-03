@@ -41,7 +41,7 @@ def set_Resources(username,currency,combat_units):
 			entity.currency=currency
 			entity.combat_units=combat_units
 
-
+def add_Combat_Units()
 
 
 

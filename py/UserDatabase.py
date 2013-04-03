@@ -7,6 +7,7 @@ import hmac
 import logging
 import json
 from google.appengine.api import memcache
+from ResourcesDatabase import *
 
 class User(ndb.Model):
 	username=ndb.StringProperty(required=True)
@@ -58,7 +59,8 @@ def NewAccount(username="",password="",email=""):
 		a=User(username=username, password=hash_str(password), email=email)
 		a.put()
 		users(True)
-		b=Possessions(username=username,currency=0,combat_units=0)
+		b=Resources(username=username,currency=0,combat_units=0)
+		b.put()
 		return {} 
 	return errors
 

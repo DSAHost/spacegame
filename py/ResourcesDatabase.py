@@ -17,17 +17,31 @@ def resources(update=False):
 	key="resources"
 	poss=memcache.get(key)
 	if poss is None or update:
-		logging.error("POSS QUERY")
+		logging.error("RESOURCE QUERY")
 		poss=ndb.gql("SELECT * FROM Resources")
 		poss=list(poss)
 		memcache.set(key,poss)
 	return poss
 	
-def get_Resources(username=""):
+def get_Resources(username):
 	poss=resources()
 	if not username:
 		return []
 	for i in poss:
-		if i is username:
-			return [currency,combat_units]
-	
+		if i.username is username:
+			return [i.currency,i.combat_units]
+
+def set_Resources(username,currency,combat_units):
+	poss=resources()
+	if not username or not currency or not combat_units:
+		return
+	for i in poss:
+		if i.username is username:
+			entity=i.key.get()
+			entity.currency=currency
+			entity.combat_units=combat_units
+
+
+
+
+

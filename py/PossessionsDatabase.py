@@ -23,3 +23,10 @@ def possessions(update=False):
 		memcache.set(key,poss)
 	return poss
 	
+def get_Possessions(username=""):
+	poss=possessions()
+	if not username:
+		return []
+	for i in poss:
+		if i is username:
+			return [currency,combat_units]

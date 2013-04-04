@@ -1,4 +1,5 @@
 html {
-	background-color: black;
-	color: white;
+	background-image: url('../res/bg_1.png');
+	background-size:cover;
+	color:white;
 }

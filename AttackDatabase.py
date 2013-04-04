@@ -26,11 +26,11 @@ def attacks(update=False):
 		memcache.set(key,attks)
 	return attks
 
-def finished(key):
+def is_Finished(key):
 	attk=key.get()
 	dif=(datetime.datetime.now()-attk.time_fought).total_seconds()
 	if dif>attk.return_time:
+		key.delete()
 		return True
 	return False
 
-	

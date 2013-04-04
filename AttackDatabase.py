@@ -23,4 +23,5 @@ def attacks(update=False):
 		attks=list(attks)
 		memcache.set(key,attks)
 	return attks
-	
+
+ 

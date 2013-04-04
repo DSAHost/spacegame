@@ -79,20 +79,44 @@ def is_Valid_Login(username,password):
 				return i.key
 	return None
 
-def set_Password(key,password):
-	account=key.get()
-	account.password=hash_str(password)
+def set_Password(cookie,password):
+	if cookie:
+		key=check_secure_val(cookie)
+		if key:
+			account=key.get()
+			account.password=hash_str(password)
+			account.put()
+			return True
+	return False
 	
 def set_Email(key,email):
 	account=key.get()
 	account.email=email
+	account.put()
 
 def set_Prefs(key,json):
 	account=key.get()
 	account.prefs=json
+	account.put()
 
 def set_Last_Login(key,time):
 	account=key.get()
 	account.last_login=datetime.now()
+	account.put()
+	
+def get_Resources(key):
+	account=key.get()
+	return ResourceDatabase.get_Resources(account.resource_key)
+	
+def set_Resources(key,currency,combat_units):
+	account=key.get()
+	ResourceDatabase.set_Resources(account.resource_key,currency,combat_units)
+	
+def add_Combat_Units(key,num):
+	account=key.get()
+	ResourceDatabase.add_Combat_Units(accounts.resource_key,num)
 
+def add_Currency(key,num):
+	account=key.get()
+	ResourceDatabase.add_Currency(accounts.resource_key,num)
 

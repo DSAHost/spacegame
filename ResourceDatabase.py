@@ -16,7 +16,8 @@ class Resources(ndb.Model):
 	currency_updated=ndb.DateTimeProperty()
 	
 	combat_units=ndb.IntegerProperty(required=True)
-
+	home_units=ndb.IntegerProperty()
+	
 def resources(update=False):
 	key="resources"
 	poss=memcache.get(key)
@@ -60,3 +61,5 @@ def update_Currency(key):
 	resources.currency_updated=time
 	resources.put()
 
+def get_Home_Units(key):
+	

@@ -119,4 +119,12 @@ def add_Combat_Units(key,num):
 def add_Currency(key,num):
 	account=key.get()
 	ResourceDatabase.add_Currency(accounts.resource_key,num)
+	
+def set_Income_Rate(key,num):
+	account=key.get()
+	ResourceDatabase.set_Income_Rate(accounts.resource_key,num)
+	
+def update_Currency(key):
+	account=key.get()
+	ResourceDatabase.update_Currency(accounts.resource_key)
 

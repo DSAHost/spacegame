@@ -7,11 +7,13 @@ import hmac
 import logging
 import json
 from google.appengine.api import memcache
+from datetime import *
 
 class Attack(ndb.Model):
 	attacker_key=ndb.StringProperty(required=True)
 	defender_key=ndb.StringProperty(required=True)
 	units=ndb.IntegerProperty(required=True)
+	time_fought=ndb.DateTimeProperty(auto_now_add=True)
 	return_time=ndb.IntegerProperty(required=True)
 
 def attacks(update=False):
@@ -24,4 +26,11 @@ def attacks(update=False):
 		memcache.set(key,attks)
 	return attks
 
- 
+def finished(key):
+	attk=key.get()
+	dif=(datetime.datetime.now()-attk.time_fought).total_seconds()
+	if dif>attk.return_time:
+		return True
+	return False
+
+	

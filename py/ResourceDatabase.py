@@ -42,4 +42,3 @@ def add_Currency(key,num):
 	resources=key.get()
 	resources.currency+=num
 	resources.put()
-	

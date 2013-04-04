@@ -99,7 +99,7 @@ def set_Prefs(key,json):
 	account.prefs=json
 	account.put()
 
-def set_Last_Login(key,time):
+def set_Last_Login(key):
 	account=key.get()
 	account.last_login=datetime.now()
 	account.put()

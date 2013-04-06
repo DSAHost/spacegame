@@ -10,12 +10,12 @@ from utils import *
 class Handler(webapp2.RequestHandler):
 
 	# set up jinja workspace
-	template_dir = os.path.join(os.path.dirname(__file__), '../html')
-	jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=True)
 
 	# calls default initializer (syntax for future, does nothing yet)
  	def initialize(self, *a, **kw):
 		webapp2.RequestHandler.initialize(self, *a, **kw)
+		self.template_dir = os.path.join(os.path.dirname(__file__), 'html')
+		self.jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(self.template_dir), autoescape=True)
 
 	def write(self, *a, **kw):
 		self.response.out.write(*a, **kw)
@@ -23,7 +23,7 @@ class Handler(webapp2.RequestHandler):
 	# returns html from jinja template with parameters as a string
 	# takes template file name as first argument
 	def render_str(self, template, **params):
-		t = jinja_env.get_template(template_dir+template)
+		t = self.jinja_env.get_template(template)
 		return t.render(params)
 
 	# writes to webpage from jinja template

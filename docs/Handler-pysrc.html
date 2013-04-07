@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+          "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Handler</title>
+  <link rel="stylesheet" href="epydoc.css" type="text/css" />
+  <script type="text/javascript" src="epydoc.js"></script>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="#204080"
+      alink="#204080">
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table width="100%" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="100%">
+      <span class="breadcrumbs">
+        Module&nbsp;Handler
+      </span>
+    </td>
+    <td>
+      <table cellpadding="0" cellspacing="0">
+        <!-- hide/show private -->
+        <tr><td align="right"><span class="options">[<a href="javascript:void(0);" class="privatelink"
+    onclick="toggle_private();">hide&nbsp;private</a>]</span></td></tr>
+        <tr><td align="right"><span class="options"
+            >[<a href="frames.html" target="_top">frames</a
+            >]&nbsp;|&nbsp;<a href="Handler-pysrc.html"
+            target="_top">no&nbsp;frames</a>]</span></td></tr>
+      </table>
+    </td>
+  </tr>
+</table>
+<h1 class="epydoc">Source Code for <a href="Handler-module.html">Module Handler</a></h1>
+<pre class="py-src">
+<a name="L1"></a><tt class="py-lineno"> 1</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">webapp2</tt> </tt>
+<a name="L2"></a><tt class="py-lineno"> 2</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">cgi</tt> </tt>
+<a name="L3"></a><tt class="py-lineno"> 3</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">os</tt> </tt>
+<a name="L4"></a><tt class="py-lineno"> 4</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">jinja2</tt> </tt>
+<a name="L5"></a><tt class="py-lineno"> 5</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">logging</tt> </tt>
+<a name="L6"></a><tt class="py-lineno"> 6</tt>  <tt class="py-line"><tt class="py-keyword">import</tt> <tt class="py-name">hashlib</tt> </tt>
+<a name="L7"></a><tt class="py-lineno"> 7</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt class="py-name">google</tt><tt class="py-op">.</tt><tt class="py-name">appengine</tt><tt class="py-op">.</tt><tt class="py-name">ext</tt> <tt class="py-keyword">import</tt> <tt class="py-name">ndb</tt> </tt>
+<a name="L8"></a><tt class="py-lineno"> 8</tt>  <tt class="py-line"><tt class="py-keyword">from</tt> <tt id="link-0" class="py-name" targets="Module utils=utils-module.html"><a title="utils" class="py-name" href="#" onclick="return doclink('link-0', 'utils', 'link-0');">utils</a></tt> <tt class="py-keyword">import</tt> <tt class="py-op">*</tt> </tt>
+<a name="L9"></a><tt class="py-lineno"> 9</tt>  <tt class="py-line"> </tt>
+<a name="Handler"></a><div id="Handler-def"><a name="L10"></a><tt class="py-lineno">10</tt> <a class="py-toggle" href="#" id="Handler-toggle" onclick="return toggle('Handler');">-</a><tt class="py-line"><tt class="py-keyword">class</tt> <a class="py-def-name" href="Handler.Handler-class.html">Handler</a><tt class="py-op">(</tt><tt class="py-base-class">webapp2</tt><tt class="py-op">.</tt><tt class="py-base-class">RequestHandler</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Handler-collapsed" style="display:none;" pad="++" indent="++++"></div><div id="Handler-expanded"><a name="L11"></a><tt class="py-lineno">11</tt>  <tt class="py-line"> </tt>
+<a name="L12"></a><tt class="py-lineno">12</tt>  <tt class="py-line">        <tt class="py-comment"># set up jinja workspace</tt> </tt>
+<a name="L13"></a><tt class="py-lineno">13</tt>  <tt class="py-line"> </tt>
+<a name="L14"></a><tt class="py-lineno">14</tt>  <tt class="py-line">        <tt class="py-comment"># calls default initializer (syntax for future, does nothing yet)</tt> </tt>
+<a name="Handler.initialize"></a><div id="Handler.initialize-def"><a name="L15"></a><tt class="py-lineno">15</tt> <a class="py-toggle" href="#" id="Handler.initialize-toggle" onclick="return toggle('Handler.initialize');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Handler.Handler-class.html#initialize">initialize</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">a</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Handler.initialize-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Handler.initialize-expanded"><a name="L16"></a><tt class="py-lineno">16</tt>  <tt class="py-line">                <tt class="py-name">webapp2</tt><tt class="py-op">.</tt><tt class="py-name">RequestHandler</tt><tt class="py-op">.</tt><tt id="link-1" class="py-name" targets="Method Handler.Handler.initialize()=Handler.Handler-class.html#initialize"><a title="Handler.Handler.initialize" class="py-name" href="#" onclick="return doclink('link-1', 'initialize', 'link-1');">initialize</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-name">a</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">kw</tt><tt class="py-op">)</tt> </tt>
+<a name="L17"></a><tt class="py-lineno">17</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">template_dir</tt> <tt class="py-op">=</tt> <tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">join</tt><tt class="py-op">(</tt><tt class="py-name">os</tt><tt class="py-op">.</tt><tt class="py-name">path</tt><tt class="py-op">.</tt><tt class="py-name">dirname</tt><tt class="py-op">(</tt><tt class="py-name">__file__</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-string">'html'</tt><tt class="py-op">)</tt> </tt>
+<a name="L18"></a><tt class="py-lineno">18</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">jinja_env</tt> <tt class="py-op">=</tt> <tt class="py-name">jinja2</tt><tt class="py-op">.</tt><tt class="py-name">Environment</tt><tt class="py-op">(</tt><tt class="py-name">loader</tt><tt class="py-op">=</tt><tt class="py-name">jinja2</tt><tt class="py-op">.</tt><tt class="py-name">FileSystemLoader</tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">template_dir</tt><tt class="py-op">)</tt><tt class="py-op">,</tt> <tt class="py-name">autoescape</tt><tt class="py-op">=</tt><tt class="py-name">True</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L19"></a><tt class="py-lineno">19</tt>  <tt class="py-line"> </tt>
+<a name="Handler.write"></a><div id="Handler.write-def"><a name="L20"></a><tt class="py-lineno">20</tt> <a class="py-toggle" href="#" id="Handler.write-toggle" onclick="return toggle('Handler.write');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Handler.Handler-class.html#write">write</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-op">*</tt><tt class="py-param">a</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Handler.write-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Handler.write-expanded"><a name="L21"></a><tt class="py-lineno">21</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">out</tt><tt class="py-op">.</tt><tt id="link-2" class="py-name" targets="Method Handler.Handler.write()=Handler.Handler-class.html#write"><a title="Handler.Handler.write" class="py-name" href="#" onclick="return doclink('link-2', 'write', 'link-2');">write</a></tt><tt class="py-op">(</tt><tt class="py-op">*</tt><tt class="py-name">a</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">kw</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L22"></a><tt class="py-lineno">22</tt>  <tt class="py-line"> </tt>
+<a name="L23"></a><tt class="py-lineno">23</tt>  <tt class="py-line">        <tt class="py-comment"># returns html from jinja template with parameters as a string</tt> </tt>
+<a name="L24"></a><tt class="py-lineno">24</tt>  <tt class="py-line">        <tt class="py-comment"># takes template file name as first argument</tt> </tt>
+<a name="Handler.render_str"></a><div id="Handler.render_str-def"><a name="L25"></a><tt class="py-lineno">25</tt> <a class="py-toggle" href="#" id="Handler.render_str-toggle" onclick="return toggle('Handler.render_str');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Handler.Handler-class.html#render_str">render_str</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">template</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">params</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Handler.render_str-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Handler.render_str-expanded"><a name="L26"></a><tt class="py-lineno">26</tt>  <tt class="py-line">                <tt class="py-name">t</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">jinja_env</tt><tt class="py-op">.</tt><tt class="py-name">get_template</tt><tt class="py-op">(</tt><tt class="py-name">template</tt><tt class="py-op">)</tt> </tt>
+<a name="L27"></a><tt class="py-lineno">27</tt>  <tt class="py-line">                <tt class="py-keyword">return</tt> <tt class="py-name">t</tt><tt class="py-op">.</tt><tt id="link-3" class="py-name" targets="Method Handler.Handler.render()=Handler.Handler-class.html#render"><a title="Handler.Handler.render" class="py-name" href="#" onclick="return doclink('link-3', 'render', 'link-3');">render</a></tt><tt class="py-op">(</tt><tt class="py-name">params</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L28"></a><tt class="py-lineno">28</tt>  <tt class="py-line"> </tt>
+<a name="L29"></a><tt class="py-lineno">29</tt>  <tt class="py-line">        <tt class="py-comment"># writes to webpage from jinja template</tt> </tt>
+<a name="L30"></a><tt class="py-lineno">30</tt>  <tt class="py-line">        <tt class="py-comment"># takes template file name as first argument</tt> </tt>
+<a name="Handler.render"></a><div id="Handler.render-def"><a name="L31"></a><tt class="py-lineno">31</tt> <a class="py-toggle" href="#" id="Handler.render-toggle" onclick="return toggle('Handler.render');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Handler.Handler-class.html#render">render</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">template</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-param">kw</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Handler.render-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Handler.render-expanded"><a name="L32"></a><tt class="py-lineno">32</tt>  <tt class="py-line">                <tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-4" class="py-name"><a title="Handler.Handler.write" class="py-name" href="#" onclick="return doclink('link-4', 'write', 'link-2');">write</a></tt><tt class="py-op">(</tt><tt class="py-name">self</tt><tt class="py-op">.</tt><tt id="link-5" class="py-name" targets="Method Handler.Handler.render_str()=Handler.Handler-class.html#render_str"><a title="Handler.Handler.render_str" class="py-name" href="#" onclick="return doclink('link-5', 'render_str', 'link-5');">render_str</a></tt><tt class="py-op">(</tt><tt class="py-name">template</tt><tt class="py-op">,</tt> <tt class="py-op">**</tt><tt class="py-name">kw</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L33"></a><tt class="py-lineno">33</tt>  <tt class="py-line"> </tt>
+<a name="L34"></a><tt class="py-lineno">34</tt>  <tt class="py-line">        <tt class="py-comment"># add a hashed cookie to the user's browser</tt> </tt>
+<a name="Handler.set_secure_cookie"></a><div id="Handler.set_secure_cookie-def"><a name="L35"></a><tt class="py-lineno">35</tt> <a class="py-toggle" href="#" id="Handler.set_secure_cookie-toggle" onclick="return toggle('Handler.set_secure_cookie');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Handler.Handler-class.html#set_secure_cookie">set_secure_cookie</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">,</tt> <tt class="py-param">val</tt><tt class="py-op">,</tt> <tt class="py-param">days</tt> <tt class="py-op">=</tt> <tt class="py-name">None</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Handler.set_secure_cookie-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Handler.set_secure_cookie-expanded"><a name="L36"></a><tt class="py-lineno">36</tt>  <tt class="py-line">                <tt class="py-name">cookie_val</tt> <tt class="py-op">=</tt> <tt id="link-6" class="py-name" targets="Function UserDatabase.make_secure_val()=UserDatabase-module.html#make_secure_val,Function utils.make_secure_val()=utils-module.html#make_secure_val"><a title="UserDatabase.make_secure_val
+utils.make_secure_val" class="py-name" href="#" onclick="return doclink('link-6', 'make_secure_val', 'link-6');">make_secure_val</a></tt><tt class="py-op">(</tt><tt class="py-name">str</tt><tt class="py-op">(</tt><tt class="py-name">val</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L37"></a><tt class="py-lineno">37</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">days</tt> <tt class="py-op">==</tt> <tt class="py-name">None</tt><tt class="py-op">:</tt> </tt>
+<a name="L38"></a><tt class="py-lineno">38</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">headers</tt><tt class="py-op">.</tt><tt class="py-name">add_header</tt><tt class="py-op">(</tt><tt class="py-string">'Set-Cookie'</tt><tt class="py-op">,</tt> <tt class="py-string">'%s=%s; Path=/'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">cookie_val</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+<a name="L39"></a><tt class="py-lineno">39</tt>  <tt class="py-line">                <tt class="py-keyword">else</tt><tt class="py-op">:</tt> </tt>
+<a name="L40"></a><tt class="py-lineno">40</tt>  <tt class="py-line">                        <tt class="py-name">expiration</tt> <tt class="py-op">=</tt> <tt class="py-name">datetime</tt><tt class="py-op">.</tt><tt class="py-name">datetime</tt><tt class="py-op">.</tt><tt class="py-name">now</tt><tt class="py-op">(</tt><tt class="py-op">)</tt> <tt class="py-op">+</tt> <tt class="py-name">datetime</tt><tt class="py-op">.</tt><tt class="py-name">timedelta</tt><tt class="py-op">(</tt><tt class="py-name">days</tt> <tt class="py-op">=</tt> <tt class="py-name">days</tt><tt class="py-op">)</tt> </tt>
+<a name="L41"></a><tt class="py-lineno">41</tt>  <tt class="py-line">                        <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">response</tt><tt class="py-op">.</tt><tt class="py-name">headers</tt><tt class="py-op">.</tt><tt class="py-name">add_header</tt><tt class="py-op">(</tt><tt class="py-string">'Set-Cookie'</tt><tt class="py-op">,</tt> <tt class="py-string">'%s=%s; expires=%s; Path=/;'</tt> <tt class="py-op">%</tt> <tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">,</tt> <tt class="py-name">cookie_val</tt><tt class="py-op">,</tt> <tt class="py-name">expiration</tt><tt class="py-op">.</tt><tt class="py-name">strftime</tt><tt class="py-op">(</tt><tt class="py-string">"%a, %d-%b-%Y %H:%M:%S GMT"</tt><tt class="py-op">)</tt><tt class="py-op">)</tt><tt class="py-op">)</tt> </tt>
+</div><a name="L42"></a><tt class="py-lineno">42</tt>  <tt class="py-line"> </tt>
+<a name="L43"></a><tt class="py-lineno">43</tt>  <tt class="py-line">        <tt class="py-comment"># returns value from user's browser cookie, or None if cookie is invalid</tt> </tt>
+<a name="Handler.read_secure_cookie"></a><div id="Handler.read_secure_cookie-def"><a name="L44"></a><tt class="py-lineno">44</tt> <a class="py-toggle" href="#" id="Handler.read_secure_cookie-toggle" onclick="return toggle('Handler.read_secure_cookie');">-</a><tt class="py-line">        <tt class="py-keyword">def</tt> <a class="py-def-name" href="Handler.Handler-class.html#read_secure_cookie">read_secure_cookie</a><tt class="py-op">(</tt><tt class="py-param">self</tt><tt class="py-op">,</tt> <tt class="py-param">name</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+</div><div id="Handler.read_secure_cookie-collapsed" style="display:none;" pad="++" indent="++++++++++++"></div><div id="Handler.read_secure_cookie-expanded"><a name="L45"></a><tt class="py-lineno">45</tt>  <tt class="py-line">                <tt class="py-name">cookie_val</tt> <tt class="py-op">=</tt> <tt class="py-name">self</tt><tt class="py-op">.</tt><tt class="py-name">request</tt><tt class="py-op">.</tt><tt class="py-name">cookies</tt><tt class="py-op">.</tt><tt id="link-7" class="py-name" targets="Method FrontHandler.FrontHandler.get()=FrontHandler.FrontHandler-class.html#get,Method main.MainHandler.get()=main.MainHandler-class.html#get"><a title="FrontHandler.FrontHandler.get
+main.MainHandler.get" class="py-name" href="#" onclick="return doclink('link-7', 'get', 'link-7');">get</a></tt><tt class="py-op">(</tt><tt class="py-name">name</tt><tt class="py-op">)</tt> </tt>
+<a name="L46"></a><tt class="py-lineno">46</tt>  <tt class="py-line">                <tt class="py-keyword">if</tt> <tt class="py-name">cookie_val</tt> <tt class="py-keyword">and</tt> <tt id="link-8" class="py-name" targets="Function UserDatabase.check_secure_val()=UserDatabase-module.html#check_secure_val,Function utils.check_secure_val()=utils-module.html#check_secure_val"><a title="UserDatabase.check_secure_val
+utils.check_secure_val" class="py-name" href="#" onclick="return doclink('link-8', 'check_secure_val', 'link-8');">check_secure_val</a></tt><tt class="py-op">(</tt><tt class="py-name">cookie_val</tt><tt class="py-op">)</tt><tt class="py-op">:</tt> </tt>
+<a name="L47"></a><tt class="py-lineno">47</tt>  <tt class="py-line">                        <tt class="py-keyword">return</tt> <tt class="py-name">cookie_val</tt><tt class="py-op">.</tt><tt class="py-name">split</tt><tt class="py-op">(</tt><tt class="py-string">'|'</tt><tt class="py-op">)</tt><tt class="py-op">[</tt><tt class="py-number">0</tt><tt class="py-op">]</tt> </tt>
+</div></div><a name="L48"></a><tt class="py-lineno">48</tt>  <tt class="py-line"> </tt><script type="text/javascript">
+<!--
+expandto(location.href);
+// -->
+</script>
+</pre>
+<br />
+<!-- ==================== NAVIGATION BAR ==================== -->
+<table class="navbar" border="0" width="100%" cellpadding="0"
+       bgcolor="#a0c0ff" cellspacing="0">
+  <tr valign="middle">
+
+  <!-- Tree link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="module-tree.html">Trees</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Index link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="identifier-index.html">Indices</a>&nbsp;&nbsp;&nbsp;</th>
+
+  <!-- Help link -->
+      <th>&nbsp;&nbsp;&nbsp;<a
+        href="help.html">Help</a>&nbsp;&nbsp;&nbsp;</th>
+
+      <th class="navbar" width="100%"></th>
+  </tr>
+</table>
+<table border="0" cellpadding="0" cellspacing="0" width="100%%">
+  <tr>
+    <td align="left" class="footer">
+    Generated by Epydoc 3.0.1 on Sun Apr 07 13:38:15 2013
+    </td>
+    <td align="right" class="footer">
+      <a target="mainFrame" href="http://epydoc.sourceforge.net"
+        >http://epydoc.sourceforge.net</a>
+    </td>
+  </tr>
+</table>
+
+<script type="text/javascript">
+  <!--
+  // Private objects are initially displayed (because if
+  // javascript is turned off then we want them to be
+  // visible); but by default, we want to hide them.  So hide
+  // them unless we have a cookie that says to show them.
+  checkCookie();
+  // -->
+</script>
+</body>
+</html>

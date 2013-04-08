@@ -1,13 +1,4 @@
-import webapp2
-import jinja2
-import os
-from google.appengine.ext import ndb
-import hashlib
-import hmac
-import logging
-import json
-from google.appengine.api import memcache
-from datetime import *
+from Handler import *
 
 class Attack(ndb.Model):
 	attacker_key=ndb.StringProperty(required=True)

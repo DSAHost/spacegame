@@ -1,12 +1,4 @@
-import webapp2
-import jinja2
-import os
-from google.appengine.ext import ndb
-import hashlib
-import hmac
-import logging
-import json
-from google.appengine.api import memcache
+from Handler import *
 
 class Resources(ndb.Model):
 	username=ndb.StringProperty(required=True)

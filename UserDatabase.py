@@ -19,30 +19,12 @@ def users(update=False):
 	return accs
 
 def NewAccount(username="",password="",email=""):
-	errors={}
-	accs=users()
-	if not username:
-		errors['usererror']="You must enter a username."
-	elif username in accs:
-		errors['usererror']="That username is taken."
-	if not password:
-		errors['passerror']="You must enter a password."
-	elif password != verify:
-		errors['verifyerror']="Your passwords must match."
-	if not email:
-		errors['emailerror']="You must enter a valid email address"
-	elif '.' not in email or '@' not in email:
-		errors['emailerror']="You must enter a valid email address"
-
-	if not errors:
-		a=User(username=username, password=hash_str(password), email=email)
-		b=Resources(username=username,currency=0,combat_units=0)
-		a.resource_key=b.put()
-		key=a.put()
-		users(True)
-		return {'key':key} 
-	else:
-		return errors
+	a=User(username=username, password=hash_str(password), email=email)
+	b=Resources(username=username,currency=0,combat_units=0)
+	a.resource_key=b.put()
+	key=a.put()
+	users(True)
+	return key
 
 def get_Login_Cookie(key):
 	return make_secure_val(key)

@@ -18,11 +18,19 @@ import webapp2
 import jinja2
 
 from FrontHandler import *
+from SignupHandler import *
+from Handler import *
+from LoginHandler import *
+from GameHandler import *
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
 
 app = webapp2.WSGIApplication([
-    ('/', FrontHandler)
+    ('/', FrontHandler),
+    ('/signup', SignupHandler),
+    ('/login', LoginHandler),
+    ('/game', GameHandler)
 ], debug=True)

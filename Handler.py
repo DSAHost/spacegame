@@ -7,15 +7,20 @@ import hashlib
 from google.appengine.ext import ndb
 from utils import *
 
+
+template_dir =os.path.join(os.path.dirname(__file__),'templates')
+jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir),autoescape=True)
+
+
 class Handler(webapp2.RequestHandler):
 
 	# set up jinja workspace
 
 	# calls default initializer (syntax for future, does nothing yet)
- 	def initialize(self, *a, **kw):
-		webapp2.RequestHandler.initialize(self, *a, **kw)
-		self.template_dir = os.path.join(os.path.dirname(__file__), 'html')
-		self.jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(self.template_dir), autoescape=True)
+ 	#def initialize(self, *a, **kw):
+		#webapp2.RequestHandler.initialize(self, *a, **kw)
+		#self.template_dir = os.path.join(os.path.dirname(__file__), 'html')
+		#self.jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(self.template_dir), autoescape=True)
 
 	def write(self, *a, **kw):
 		self.response.out.write(*a, **kw)

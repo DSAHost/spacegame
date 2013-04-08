@@ -11,7 +11,7 @@ from google.appengine.api import memcache
 from datetime import *
 from UserDatabase import *
 from ResourceDatabase import *
-
+from Handler import *
 
 template_dir =os.path.join(os.path.dirname(__file__),'templates')
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir),autoescape=True)

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block head %}
+    {{ super() }}
+    <style type="text/css">
+        .important { color: #a70000; }
+    </style>
+{% endblock %}
+{% block content %}
+    <h1>Login</h1>
+    <p class="important">
+      <form method="post">
+				<label>
+					<div>Username:</div>
+					<input type="text" name="username" value="{{username}}">
+				</label>
+				<label>
+					<div>Password:</div>
+					<input type="password" name="password">
+				</label>
+				<div class="error">{{error}}</div>
+				<input type="submit">
+			</form>
+    </p>
+{% endblock %}

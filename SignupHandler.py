@@ -1,8 +1,8 @@
 from Handler import *
 
 class SignupHandler(Handler):
-	def render_front(self,username,usererror,password,passerror,password2,verifyerror,email,emailerror):
-		self.render("signup.html",username=username, usererror=usererror, password=password, passerror=passerror, password2=password2, verifyerror=verifyerror, email=email, emailerror=emailerror)
+	def render_front(self,username="",usererror="",passerror="",verifyerror="",email="",emailerror=""):
+		self.render("signup.html",username=username, usererror=usererror, passerror=passerror, verifyerror=verifyerror, email=email, emailerror=emailerror)
 
 	def get(self):
 		self.render_front()
@@ -39,4 +39,4 @@ class SignupHandler(Handler):
 			accounts(True)
 			self.redirect("/")
 		else:
-			self.render_front(username,usererror,password,passerror,verify,verifyerror,email,emailerror)
+			self.render_front(username,usererror,passerror,verifyerror,email,emailerror)

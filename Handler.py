@@ -10,9 +10,6 @@ import hmac
 import json
 from google.appengine.api import memcache
 from datetime import *
-from ResourceDatabase import *
-from UserDatabase import *
-from AttackDatabase import *
 
 class Handler(webapp2.RequestHandler):
 

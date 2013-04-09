@@ -1,6 +1,5 @@
 from Handler import *
-from utils import *
-import UserDatabase
+from UserDatabase import *
 
 class LoginHandler(Handler):
 	def render_front(self,username="",error=""):

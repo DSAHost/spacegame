@@ -14,9 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import webapp2
-import jinja2
-
 from FrontHandler import *
 from SignupHandler import *
 from Handler import *

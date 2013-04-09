@@ -1,4 +1,5 @@
 from Handler import *
+from ResourceDatabase import *
 
 class User(ndb.Model):
 	username=ndb.StringProperty(required=True)

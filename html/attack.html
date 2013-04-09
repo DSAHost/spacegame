@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+<body>
+	<form method="get">
+		Target:
+		<select name="target">
+			{% for tgt in available_targets %}
+			<option value={{tgt}}>{{tgt}}</option>
+			{% endfor %}
+		</select>
+		<br>
+		Troops to send:
+		<input type="text" name="num_troops">
+		<input type="submit">
+	</form>
+</body>

@@ -1,28 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+
 <html>
-{% block pagelayout %}
 <head>
-	<title>Text Sector</title>
+	{% block head %}
 	<link rel="shortcut icon" href="../res/img/logo_icon.ico">
 	<link rel="stylesheet" type="text/css" href="style.css">
-	{% block head %} default head text {% endblock %}
+	<title>{% block title %}{% endblock %}</title>
+	{% endblock %}
 </head>
 
 <body class="game" >
 	<div class="topbar">
 		<div class="wide_margin">
-			{% block topbar %} default topbar text <br> {% endblock %}
+		{% block topbar %}{% endblock %}
 		</div>
 	</div>
-
 	<div class="sidebar_right">
 		<div class="wide_margin">
-			{% block sidebar %} default sidebar text <br> {% endblock %}
+			{% block sidebar %} {% endblock %}
 		</div>
 	</div>
-{% block body %}
-	default body content
+	<div class="content">{% block content %}{% endblock %}</div>
+
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-{% endblock %}
 </body>
-{% endblock %}
 </html>

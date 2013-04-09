@@ -1,9 +1,7 @@
 {% extends "gamebase.html" %}
-<html>
-{% block pagelayout %}
-{% block head %} {{ super() }}
- {% endblock %}
 
-
-
-</html>
+{% block title %}Game Front{% endblock %}
+{% block head %}
+	{{ super() }}
+	Hello, head.
+{% endblock %}

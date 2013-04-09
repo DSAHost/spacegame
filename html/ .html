@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% block head %}
+  Hello, template inheritance!
 {% endblock %}
-{% block title %}
-{% endblock %}
+
+{% block content %}
+<header>
+	<img src="../res/img/logo.png">
+</header>
 
 <body class="gradient">
 	Hello World!
 	<marquee direction="right" scrolldelay="1" scrollamount="1"> <img src="../res/img/ships/parrot_90.png"> </marquee>
 </body>
+{% endblock %}

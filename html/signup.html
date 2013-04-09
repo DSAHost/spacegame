@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block head %}
+{% endblock %}
+{% block title %}
+{% endblock %}
+
+
+<body class="gradient">
+	<form method="post">
+		Create a new account!
+		<label>
+			<div>Username:</div>
+			<input type="text" name="username" value="{{username}}">
+		</label>
+		<label>
+			<div>Optional Email:</div>
+			<input type="text" name="email" value="{{email}}">
+		</label>
+		<label>
+			<div>Password:</div>
+			<input type="password" name="password">
+		</label>
+		<label>
+			<div>Confirm Password:</div>
+			<input type="password" name="verify">
+		</label>
+		<br>
+		<div class="error">{{error}}</div>
+		<input type="submit">
+	</form>
+</body>

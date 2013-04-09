@@ -24,6 +24,10 @@ div.sidebar {
 	margin-left: 5px;
 	border-radius: 5px;
 }
+div.error {
+	color: #ff3300;
+	font-weight: bold;
+}
 
 div.wide_margin {
 	margin: 2px

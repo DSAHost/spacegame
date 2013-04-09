@@ -4,28 +4,25 @@
 	<title>Text Sector</title>
 	<link rel="shortcut icon" href="../res/img/logo_icon.ico">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	{% block head %} default head text {% endblock %}
 </head>
 
 <body class="game" >
 	<div class="topbar">
 		<div class="wide_margin">
-			Hello, sidebar! <br>
-
+			{% block topbar %} default topbar text <br> {% endblock %}
 		</div>
 	</div>
 
 	<div class="sidebar_right">
 		<div class="wide_margin">
-			Hello, sidebar!
-			Fleet Management <br><br>
-			Combat <br><br>
-			Station Management <br><br>
-
-
+			{% block sidebar %} default sidebar text <br> {% endblock %}
 		</div>
 	</div>
-
+{% block body %}
+	default body content
 	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}
 </body>
 
 </html>

@@ -1,9 +1,10 @@
 from Handler import *
+import hmac
 
 cookie_secret = "fight_club"
 
 def hash_str(s):
-	return hmac.new(SECRET,s).hexdigest()
+	return hmac.new(cookie_secret,s).hexdigest()
 
 def make_secure_val(s):
 	return "%s|%s" % (s,hash_str(s))

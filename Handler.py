@@ -16,11 +16,15 @@ from AttackDatabase import *
 
 class Handler(webapp2.RequestHandler):
 
-	# set up jinja workspace
-
 	# calls default initializer (syntax for future, does nothing yet)
  	def initialize(self, *a, **kw):
+ 		# default initializer
 		webapp2.RequestHandler.initialize(self, *a, **kw)
+		# set up login data
+		self.user_cookie_name = 'user_id'
+		uid = self.read_secure_cookie(self.user_cookie_name)
+		self.user = uid and User.get_by_id(int(uid))
+		# set up jinja2 workspace
 		self.template_dir = os.path.join(os.path.dirname(__file__), 'html')
 		self.jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(self.template_dir), autoescape=True)
 

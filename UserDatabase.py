@@ -15,7 +15,7 @@ def users(update=False):
 		logging.error("USER QUERY")
 		accs = ndb.gql("SELECT * FROM User")
 		accs=list(accs)
-		memecache.set(key,accs)
+		memcache.set(key,accs)
 	return accs
 
 def NewAccount(username="",password="",email=""):

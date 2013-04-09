@@ -33,9 +33,7 @@ class SignupHandler(Handler):
 
 		if not usererror and not passerror and not verifyerror and not emailerror:
 			key=UserDatabase.NewAccount(username,password,email)
-			cookieval=UserDatabase.get_Login_Cookie(key)
-			self.response.headers['Content-Type'] = 'text/plain'
-			self.response.headers.add_header('Set-Cookie', 'key=%s; Path=/;' % cookieval)
+			self.set_secure_cookie(self.user_cookie_name, login)
 			accounts(True)
 			self.redirect("/")
 		else:

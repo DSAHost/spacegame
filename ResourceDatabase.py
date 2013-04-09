@@ -23,7 +23,7 @@ def resources(update=False):
 def get_Resources(key):
 	resources=key.get()
 	value_adj=(((datetime.datetime.now()-resources.currency_updated).total_seconds())%60)*resources.currency_add
-	return [resources.currency+value_adj,resources.combat_units]
+	return [resources.currency+value_adj,resources.home_units]
 
 def set_Resources(key,currency,combat_units):
 	resources=key.get()

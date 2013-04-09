@@ -1,6 +1,7 @@
 from Handler import *
-from utils import *
 
 class GameHandler(Handler):
+	def render_front(self):
+		self.render("game.html")
 	def get(self):
-		pass
+		self.render_front()

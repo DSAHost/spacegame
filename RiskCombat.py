@@ -1,5 +1,5 @@
 def combat(attacking_troops, defending_troops):
-    attack = [random.randint(1,6)]
+	attack = [random.randint(1,6)]
 	if attacking_troops >= 3:
 		attack.append(random.randint(1,6))
 	if attacking_troops >= 9:
@@ -15,7 +15,7 @@ def combat(attacking_troops, defending_troops):
 	defense.sort()
 	i=0
 	while i<len(attack) and i<len(defense):
-		if attack[i] > defense[i]
+		if attack[i] > defense[i]:
 			defending_troops-=1
 		else:
 			attacking_troops-=1

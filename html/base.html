@@ -1,21 +1,21 @@
-{% block head %}
+{% block head_all%}
 <head>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<title>Text Sector</title>
-	{% block head %}{% endblock %}
+	{% block head %}{% endblock head %}
 </head>
-{% endblock head%}
+{% endblock head_all%}
 
-{% block header%}
+{% block header_all %}
 <header>
 	<img src="../res/img/logo.png">
+	{% block header%}{% endblock header %}
 </header>
-{% endblock header %}
+{% endblock header_all %}
 
-{% block body %}
+{% block body_all %}
 <body>
-	default body
+	{% block body %}{% endblock body%}
 </body>
-{% endblock body%}
-
+{% endblock body_all %}
 

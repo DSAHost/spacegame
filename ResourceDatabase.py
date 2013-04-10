@@ -20,35 +20,35 @@ def resources(update=False):
 		memcache.set(key,poss)
 	return poss
 	
-def get_Resources(key):
+def getResources(key):
 	resources=key.get()
-	value_adj=(((datetime.datetime.now()-resources.currency_updated).total_seconds())%60)*resources.currency_add
+	value_adj=(((datetime.now()-resources.currency_updated).total_seconds())%60)*resources.currency_add
 	return [resources.currency+value_adj,resources.home_units]
 
-def set_Resources(key,currency,combat_units):
+def setResources(key,currency,combat_units):
 	resources=key.get()
 	resources.currency=currency
 	resources.combat_units=combat_units
 	resources.put()
 
-def add_Combat_Units(key,num):
+def addCombatUnits(key,num):
 	resources=key.get()
 	resources.combat_units+=num
 	resources.put()
 
-def add_Currency(key,num):
+def addCurrency(key,num):
 	resources=key.get()
 	resources.currency+=num
 	resources.put()
 	
-def set_Income_Rate(key,num):
+def setIncomeRate(key,num):
 	resources=key.get()
 	resources.currency_add=num
 	resources.put()
 	
-def update_Currency(key):
+def updateCurrency(key):
 	resources=key.get()
-	time=datetime.datetime.now()
+	time=datetime.now()
 	resources.currency+=(((time-resources.currency_updated).total_seconds())%60)*resources.currency_add
 	resources.currency_updated=time
 	resources.put()

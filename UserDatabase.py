@@ -27,10 +27,7 @@ def NewAccount(username="",password="",email=""):
 	users(True)
 	return key
 
-def get_Login_Cookie(key):
-	return make_secure_val(key)
-
-def is_Valid_Login(username,password):
+def isValidLogin(username,password):
 	accs=users()
 	for i in accs:
 		if i.username == username:
@@ -39,7 +36,7 @@ def is_Valid_Login(username,password):
 				return i.key
 	return None
 
-def set_Password(cookie,password):
+def setPassword(cookie,password):
 	if cookie:
 		key=check_secure_val(cookie)
 		if key:
@@ -49,42 +46,42 @@ def set_Password(cookie,password):
 			return True
 	return False
 	
-def set_Email(key,email):
+def setEmail(key,email):
 	account=key.get()
 	account.email=email
 	account.put()
 
-def set_Prefs(key,json):
+def setPrefs(key,json):
 	account=key.get()
 	account.prefs=json
 	account.put()
 
-def set_Last_Login(key):
+def setLastLogin(key):
 	account=key.get()
 	account.last_login=datetime.now()
 	account.put()
 	
-def get_Resources(key):
+def getResources(key):
 	account=key.get()
-	return ResourceDatabase.get_Resources(account.resource_key)
+	return ResourceDatabase.getResources(account.resource_key)
 	
-def set_Resources(key,currency,combat_units):
+def setResources(key,currency,combat_units):
 	account=key.get()
-	ResourceDatabase.set_Resources(account.resource_key,currency,combat_units)
+	ResourceDatabase.setResources(account.resource_key,currency,combat_units)
 	
-def add_Combat_Units(key,num):
+def addCombatUnits(key,num):
 	account=key.get()
-	ResourceDatabase.add_Combat_Units(accounts.resource_key,num)
+	ResourceDatabase.addCombatUnits(account.resource_key,num)
 
-def add_Currency(key,num):
+def addCurrency(key,num):
 	account=key.get()
-	ResourceDatabase.add_Currency(accounts.resource_key,num)
+	ResourceDatabase.addCurrency(account.resource_key,num)
 	
-def set_Income_Rate(key,num):
+def setIncomeRate(key,num):
 	account=key.get()
-	ResourceDatabase.set_Income_Rate(accounts.resource_key,num)
+	ResourceDatabase.setIncomeRate(account.resource_key,num)
 	
-def update_Currency(key):
+def updateCurrency(key):
 	account=key.get()
-	ResourceDatabase.update_Currency(accounts.resource_key)
+	ResourceDatabase.updateCurrency(account.resource_key)
 

@@ -12,7 +12,7 @@ class LoginHandler(Handler):
 
 		cookieval=""
 
-		login=is_Valid_Login(username,password)
+		login=isValidLogin(username,password)
 		strlogin=login.urlsafe()
 		logging.error(strlogin)
 		if login:

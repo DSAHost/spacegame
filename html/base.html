@@ -2,15 +2,20 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 	<title>Text Sector</title>
+	{% block head %}{% endblock %}
 </head>
-{% endblock %}
+{% endblock head%}
 
-{% block title %}
+{% block header%}
 <header>
 	<img src="../res/img/logo.png">
 </header>
-{% endblock %}
+{% endblock header %}
 
-{% block content %}{% endblock %}
+{% block body %}
+<body>
+	default body
+</body>
+{% endblock body%}
 
 

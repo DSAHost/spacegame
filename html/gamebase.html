@@ -1,6 +1,6 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
 
-<html>
+<html class="space">
 <head>
 	<link rel="shortcut icon" href="../res/img/logo_icon.ico">
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
@@ -8,16 +8,16 @@
 </head>
 
 <body class="game" >
-	<div class="topbar">
-		<div class="wide_margin">
-		{% block topbar %}{% endblock %}
-		</div>
-	</div>
 	<div class="sidebar_right">
 		<div class="wide_margin">
 			{% block sidebar %} {% endblock %}
 		</div>
 	</div>
 	<div class="content">{% block content %}{% endblock %}</div>
+	<div class="topbar">
+		<div class="wide_margin">
+		{% block topbar %}{% endblock %}
+		</div>
+	</div>
 </body>
 </html>

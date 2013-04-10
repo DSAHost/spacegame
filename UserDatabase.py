@@ -7,7 +7,7 @@ class User(ndb.Model):
 	email=ndb.StringProperty(required=True)
 	prefs=ndb.JsonProperty()
 	last_login=ndb.DateTimeProperty(auto_now_add=True)
-	resource_key=ndb.StringProperty()
+	resource_key=ndb.KeyProperty()
 
 def users(update=False):
 	key="users"

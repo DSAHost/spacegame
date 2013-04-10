@@ -15,7 +15,6 @@ background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ *
 background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
 background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
-font-family: "Futura";
 color: white;
 }
 
@@ -88,7 +87,7 @@ div.page_top {
 div.wide_margin {
 	margin: 2px
 }
-div.error {
+.error {
 	color: #ff3300;
-	font-weight: bold;
+
 }

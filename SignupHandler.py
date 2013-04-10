@@ -23,7 +23,7 @@ class SignupHandler(Handler):
 			usererror="You must enter a username."
 		else:
 			for i in accs:
-				if i.username=username:
+				if i.username == username:
 					usererror="That username is taken."
 		if not password:
 			passerror="You must enter a password."

@@ -89,5 +89,20 @@ div.wide_margin {
 }
 .error {
 	color: #ff3300;
+<<<<<<< HEAD
 
+=======
+	font-weight: bold;
+}
+
+.button{
+	background-image:url(url-1.jpeg);
+ 	color:#FFFFCC;
+ 	border-color:#FFFFCC;
+ 	width: 100 px;
+ }
+
+.metalbg{
+	background-image:url('url.jpeg');
+>>>>>>> S
 }

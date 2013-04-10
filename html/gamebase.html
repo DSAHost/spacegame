@@ -10,7 +10,18 @@
 <body class="game" >
 	<div class="sidebar_right">
 		<div class="wide_margin">
-			{% block sidebar %} {% endblock %}
+			{% block sidebar %}
+				<center>
+
+					<button class="button" value="Submit">Attack</button>
+					<br>
+					<button class="button" value="Submit">Upgrade</button>
+					<br>
+					<button class="button" value="Submit">Manage Units</button>
+					<br>
+					<button class="button" value="Submit">Train Units</button>
+				</center>
+{% endblock %}
 		</div>
 	</div>
 	<div class="content">{% block content %}{% endblock %}</div>

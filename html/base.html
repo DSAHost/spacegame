@@ -1,21 +1,17 @@
 {% block head_all%}
 <head>
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
-	<title>Text Sector</title>
+	<title>{% block title %}Text Sector{% endblock %}</title>
 	{% block head %}{% endblock head %}
 </head>
-{% endblock head_all%}
+{% endblock %}
 
-{% block header_all %}
 <header>
 	<img src="../res/img/logo.png">
-	{% block header%}{% endblock header %}
+	{% block header%}{% endblock %}
 </header>
-{% endblock header_all %}
 
-{% block body_all %}
 <body class="gradient">
 	{% block body %}{% endblock body%}
 </body>
-{% endblock body_all %}
 

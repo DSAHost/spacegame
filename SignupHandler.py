@@ -1,5 +1,5 @@
 from Handler import *
-import UserDatabase
+from UserDatabase import *
 
 class SignupHandler(Handler):
 	def render_front(self,username="",usererror="",passerror="",verifyerror="",email="",emailerror=""):
@@ -17,7 +17,7 @@ class SignupHandler(Handler):
 		usererror=""
 		passerror=""
 		emailerror=""
-		accs=UserDatabase.users()
+		accs=users()
 
 		if not username:
 			usererror="You must enter a username."
@@ -37,9 +37,10 @@ class SignupHandler(Handler):
 			emailerror="You must enter a valid email address."
 
 		if not usererror and not passerror and not verifyerror and not emailerror:
-			key=UserDatabase.NewAccount(username,password,email)
-			self.set_secure_cookie(self.user_cookie_name, key)
-			UserDatabase.users(True)
+			key=NewAccount(username,password,email)
+			key1=key.urlsafe()
+			self.set_secure_cookie(self.user_cookie_name, key1)
+			users(True)
 			self.redirect("/")
 		else:
 			self.render_front(username,usererror,passerror,verifyerror,email,emailerror)

@@ -1,5 +1,5 @@
 from Handler import *
-from ResourceDatabase import *
+import ResourceDatabase
 
 class User(ndb.Model):
 	username=ndb.StringProperty(required=True)
@@ -21,7 +21,7 @@ def users(update=False):
 
 def NewAccount(username="",password="",email=""):
 	a=User(username=username, password=hash_str(password), email=email)
-	b=Resources(username=username,currency=0,combat_units=0)
+	b=ResourceDatabase.Resources(username=username,currency=0,combat_units=0)
 	a.resource_key=b.put()
 	key=a.put()
 	users(True)
@@ -33,9 +33,9 @@ def get_Login_Cookie(key):
 def is_Valid_Login(username,password):
 	accs=users()
 	for i in accs:
-		if i is username:
+		if i.username == username:
 			cpassword=i.password
-			if i.password is hash_str(password):
+			if i.password == hash_str(password):
 				return i.key
 	return None
 

@@ -12,13 +12,11 @@ class LoginHandler(Handler):
 
 		cookieval=""
 
-		login=UserDatabase.is_Valid_Login(username,password)
-
+		login=is_Valid_Login(username,password)
+		strlogin=login.urlsafe()
+		logging.error(strlogin)
 		if login:
-			# cookieval=UserDatabase.get_Cookie_Val(login)
-			# self.response.headers['Content-Type'] = 'text/plain'
-			# self.response.headers.add_header('Set-Cookie', 'key=%s; Path=/;' % cookieval)
-			self.set_secure_cookie(self.user_cookie_name, login)
+			self.set_secure_cookie('user_id', strlogin)
 			self.redirect("/")
 		else:
 			error="Your username or password could not be verified"

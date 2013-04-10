@@ -10,6 +10,7 @@ import hmac
 import json
 from google.appengine.api import memcache
 from datetime import *
+from google.appengine.ext.db import Key
 
 class Handler(webapp2.RequestHandler):
 
@@ -20,7 +21,8 @@ class Handler(webapp2.RequestHandler):
 		# set up login data
 		self.user_cookie_name = 'user_id'
 		uid = self.read_secure_cookie(self.user_cookie_name)
-		self.user = uid and User.get_by_id(int(uid))
+		key=ndb.Key(urlsafe=uid)
+		self.user=key.get()
 		# set up jinja2 workspace
 		self.template_dir = os.path.join(os.path.dirname(__file__), 'html')
 		self.jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(self.template_dir), autoescape=True)

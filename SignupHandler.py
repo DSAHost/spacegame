@@ -18,11 +18,13 @@ class SignupHandler(Handler):
 		passerror=""
 		emailerror=""
 		accs=UserDatabase.users()
-		logging.error(username in accs)
+
 		if not username:
 			usererror="You must enter a username."
-		elif username in accs:
-			usererror="That username is taken."
+		else:
+			for i in accs:
+				if i.username=username:
+					usererror="That username is taken."
 		if not password:
 			passerror="You must enter a password."
 		if not verify:

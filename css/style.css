@@ -1,3 +1,4 @@
+
 body.space {
 	background-image: url('../res/bg_1.png');
 	color: white;
@@ -36,7 +37,7 @@ body.fixed_width {
 
 div.sidebar_right {
 	background-color: black;
-	position: relative;
+	float: right;
 	left: 850px;
 	color: white;
 	width:150px;
@@ -54,6 +55,10 @@ div.topbar {
 	border-radius: 2px;
 }
 
+div.content {
+	margin-top: 120px;
+
+}
 
 div.wide_margin {
 	margin: 2px

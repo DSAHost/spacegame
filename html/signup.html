@@ -1,7 +1,6 @@
 {% extends "base.html" %}
 
-{% block body_all %}
-<body class="gradient">
+{% block body %}
 	<form method="post">
 		Create a new account!
 		<label>
@@ -24,6 +23,5 @@
 		<div class="error">{{error}}</div>
 		<input type="submit">
 	</form>
-</body>
 
-{% endblock body_all %}
+{% endblock body %}

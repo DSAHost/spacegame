@@ -19,6 +19,10 @@ from SignupHandler import *
 from Handler import *
 from LoginHandler import *
 from GameHandler import *
+from AttackDatabase import *
+from UserDatabase import *
+from ResourceDatabase import *
+from RiskCombat import *
 
 
 class MainHandler(webapp2.RequestHandler):

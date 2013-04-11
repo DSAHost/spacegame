@@ -47,6 +47,11 @@ body.fixed_width {
 
 }
 
+li{
+	display: inline;
+	margin: 10px;
+}
+
 div.sidebar_right {
 	background-color: black;
 	float: right;
@@ -88,7 +93,7 @@ div.content {
 
 div.page_top {
 	font-family:"Futura";
-	font-size: 400%;
+	font-size: 300%;
 
 }
 

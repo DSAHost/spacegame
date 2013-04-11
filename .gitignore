@@ -1,7 +1,6 @@
-
 *.pyc
-<<<<<<< HEAD
 .DS_Store
+<<<<<<< HEAD
 =======
 
 .DS_Store
@@ -13,3 +12,7 @@ res/.DS_Store
 
 .DS_Store
 >>>>>>> ...
+=======
+res/img/.DS_Store
+
+>>>>>>> [FIX] gitignore

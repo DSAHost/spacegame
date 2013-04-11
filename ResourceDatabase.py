@@ -22,7 +22,7 @@ def resources(update=False):
 	
 def getResources(key):
 	resources=key.get()
-	value_adj=(((datetime.now()-resources.currency_updated).total_seconds())%60)*resources.currency_add
+	value_adj=(int)(((datetime.now()-resources.currency_updated).total_seconds())/60)*resources.currency_add
 	return [resources.currency+value_adj,resources.home_units]
 
 def setResources(key,currency,combat_units):
@@ -49,7 +49,7 @@ def setIncomeRate(key,num):
 def updateCurrency(key):
 	resources=key.get()
 	time=datetime.now()
-	resources.currency+=(((time-resources.currency_updated).total_seconds())%60)*resources.currency_add
+	resources.currency+=(int)(((time-resources.currency_updated).total_seconds())/60)*resources.currency_add
 	resources.currency_updated=time
 	resources.put()
 

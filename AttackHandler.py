@@ -22,6 +22,7 @@ class AttackHandler(Handler):
 				defender = get_Resources(attack.defender_key)
 				units, defender.home_units = combat(attack.units, defender.home_units)
 				return
+				
 			if action == 'retreat':
 				attack.return_time = datetime().now + dattime.timedelta(minutes = return_time)
 				return

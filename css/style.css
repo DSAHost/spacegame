@@ -91,6 +91,12 @@ div.wide_margin {
 .error {
 	color: #ff3300;
 }
+.link {
+	a:link {color:#FF3800;}
+	a:visited {color:#CE2029;}
+	a:hover {color:#FF2800;}
+	a:active {color:#E49B0F;}
+}
 
 .button{
 	background-image:url('url-1.jpeg');

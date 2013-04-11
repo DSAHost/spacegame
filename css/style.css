@@ -128,3 +128,10 @@ a.link {
 	background-size:150px 500px;
 	background-repeat:no-repeat;
 }
+
+.bb{
+	color: orange;
+	background-color: orange;
+	border-color:orange;
+	height: 5px;
+}

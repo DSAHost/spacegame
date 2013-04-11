@@ -20,5 +20,4 @@ class AttackHandler(Handler):
 				units, defender.home_units = combat(attack.units, defender.home_units)
 
 			if action == 'retreat':
-				return_time = datetime().now + dattime.timedelta(minutes = return_time)
-				attack.return_time = return_time
+				attack.return_time = datetime().now + dattime.timedelta(minutes = return_time)

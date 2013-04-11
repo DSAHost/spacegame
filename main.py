@@ -23,7 +23,7 @@ from AttackDatabase import *
 from UserDatabase import *
 from ResourceDatabase import *
 from RiskCombat import *
-
+from AttackHandler import *
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -33,5 +33,6 @@ app = webapp2.WSGIApplication([
     ('/', FrontHandler),
     ('/signup', SignupHandler),
     ('/login', LoginHandler),
-    ('/game', GameHandler)
+    ('/game', GameHandler),
+    ('/game/attack',AttackHandler)
 ], debug=True)

@@ -10,6 +10,7 @@ class AttackHandler(Handler):
 		users=users()
 		users=list(users)
 		self.render_front(users)
+		
 	def post(self):
 		units = self.request.get('num_troops')
 		action = self.request.get('action')

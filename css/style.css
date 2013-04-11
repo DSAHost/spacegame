@@ -87,16 +87,13 @@ div.page_top {
 div.wide_margin {
 	margin: 2px
 }
+
 .error {
 	color: #ff3300;
-<<<<<<< HEAD
-
-=======
-	font-weight: bold;
 }
 
 .button{
-	background-image:url(url-1.jpeg);
+	background-image:url('url-1.jpeg');
  	color:#FFFFCC;
  	border-color:#FFFFCC;
  	width: 100 px;
@@ -104,5 +101,4 @@ div.wide_margin {
 
 .metalbg{
 	background-image:url('url.jpeg');
->>>>>>> S
 }

@@ -110,7 +110,10 @@ a.link {
 	background-image:url('url-1.jpeg');
  	color:#FFFFCC;
  	border-color:white;
- 	width: 100 px;
+ 	display:inline-block;
+	min-width: 50px;
+	width: 100px;
+	padding:5px 5px;
  }
 
 .metalbg{

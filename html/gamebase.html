@@ -19,11 +19,7 @@
 			<br>
 			<button class="button" value="Submit">Train Units</button>
 			{% block sidebar %}
-<<<<<<< HEAD
 				<div class="metalbg">
-=======
-<<<<<<< HEAD
->>>>>>> ...
 				<center>
 					<body background="url.jpeg">
 					<button class="button" value="Submit">Attack</button>
@@ -39,16 +35,20 @@
 					</body>
 				</center>
 				</div>
-
-=======
->>>>>>> ...
 			{% endblock %}
 		</div>
 	</div>
 	<div class="content">{% block content %}{% endblock %}</div>
 	<div class="topbar">
 		<div class="wide_margin">
-			{% block topbar %}{% endblock %}
+			{% block topbar %}
+			<div class="page_top">
+			Space Game
+			</div>
+			{{ username }}
+			{{ currency }}
+			{{ units }}
+			{% endblock %}
 		</div>
 	</div>
 </body>

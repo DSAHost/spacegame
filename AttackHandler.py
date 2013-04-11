@@ -7,9 +7,12 @@ class AttackHandler(Handler):
 		self.render("attack.html",available_targets=available_targets)
 	def get(self):
 		units = self.request.get('num_troops')
-		users=users()
-		users=list(users)
-		self.render_front(users)
+		usrs=users()
+		usrs=list(usrs)
+		fusrs=[]
+		for i in usrs:
+			fusrs.append(i.username)
+		self.render_front(available_targets=fusrs)
 		
 	def post(self):
 		units = self.request.get('num_troops')

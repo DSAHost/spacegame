@@ -91,7 +91,7 @@ div.wide_margin {
 .error {
 	color: #ff3300;
 }
-.link {
+a.link {
 	a:link {color:#FF3800;}
 	a:visited {color:#CE2029;}
 	a:hover {color:#FF2800;}

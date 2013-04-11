@@ -7,11 +7,23 @@
 	<title>{% block title %}Space Game{% endblock %}</title>
 </head>
 
+{% block body_all %}
 <body class="game" >
 	<div class="sidebar_right">
 		<div class="wide_margin">
+			<button class="button" value="Submit">Attack</button>
+			<br>
+			<button class="button" value="Submit">Upgrade</button>
+			<br>
+			<button class="button" value="Submit">Manage Units</button>
+			<br>
+			<button class="button" value="Submit">Train Units</button>
 			{% block sidebar %}
+<<<<<<< HEAD
 				<div class="metalbg">
+=======
+<<<<<<< HEAD
+>>>>>>> ...
 				<center>
 					<body background="url.jpeg">
 					<button class="button" value="Submit">Attack</button>
@@ -25,14 +37,17 @@
 				</center>
 				</div>
 
+=======
+>>>>>>> ...
 			{% endblock %}
 		</div>
 	</div>
 	<div class="content">{% block content %}{% endblock %}</div>
 	<div class="topbar">
 		<div class="wide_margin">
-		{% block topbar %}{% endblock %}
+			{% block topbar %}{% endblock %}
 		</div>
 	</div>
 </body>
+{% endblock body_all %}
 </html>

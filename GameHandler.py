@@ -4,7 +4,7 @@ import UserDatabase
 
 class GameHandler(Handler):
 	def render_front(self, username, currency, units):
-		self.render("gamebase.html",username=username,currency=currency, units=units)
+		self.render("gamefront.html",username=username,currency=currency, units=units)
 	def get(self):
 	 	if self.user:
 	 		username=self.user.username

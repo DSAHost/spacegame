@@ -14,9 +14,10 @@ class AttackHandler(Handler):
 			return
 
 		if action and attack_id:
+			attack = attacks()[attack_id]
 			if action = 'attack':
-				defender = getResources(defender_key)
-				units, defender.home_units = combat(units, defender.home_units)
+				defender = get_Resources(attack.defender_key)
+				units, defender.home_units = combat(attack.units, defender.home_units)
 
 			if action == 'retreat':
 				return_time = datetime().now + dattime.timedelta(minutes = return_time)

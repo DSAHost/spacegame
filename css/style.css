@@ -101,10 +101,12 @@ a.link {
 .button{
 	background-image:url('url-1.jpeg');
  	color:#FFFFCC;
- 	border-color:#FFFFCC;
+ 	border-color:white;
  	width: 100 px;
  }
 
 .metalbg{
-	background-image:url('url.jpeg');
+	background-image:url('18173641-metal-mesh-with-small-holes-background-or-texture.jpg');
+	background-size:150px 500px;
+	background-repeat:no-repeat;
 }

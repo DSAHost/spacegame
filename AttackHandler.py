@@ -3,6 +3,9 @@ from utils import *
 
 class AttackHandler(Handler):
 	def get(self):
+		Handler.render("attack.html")
+
+	def post(self):
 		units = self.request.get('num_troops')
 		action = self.request.get('action')
 		target = self.request.get('target')
@@ -22,5 +25,3 @@ class AttackHandler(Handler):
 			if action == 'retreat':
 				attack.return_time = datetime().now + dattime.timedelta(minutes = return_time)
 				return
-				
-	def post(self):

@@ -18,6 +18,9 @@ class AttackHandler(Handler):
 			if action = 'attack':
 				defender = get_Resources(attack.defender_key)
 				units, defender.home_units = combat(attack.units, defender.home_units)
-
+				return
 			if action == 'retreat':
 				attack.return_time = datetime().now + dattime.timedelta(minutes = return_time)
+				return
+				
+	def post(self):

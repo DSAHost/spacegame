@@ -21,8 +21,11 @@ class Handler(webapp2.RequestHandler):
 		# set up login data
 		self.user_cookie_name = 'user_id'
 		uid = self.read_secure_cookie(self.user_cookie_name)
-		key=ndb.Key(urlsafe=uid)
-		self.user=key.get()
+		key=None
+		self.user=None
+		if uid:
+			key=ndb.Key(urlsafe=uid)
+			self.user=key.get()
 		# set up jinja2 workspace
 		self.template_dir = os.path.join(os.path.dirname(__file__), 'html')
 		self.jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(self.template_dir), autoescape=True)

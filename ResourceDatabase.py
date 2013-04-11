@@ -5,7 +5,7 @@ class Resources(ndb.Model):
 	
 	currency=ndb.IntegerProperty(required=True)
 	currency_add=ndb.IntegerProperty()
-	currency_updated=ndb.DateTimeProperty()
+	currency_updated=ndb.DateTimeProperty(auto_now_add=True)
 	
 	combat_units=ndb.IntegerProperty(required=True)
 	home_units=ndb.IntegerProperty()

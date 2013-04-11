@@ -3,7 +3,7 @@ from utils import *
 
 class AttackHandler(Handler):
 	def get(self):
-		units = self.request.get('units')
+		units = self.request.get('num_troops')
 		action = self.request.get('action')
 		target = self.request.get('target')
 		attack_id = self.request.get('attack_id')

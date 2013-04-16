@@ -2,8 +2,8 @@
 
 {% block title %}Signup{% endblock %}
 {% block body %}
+	<h1>Create a new account!</h1>
 	<form method="post">
-		Create a new account!
 		<label>
 			<div>Username:</div>
 			<input type="text" name="username" value="{{username}}"> <span class="error">{{usererror}}</span>
@@ -23,5 +23,11 @@
 		<br>
 		<input type="submit">
 	</form>
-
+	<style>
+		a:link {color:#FF3800;}
+		a:visited {color:#CE2029;}
+		a:hover {color:#FF2800;}
+		a:active {color:#E49B0F;}
+	</style>
+	<a href="../"> Return to Home </a>
 {% endblock body %}

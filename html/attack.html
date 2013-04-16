@@ -3,16 +3,13 @@
 {{ super() }}
 <body>
 	<form method="post">
-		Target:
-		<select name="target">
-			{% for tgt in available_targets %}
-			<option value={{tgt}}>{{tgt}}</option>
-			{% endfor %}
-		</select>
-		<br>
-		Troops to send:
-		<input type="text" name="num_troops">
-		<input type="submit">
+		<input type="hidden" name="attack_id" value="{{attack_id}}"> <!-- hide this -->
+		<input type="hidden" name="action" value="attack">
+		<input type="submit" value="Attack">
+	</form>
+		<form method="post">
+		<input type="hidden" name="attack_id" value="{{attack_id}}"> <!-- hide this -->
+		<input type="hidden" name="action" value="retreat">
+		<input type="submit" value="Retreat">
 	</form>
 </body>
-{% endblock %}

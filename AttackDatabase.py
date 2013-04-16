@@ -3,7 +3,7 @@ from Handler import *
 class Attack(ndb.Model):
 	attacker_key=ndb.StringProperty(required=True)
 	defender_key=ndb.StringProperty(required=True)
-	units=ndb.IntegerProperty(required=True)
+	num_troops=ndb.IntegerProperty(required=True)
 	time_fought=ndb.DateTimeProperty(auto_now_add=True)
 	return_time=ndb.IntegerProperty(required=True)
 

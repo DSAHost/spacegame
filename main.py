@@ -14,16 +14,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+from AttackDatabase import *
+from AttackHandler import *
 from FrontHandler import *
-from SignupHandler import *
+from GameHandler import *
 from Handler import *
 from LoginHandler import *
-from GameHandler import *
-from AttackDatabase import *
-from UserDatabase import *
 from ResourceDatabase import *
 from RiskCombat import *
-from AttackHandler import *
+from SignupHandler import *
+from UserDatabase import *
+from CombatHandler import *
+from ManageUnitsHandler import *
+from UnitPurchaseHandler import *
+from ManageStationHandler import *
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):

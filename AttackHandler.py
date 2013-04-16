@@ -3,11 +3,11 @@ from utils import *
 from UserDatabase import *
 
 class AttackHandler(Handler):
-	def render_front(self,available_targets=None,attack_id=None):
+	def render_front(self,username,currency,units,available_targets=None,attack_id=None):
 		if attack_id:
-			self.render("attack.html",attack_id=attack_id,num_troops=attks[attack_id].num_troops)
+			self.render("attack.html",attack_id=attack_id,num_troops=attks[attack_id].num_troops,username=username,currency=currency, units=units)
 		else:
-			self.render("attack_creator.html",available_targets=available_targets)
+			self.render("attack_creator.html",available_targets=available_targets,username=username,currency=currency, units=units)
 	def get(self):
 		units = self.request.get('num_troops')
 		usrs=users()
@@ -15,7 +15,12 @@ class AttackHandler(Handler):
 		fusrs=[]
 		for i in usrs:
 			fusrs.append(i.username)
-		self.render_front(available_targets=fusrs)
+		if self.user:
+	 		username=self.user.username
+	 		resources=ResourceDatabase.getResources(self.user.resource_key)
+	 		self.render_front(username,resources[0],resources[1],available_targets=fusrs)
+	 	else:
+	 		self.redirect('/login')
 		
 	def post(self):
 		units = self.request.get('num_troops')
@@ -24,7 +29,7 @@ class AttackHandler(Handler):
 		attack_id = self.request.get('attack_id')
 
 		if units and target:
-			attack = new Attack(attacker_key = self.user.key, defender_key = target.key, units = units)
+			# attack = new Attack(attacker_key=self.user.key, defender_key=target.key, units=units)
 			attack.put()
 			return
 

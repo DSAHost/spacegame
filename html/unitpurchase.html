@@ -1,0 +1,21 @@
+{% extends "gamebase.html" %}
+
+{% block content %}
+<form>
+	<input class="long" type="range" min="0" max={{currency/10}} value="0" onchange="showValue(this.value)" />
+	<script type="text/javascript">
+	function showValue(newValue)
+	{
+		document.getElementById("units").innerHTML=newValue;
+		document.getElementById("cost").innerHTML=newValue*10;
+	}
+	</script>
+	<br>
+	Number of units:
+	<span id="units">0</span>
+	<br>
+	Cost: <span id="cost">0</span> credits
+	<br>
+	<input class="button" type="submit" value="Train">
+</form>
+{% endblock content %}

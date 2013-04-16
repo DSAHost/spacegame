@@ -3,6 +3,10 @@ html.space {
 	background-image: url('../res/img/bg_2.png');
 }
 
+input.long {
+width: 95%;
+}
+
 body.space {
 	background-image: url('../res/img/bg_2.png');
 	background-repeat: no-repeat;
@@ -41,7 +45,6 @@ body.fixed_width {
 	margin: 0 auto;
 	width: 1000px;
 	background-color: black;
-
 }
 
 li{
@@ -50,7 +53,7 @@ li{
 }
 
 div.sidebar_right {
-	background-color: black;
+	/*background-color: black;*/
 	float: right;
 	position: relative;
 	bottom: 110px;

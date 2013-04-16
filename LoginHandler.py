@@ -19,9 +19,13 @@ class LoginHandler(Handler):
 		logging.error(strlogin)
 		if login:
 			self.set_secure_cookie('user_id', strlogin)
-			self.redirect("/")
+			self.redirect("/game")
 		else:
 			error="Your username or password could not be verified."
 			self.render_front(username,error)
 
 
+class LogoutHandler(Handler):
+	def get(self):
+		self.set_secure_cookie('user_id', None)
+		self.redirect('/')

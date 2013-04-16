@@ -47,8 +47,10 @@ class Handler(webapp2.RequestHandler):
 	# add a hashed cookie to the user's browser
 	def set_secure_cookie(self, name, val, days = None):
 		cookie_val = make_secure_val(str(val))
-		if days == None:
-			self.response.headers.add_header('Set-Cookie', '%s=%s; Path=/' % (name, cookie_val))
+		if not val:
+			self.response.headers.add_header('Set-Cookie', '%s=; Path=/;' % name)
+		elif days == None:
+			self.response.headers.add_header('Set-Cookie', '%s=%s; Path=/;' % (name, cookie_val))
 		else:
 			expiration = datetime.datetime.now() + datetime.timedelta(days = days)
 			self.response.headers.add_header('Set-Cookie', '%s=%s; expires=%s; Path=/;' % (name, cookie_val, expiration.strftime("%a, %d-%b-%Y %H:%M:%S GMT")))

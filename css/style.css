@@ -115,6 +115,24 @@ div.wide_margin {
 	padding:5px 5px;
  }
 
+.buttonBig{
+	background-image:url('url-1.jpeg');
+ 	color:#F87217;
+ 	border-color:#F87217;
+ 	display:inline-block;
+	min-width: 50px;
+	width: 200px;
+	padding:5px 5px;
+	height:80px;
+	font-size: 30px;
+	border-radius: 20px;
+
+ }
+.buttonBig:hover{
+   border-color:orange;
+   color:orange;
+}
+
 .metalbg{
 	background-image:url('mesh.jpg');
 	background-size:150px 500px;

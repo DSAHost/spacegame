@@ -36,6 +36,7 @@ def setResources(key,currency,combat_units):
 def addCombatUnits(key,num):
 	resources=key.get()
 	resources.combat_units+=num
+	resources.home_units+=num
 	resources.put()
 
 def addCurrency(key,num):

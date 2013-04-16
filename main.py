@@ -34,5 +34,9 @@ app = webapp2.WSGIApplication([
     ('/signup', SignupHandler),
     ('/login', LoginHandler),
     ('/game', GameHandler),
-    ('/game/attack',AttackHandler)
+    ('/game/attack',AttackHandler),
+    ('/game/combat',CombatHandler),
+    ('/game/manageunits',ManageUnitsHandler),
+    ('/game/manageunits/buyunits',UnitPurchaseHandler),
+    ('/game/managestation', ManageStationHandler)
 ], debug=True)

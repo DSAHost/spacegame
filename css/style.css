@@ -1,9 +1,6 @@
 
 html.space {
 	background-image: url('../res/img/bg_2.png');
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	color: white;
 }
 
 body.space {
@@ -14,30 +11,30 @@ body.space {
 }
 
 body.gradient {
-background: #7d7e7d; /* Old browsers */
-background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
-color: white;
+	background: #7d7e7d; /* Old browsers */
+	background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+	color: white;
 }
 
 body.game {
-margin: 0 auto;
-width: 1000px;
-position: relative;
-bottom: 150px;
-background: #7d7e7d; /* Old browsers */
-background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
-background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
+	margin: 0 auto;
+	width: 1000px;
+	position: relative;
+	bottom: 150px;
+	background: #7d7e7d; /* Old browsers */
+	background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e',GradientType=0 ); /* IE6-9 */
 }
 
 body.fixed_width {
@@ -79,6 +76,7 @@ div.topbar {
 	height: 100px;
 	border-radius:5px;
 	border:1px solid white;
+<<<<<<< HEAD
 	background: #7d7e7d; /* Old browsers */
 	background: -moz-linear-gradient(top,  #7d7e7d 0%, #0e0e0e 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#7d7e7d), color-stop(100%,#0e0e0e)); /* Chrome,Safari4+ */
@@ -86,6 +84,10 @@ div.topbar {
 	background: -o-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
+=======
+	font-family:"Futura";
+	
+>>>>>>> ...
 }
 
 div.content {
@@ -114,19 +116,20 @@ div.wide_margin {
 
 .button{
 	background-image:url('url-1.jpeg');
- 	color:orange;
- 	border-color:orange;
- 	display:inline-block;
+	color:orange;
+	border-color:orange;
+	display:inline-block;
 	min-width: 50px;
 	width: 100px;
 	padding:5px 5px;
- }
+	font-family:"Futura";
+}
 
 .buttonBig{
 	background-image:url('url-1.jpeg');
- 	color:#F87217;
- 	border-color:#F87217;
- 	display:inline-block;
+	color:#F87217;
+	border-color:#F87217;
+	display:inline-block;
 	min-width: 50px;
 	width: 200px;
 	padding:5px 5px;
@@ -134,10 +137,10 @@ div.wide_margin {
 	font-size: 30px;
 	border-radius: 20px;
 
- }
+}
 .buttonBig:hover{
-   border-color:orange;
-   color:orange;
+	border-color:orange;
+	color:orange;
 }
 
 .metalbg{

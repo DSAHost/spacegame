@@ -3,6 +3,7 @@
 {% block title %} Login {% endblock %}
 {% block body %}
     <h1>Login</h1>
+<<<<<<< HEAD
     <form method="post">
 		<label>
 			<div>Username:</div>
@@ -24,4 +25,23 @@
 		a:active {color:#E49B0F;}
 	</style>
     <a href="../"> Return to Home </a>
+=======
+    <p>
+      <form method="post">
+				<label>
+					<div>Username:</div>
+					<input type="text" name="username" value="{{username}}">
+				</label>
+				<label>
+					<div>Password:</div>
+					<input type="password" name="password">
+				</label>
+				<br>
+				<span class="error">{{error}}</span>
+				<br>
+				<input type="submit">
+				<a href="/signup"> Signup </a>
+			</form>
+    </p>
+>>>>>>> g
 {% endblock %}

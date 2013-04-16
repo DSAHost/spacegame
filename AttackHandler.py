@@ -5,7 +5,7 @@ from UserDatabase import *
 class AttackHandler(Handler):
 	def render_front(self,available_targets=None,attack_id=None):
 		if attack_id:
-			self.render("attack.html")
+			self.render("attack.html",attack_id=attack_id,num_troops=num_troops)
 		else:
 			self.render("attack_creator.html",available_targets=available_targets)
 	def get(self):

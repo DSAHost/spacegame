@@ -2,6 +2,7 @@
 {% block body_all %}
 {{ super() }}
 <body>
+	<div> {{num_troops}} </div>
 	<form method="post">
 		<input type="hidden" name="attack_id" value="{{attack_id}}"> <!-- hide this -->
 		<input type="hidden" name="action" value="attack">

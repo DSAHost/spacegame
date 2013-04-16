@@ -11,3 +11,9 @@ class UnitPurchaseHandler(Handler):
 	 		self.render_front(username,resources[0],resources[1])
 	 	else:
 	 		self.redirect('/login')
+
+	def post(self):
+		units = int(self.request.get("units"))
+		cost = int(self.request.get("cost"))
+		UserDatabase.addCombatUnits(self.user.key,units)
+		UserDatabase.addCurrency(self.user.key,-cost)

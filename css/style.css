@@ -50,6 +50,10 @@ li{
 	margin: 10px;
 }
 
+a {
+	text-decoration: none;
+}
+
 div.sidebar_right {
 	/*background-color: black;*/
 	float: right;

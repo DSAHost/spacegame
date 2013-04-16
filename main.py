@@ -34,14 +34,10 @@ app = webapp2.WSGIApplication([
     ('/signup', SignupHandler),
     ('/login', LoginHandler),
     ('/game', GameHandler),
-<<<<<<< HEAD
     ('/game/attack',AttackHandler),
     ('/game/combat',CombatHandler),
     ('/game/manageunits',ManageUnitsHandler),
     ('/game/manageunits/buyunits',UnitPurchaseHandler),
-    ('/game/managestation', ManageStationHandler)
-=======
-    ('/game/attack', AttackHandler),
+    ('/game/managestation', ManageStationHandler),
     ('/logout', LogoutHandler)
->>>>>>> logout
 ], debug=True)

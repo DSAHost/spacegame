@@ -22,13 +22,15 @@ def resources(update=False):
 	
 def getResources(key):
 	resources=key.get()
-	value_adj=(int)(((datetime.now()-resources.currency_updated).total_seconds())/60)*resources.currency_add
+	time=datetime.now()
+	value_adj=currencyAdjust(resources,time)
 	return [resources.currency+value_adj,resources.home_units]
 
 def setResources(key,currency,combat_units):
 	resources=key.get()
 	resources.currency=currency
 	resources.combat_units=combat_units
+	resources.currency_updated=datetime.now()
 	resources.put()
 
 def addCombatUnits(key,num):
@@ -38,7 +40,9 @@ def addCombatUnits(key,num):
 
 def addCurrency(key,num):
 	resources=key.get()
-	resources.currency+=num
+	time=datetime.now()
+	resources.currency+=num+currencyAdjust(resources,time)
+	resources.currency_updated=time
 	resources.put()
 	
 def setIncomeRate(key,num):
@@ -46,12 +50,8 @@ def setIncomeRate(key,num):
 	resources.currency_add=num
 	resources.put()
 	
-def updateCurrency(key):
-	resources=key.get()
-	time=datetime.now()
-	resources.currency+=(int)(((time-resources.currency_updated).total_seconds())/60)*resources.currency_add
-	resources.currency_updated=time
-	resources.put()
+def currencyAdjust(resources,time):
+	return (int)(((time-resources.currency_updated).total_seconds())/60)*resources.currency_add
 
 #def get_Home_Units(key):
 	

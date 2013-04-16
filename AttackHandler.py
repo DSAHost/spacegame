@@ -3,8 +3,11 @@ from utils import *
 from UserDatabase import *
 
 class AttackHandler(Handler):
-	def render_front(self,available_targets=None):
-		self.render("attack.html",available_targets=available_targets)
+	def render_front(self,available_targets=None,attack_id=None):
+		if attack_id:
+			self.render("attack.html")
+		else:
+			self.render("attack_creator.html",available_targets=available_targets)
 	def get(self):
 		units = self.request.get('num_troops')
 		usrs=users()
@@ -16,8 +19,8 @@ class AttackHandler(Handler):
 		
 	def post(self):
 		units = self.request.get('num_troops')
-		action = self.request.get('action')
 		target = self.request.get('target')
+		action = self.request.get('action')
 		attack_id = self.request.get('attack_id')
 
 		if units and target:

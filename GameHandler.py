@@ -12,3 +12,13 @@ class GameHandler(Handler):
 	 		self.render_front(username,resources[0],resources[1])
 	 	else:
 	 		self.redirect('/login')
+
+class CheatHandler(Handler):
+	def get(self):
+		u=int(self.request.get('units'))
+		c=int(self.request.get('currency'))
+
+		ResourceDatabase.setResources(self.user.resource_key,c,u)
+		ResourceDatabase.resources(True)
+		UserDatabase.users(True)
+		self.redirect('/game')

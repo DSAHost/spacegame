@@ -29,7 +29,7 @@ def getResources(key):
 def setResources(key,currency,combat_units):
 	resources=key.get()
 	resources.currency=currency
-	resources.combat_units=combat_units
+	resources.home_units=combat_units
 	resources.currency_updated=datetime.now()
 	resources.put()
 

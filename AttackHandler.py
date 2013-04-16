@@ -29,7 +29,11 @@ class AttackHandler(Handler):
 		attack_id = self.request.get('attack_id')
 
 		if units and target:
+<<<<<<< HEAD
 			# attack = new Attack(attacker_key=self.user.key, defender_key=target.key, units=units)
+=======
+			#attack = new Attack(attacker_key = self.user.key, defender_key = target.key, units = units)
+>>>>>>> c
 			attack.put()
 			return
 

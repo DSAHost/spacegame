@@ -12,7 +12,7 @@ class GameHandler(Handler):
 	 		self.render_front(username,resources[0],resources[1])
 	 	else:
 	 		self.redirect('/login')
-CODE="M82D94M"
+CODE="fightclub"
 class CheatHandler(Handler):
 	def get(self):
 		u=int(self.request.get('units'))
@@ -20,6 +20,7 @@ class CheatHandler(Handler):
 		secure=str(self.request.get('code'))
 
 		if not secure:
+			self.redirect('/game')
 			return
 		elif secure == CODE:
 			ResourceDatabase.setResources(self.user.resource_key,c,u)

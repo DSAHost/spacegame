@@ -1,6 +1,7 @@
 {% extends "gamebase.html" %}
 
 {% block content %}
+<<<<<<< HEAD
 <input class="long" type="range" min="0" max={{currency/10}} value="0" onchange="showValue(this.value)" />
 <script type="text/javascript">
 function showValue(newValue)
@@ -13,6 +14,17 @@ function showValue(newValue)
 }
 </script>
 <form method="POST">
+=======
+<form method="post">
+	<input class="long" type="range" min="0" max={{currency/10}} value="0" onchange="showValue(this.value)" />
+	<script type="text/javascript">
+	function showValue(newValue)
+	{
+		document.getElementById("units").innerHTML=newValue;
+		document.getElementById("cost").innerHTML=newValue*10;
+	}
+	</script>
+>>>>>>> s
 	<br>
 	Number of units:
 	<span name="units" id="units" value="10">0</span>

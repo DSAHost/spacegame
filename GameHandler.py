@@ -8,10 +8,6 @@ class Message():
 	def __init__(self,subject,content):
 		self.subject=subject
 		self.content=content
-<<<<<<< HEAD
-=======
-
->>>>>>> object programming
 
 class GameHandler(Handler):
 	def render_front(self, username, currency, units):

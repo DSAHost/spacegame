@@ -10,13 +10,14 @@ class Message():
 		self.content=content
 
 class GameHandler(Handler):
-	def render_front(self, username, currency, units):
-		self.render("gamefront.html", username=username,currency=currency, units=units, messages=[Message('Hello','world!'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4')])
+	def render_front(self, username, currency, units, messages):
+		self.render("gamefront.html", username=username,currency=currency, units=units, messages=messages)
 	def get(self):
 	 	if self.user:
 	 		username=self.user.username
 	 		resources=self.user.getResources()
-	 		self.render_front(username,resources[0],resources[1])
+
+	 		self.render_front(username,resources[0],resources[1],self.user.getMessages())
 	 	else:
 	 		self.redirect('/login')
 CODE="fightclub"

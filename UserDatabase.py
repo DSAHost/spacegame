@@ -19,6 +19,12 @@ class User(ndb.Model):
 	def newAttack(self,dname,troops,time):
 		attacks=AttackDatabase.newAttack(self.key,dname,troops,time)
 
+	def getMessages(self):
+		mess=[]
+		for i in self.messages:
+			mess.append(i.get())
+		return mess
+		
 	def setPassword(cookie,password):
 		if cookie:
 			key=check_secure_val(cookie)

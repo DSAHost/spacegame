@@ -20,12 +20,15 @@
 
 {% block content %}
 <div class="message_scrollbox">
+	<hr>
 	{% for message in messages %}
 	{{message.subject}}
+	<input class="message_checkbox" type="checkbox">
 	<input class="spoilerbutton" type="button" value="Show" onclick="this.value=this.value=='Show'?'Hide':'Show';">
 	<div class="spoiler"><div>
 		{{message.content}}
 	</div></div>
+	<hr>
 	{% endfor %}
 
 </div>

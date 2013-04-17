@@ -167,6 +167,10 @@ div.message_scrollbox {
 	height: 5px;
 }
 
+input[type="checkbox"] {
+	display:none;
+}
+
 /* animated spoiler CSS by Bloggersentral.com */
 .spoilerbutton {
 	background-image:url('url-1.jpeg');
@@ -179,13 +183,28 @@ div.message_scrollbox {
 	padding:5px 5px;
 	font-family:"Futura";
 	display:block;
-	margin:5px 0;
+	margin:3px;
 	display:inline;
+	float:right;
 }
-.spoiler {overflow:hidden;background: black;}
-.spoiler > div {-webkit-transition: all 0.2s ease;-moz-transition: margin 0.2s ease;-o-transition: all 0.2s ease;transition: margin 0.2s ease;}
-.spoilerbutton[value="Show"] + .spoiler > div {margin-top:-100%;}
-.spoilerbutton[value="Hide"] + .spoiler {padding:5px;} 
+.spoiler {
+	overflow:hidden;
+	background: black;
+}
+.spoiler > div {
+	-webkit-transition: all 0.2s ease;
+	-moz-transition: margin 0.2s ease;
+	-o-transition: all 0.2s ease;
+	transition: margin 0.2s ease;
+	margin:5px;
+}
+
+.spoilerbutton[value="Show"] + .spoiler > div {
+	margin-top:-100%;
+}
+.spoilerbutton[value="Hide"] + .spoiler {
+	padding:0px;
+} 
 .logo{
 	float: left;
 	position: absolute;

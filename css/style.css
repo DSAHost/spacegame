@@ -172,8 +172,19 @@ div.message_scrollbox {
 	height: 5px;
 }
 
+
+.message_checkbox {
+	float:right;
+}
+
 input[type="checkbox"] {
 	display:none;
+}
+input[type="checkbox"] label span {
+	display:inline-block;
+	width:19px;
+	height:19px;
+	background-image:url('check_radio_sheet.png') left top no-repeat;
 }
 
 /* animated spoiler CSS by Bloggersentral.com */

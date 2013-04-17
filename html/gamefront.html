@@ -23,7 +23,8 @@
 	<hr>
 	{% for message in messages %}
 	{{message.subject}}
-	<input class="message_checkbox" type="checkbox">
+	<input type="checkbox" class="message_checkbox" id="c1" name="cc" />
+	<label for="c1">Check Box 1</label>
 	<input class="spoilerbutton" type="button" value="Show" onclick="this.value=this.value=='Show'?'Hide':'Show';">
 	<div class="spoiler"><div>
 		{{message.content}}

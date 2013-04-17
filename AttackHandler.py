@@ -2,6 +2,7 @@ from Handler import *
 from utils import *
 from UserDatabase import *
 from AttackDatabase import *
+
 class AttackHandler(Handler):
 	def render_front(self,username,currency,units,available_targets=None,attack_id=None):
 		if attack_id:
@@ -18,7 +19,7 @@ class AttackHandler(Handler):
 				fusrs.append(i.username)
 		if self.user:
 	 		username=self.user.username
-	 		resources=ResourceDatabase.getResources(self.user.resource_key)
+	 		resources=getResources(self.user)
 	 		self.render_front(username,resources[0],resources[1],available_targets=fusrs)
 	 	else:
 	 		self.redirect('/login')
@@ -36,7 +37,7 @@ class AttackHandler(Handler):
 		if action and attack_id:
 			attack = attacks()[attack_id]
 			if action == 'attack':
-				defender = get_Resources(attack.defender_key)
+				defender = getResources(attack.defender_key)
 				units, defender.home_units = combat(attack.units, defender.home_units)
 				return
 				

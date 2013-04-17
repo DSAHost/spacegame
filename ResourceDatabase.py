@@ -14,45 +14,52 @@ def resources(update=False):
 	key="resources"
 	poss=memcache.get(key)
 	if poss is None or update:
-		#logging.error("RESOURCE QUERY")
 		poss=ndb.gql("SELECT * FROM Resources")
 		poss=list(poss)
 		memcache.set(key,poss)
 	return poss
 	
 def getResources(key):
-	resources=key.get()
+	rec=resources()
+	resource=None
+	for i in rec:
+		if i.key == key:
+			resource=i
 	time=datetime.now()
-	value_adj=currencyAdjust(resources,time)
-	return [resources.currency+value_adj,resources.home_units]
+	value_adj=currencyAdjust(resource,time)
+	return [resource.currency+value_adj,resource.home_units]
 
 def setResources(key,currency,combat_units):
-	resources=key.get()
-	resources.currency=currency
-	resources.home_units=combat_units
-	resources.currency_updated=datetime.now()
-	resources.put()
+	resource=key.get()
+	resource.currency=currency
+	resource.home_units=combat_units
+	resource.currency_updated=datetime.now()
+	resource.put()
+	resources(True)
 
 def addCombatUnits(key,num):
-	resources=key.get()
-	resources.combat_units+=num
-	resources.home_units+=num
-	resources.put()
+	resource=key.get()
+	resource.combat_units+=num
+	resource.home_units+=num
+	resource.put()
+	resources(True)
 
 def addCurrency(key,num):
-	resources=key.get()
+	resource=key.get()
 	time=datetime.now()
-	resources.currency+=num+currencyAdjust(resources,time)
-	resources.currency_updated=time
-	resources.put()
+	resource.currency+=num+currencyAdjust(resource,time)
+	resource.currency_updated=time
+	resource.put()
+	resources(True)
 	
 def setIncomeRate(key,num):
-	resources=key.get()
-	resources.currency_add=num
-	resources.put()
+	resource=key.get()
+	resource.currency_add=num
+	resource.put()
+	resources(True)
 	
-def currencyAdjust(resources,time):
-	return (int)(((time-resources.currency_updated).total_seconds())/60)*resources.currency_add
+def currencyAdjust(resource,time):
+	return (int)(((time-resource.currency_updated).total_seconds())/60)*resource.currency_add
 
 #def get_Home_Units(key):
 	

@@ -12,17 +12,21 @@ def attacks(update=False):
 	key="attacks"
 	attks=memcache.get(key)
 	if attks is None or update:
-		logging.error("ATTACKS QUERY")
 		attks=ndb.gql("SELECT * FROM Attack")
 		attks=list(attks)
 		memcache.set(key,attks)
 	return attks
 
 def isFinished(key):
-	attk=key.get()
+	attacks=attacks()
+	attk=None
+	for i in attacks:
+		if i.key==key:
+			attk=i
 	dif=(datetime.datetime.now()-attk.time_fought).total_seconds()
 	if dif>attk.return_time:
 		key.delete()
+		attacks(True)
 		return True
 	return False
 
@@ -34,3 +38,4 @@ def newAttack(attkerkey,defender,troops,time):
 			dkey=i.key
 	attk=Attack(attacker_key=attkerkey, defender_key=dkey, num_troops=troops, return_time=time)
 	attk.put()
+	attacks(True)

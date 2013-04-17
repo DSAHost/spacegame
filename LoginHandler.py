@@ -16,7 +16,6 @@ class LoginHandler(Handler):
 		strlogin=None
 		if login:
 			strlogin=login.urlsafe()
-		logging.error(strlogin)
 		if login:
 			self.set_secure_cookie('user_id', strlogin)
 			self.redirect("/game")
@@ -27,5 +26,6 @@ class LoginHandler(Handler):
 
 class LogoutHandler(Handler):
 	def get(self):
+		setLastLogin(self.user.key)
 		self.set_secure_cookie('user_id', None)
 		self.redirect('/')

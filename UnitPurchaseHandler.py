@@ -13,13 +13,25 @@ class UnitPurchaseHandler(Handler):
 	 		self.redirect('/login')
 
 	def post(self):
-		units = int(self.request.get("units"))
-		cost = units*10
-		resources=UserDatabase.getResources(self.user.key)
-		if cost>resources[0]:
-			error="You do not have enough credits to train that many units."
-			self.render_front(self.user.username,resources[0],resources[1],error)
-			return
-		UserDatabase.addCombatUnits(self.user.key,units)
-		UserDatabase.addCurrency(self.user.key,-cost)
-		self.redirect('/game')
+		units = self.request.get("units")
+		resources=ResourceDatabase.getResources(self.user.resource_key)
+		if units:
+			try:
+				units=int(units)
+			except ValueError:
+				self.render_front(self.user.username,resources[0],resources[1],"You must enter a valid number.")
+				return
+			if units<=0:
+				self.render_front(self.user.username,resources[0],resources[1],"You must enter a valid number.")
+				return
+			cost = units*10
+		
+			if cost>resources[0]:
+				error="You do not have enough credits to train that many units."
+				self.render_front(self.user.username,resources[0],resources[1],error)
+				return
+			UserDatabase.addCombatUnits(self.user,units)
+			UserDatabase.addCurrency(self.user,-cost)
+			self.redirect('/game')
+		else:
+			self.render_front(self.user.username,resources[0],resources[1])

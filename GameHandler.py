@@ -1,15 +1,12 @@
 from Handler import *
 import ResourceDatabase
 import UserDatabase
-
+from MessageDatabase import *
 # temporary test class
-class Message():
-	def __init__(self,subject,content):
-		self.subject=subject
-		self.content=content
+
 
 class GameHandler(Handler):
-	def render_front(self, username, currency, units):
+	def render_front(self, username, currency, units, messages):
 		self.render("gamefront.html", username=username,currency=currency, units=units, messages=[Message('Hello','world!'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4')])
 	def get(self):
 	 	if self.user:

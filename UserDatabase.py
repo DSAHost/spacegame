@@ -8,7 +8,7 @@ class User(ndb.Model):
 	prefs=ndb.JsonProperty()
 	last_login=ndb.DateTimeProperty(auto_now_add=True)
 	resource_key=ndb.KeyProperty()
-
+	attacks=ndb.KeyProperty(repeated=True)
 def users(update=False):
 	key="users"
 	accs=memcache.get(key)

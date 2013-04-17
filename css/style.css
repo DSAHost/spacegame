@@ -186,3 +186,9 @@ div.message_scrollbox {
 .spoiler > div {-webkit-transition: all 0.2s ease;-moz-transition: margin 0.2s ease;-o-transition: all 0.2s ease;transition: margin 0.2s ease;}
 .spoilerbutton[value="Show"] + .spoiler > div {margin-top:-100%;}
 .spoilerbutton[value="Hide"] + .spoiler {padding:5px;} 
+.logo{
+	float: left;
+	position: absolute;
+	left: 10px;
+	top: -10px;
+}

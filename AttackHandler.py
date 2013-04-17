@@ -38,7 +38,7 @@ class AttackHandler(Handler):
 			attack = attacks()[attack_id]
 			if action == 'attack':
 				defender = getResources(attack.defender_key)
-				units, defender.home_units = combat(attack.units, defender.home_units)
+				attack.num_troops, defender.home_units = combat(attack.units, defender.home_units)
 				return
 				
 			if action == 'retreat':

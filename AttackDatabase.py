@@ -19,16 +19,16 @@ def attacks(update=False):
 
 def isFinished(key):
 	attacks=attacks()
-	attk=None
+	t=0
 	for i in attacks:
 		if i.key==key:
-			attk=i
-	dif=(datetime.datetime.now()-attk.time_fought).total_seconds()
-	if dif>attk.return_time:
-		key.delete()
-		attacks(True)
-		return True
-	return False
+			dif=(datetime.datetime.now()-i.time_fought).total_seconds()
+			if dif>i.return_time:
+				t=i.num_troops
+				key.delete()
+				attacks(True)
+				return t
+	return t
 
 def newAttack(attkerkey,defender,troops,time):
 	accs=users()
@@ -37,5 +37,6 @@ def newAttack(attkerkey,defender,troops,time):
 		if i.username==defender:
 			dkey=i.key
 	attk=Attack(attacker_key=attkerkey, defender_key=dkey, num_troops=troops, return_time=time)
-	attk.put()
+	a=attk.put()
 	attacks(True)
+	return a

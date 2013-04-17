@@ -26,6 +26,6 @@ class LoginHandler(Handler):
 
 class LogoutHandler(Handler):
 	def get(self):
-		setLastLogin(self.user.key)
+		self.user.setLastLogin()
 		self.set_secure_cookie('user_id', None)
 		self.redirect('/')

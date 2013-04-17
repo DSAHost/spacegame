@@ -16,4 +16,4 @@ def messages(update=False):
 
 def newMessage(subject, content):
 	a=Message(subject=subject, content=content)
-	a.put()
+	return a.put()

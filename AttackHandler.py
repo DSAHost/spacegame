@@ -19,7 +19,7 @@ class AttackHandler(Handler):
 				fusrs.append(i.username)
 		if self.user:
 	 		username=self.user.username
-	 		resources=getResources(self.user.key)
+	 		resources=self.user.getResources()
 	 		self.render_front(username,resources[0],resources[1],available_targets=fusrs)
 	 	else:
 	 		self.redirect('/login')
@@ -31,7 +31,7 @@ class AttackHandler(Handler):
 		attack_id = self.request.get('attack_id')
 
 		if units and target:
-			newAttack(self.user.key,target, units, int(1000))
+			self.user.newAttack(target, units, int(1000))
 			return
 
 		if action and attack_id:

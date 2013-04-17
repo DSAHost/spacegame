@@ -7,14 +7,14 @@ class UnitPurchaseHandler(Handler):
 	def get(self):
 	 	if self.user:
 	 		username=self.user.username
-	 		resources=ResourceDatabase.getResources(self.user.resource_key)
+	 		resources=self.user.getResources()
 	 		self.render_front(username,resources[0],resources[1])
 	 	else:
 	 		self.redirect('/login')
 
 	def post(self):
 		units = self.request.get("units")
-		resources=ResourceDatabase.getResources(self.user.resource_key)
+		resources=self.user.getResources()
 		if units:
 			try:
 				units=int(units)
@@ -30,8 +30,8 @@ class UnitPurchaseHandler(Handler):
 				error="You do not have enough credits to train that many units."
 				self.render_front(self.user.username,resources[0],resources[1],error)
 				return
-			UserDatabase.addCombatUnits(self.user,units)
-			UserDatabase.addCurrency(self.user,-cost)
+			self.user.addCombatUnits(units)
+			self.user.addCurrency(-cost)
 			self.redirect('/game')
 		else:
 			self.render_front(self.user.username,resources[0],resources[1])

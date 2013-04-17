@@ -8,6 +8,10 @@ class Message():
 	def __init__(self,subject,content):
 		self.subject=subject
 		self.content=content
+<<<<<<< HEAD
+=======
+
+>>>>>>> object programming
 
 class GameHandler(Handler):
 	def render_front(self, username, currency, units):
@@ -15,7 +19,7 @@ class GameHandler(Handler):
 	def get(self):
 	 	if self.user:
 	 		username=self.user.username
-	 		resources=ResourceDatabase.getResources(self.user.resource_key)
+	 		resources=self.user.getResources()
 	 		self.render_front(username,resources[0],resources[1])
 	 	else:
 	 		self.redirect('/login')
@@ -30,7 +34,5 @@ class CheatHandler(Handler):
 			self.redirect('/game')
 			return
 		elif secure == CODE:
-			ResourceDatabase.setResources(self.user.resource_key,c,u)
-			ResourceDatabase.resources(True)
-			UserDatabase.users(True)
+			self.user.setResources(c,u)
 			self.redirect('/game')

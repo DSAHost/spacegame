@@ -7,7 +7,7 @@ class CombatHandler(Handler):
 	def get(self):
 	 	if self.user:
 	 		username=self.user.username
-	 		resources=ResourceDatabase.getResources(self.user.resource_key)
+	 		resources=self.user.getResources()
 	 		self.render_front(username,resources[0],resources[1])
 	 	else:
 	 		self.redirect('/login')

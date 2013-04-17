@@ -19,7 +19,7 @@ class AttackHandler(Handler):
 				fusrs.append(i.username)
 		if self.user:
 	 		username=self.user.username
-	 		resources=getResources(self.user)
+	 		resources=getResources(self.user.key)
 	 		self.render_front(username,resources[0],resources[1],available_targets=fusrs)
 	 	else:
 	 		self.redirect('/login')

@@ -3,7 +3,7 @@
 {% block title %}Game Front{% endblock %}
 
 {% block topbar %}
-	{{ super() }}
+{{ super() }}
 {% endblock %}
 
 {% block sidebar %}
@@ -19,9 +19,14 @@
 =======
 
 {% block content %}
-	Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. 	Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. 
-	Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. 
-	Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. Hello, inherited content. 
-	
-	
-{% endblock %}
+<div class="message_scrollbox">
+	{% for message in messages %}
+	{{message.subject}}
+	<input class="spoilerbutton" type="button" value="Show" onclick="this.value=this.value=='Show'?'Hide':'Show';">
+	<div class="spoiler"><div>
+		{{message.content}}
+	</div></div>
+	{% endfor %}
+
+</div>
+{% endblock content %}

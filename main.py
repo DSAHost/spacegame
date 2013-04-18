@@ -20,7 +20,6 @@ from FrontHandler import *
 from GameHandler import *
 from Handler import *
 from LoginHandler import *
-from ResourceDatabase import *
 from RiskCombat import *
 from SignupHandler import *
 from UserDatabase import *

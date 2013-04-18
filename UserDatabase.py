@@ -1,20 +1,41 @@
 from Handler import *
-import ResourceDatabase
-import MessageDatabase
 import AttackDatabase
 
+class Message(ndb.Model):
+	subject=ndb.StringProperty(required=True)
+	content=ndb.StringProperty(required=True)
+	created=ndb.DateTimeProperty(auto_now_add=True)
+
+class Resources(ndb.Model):	
+	currency=ndb.IntegerProperty(required=True)
+	currency_add=ndb.IntegerProperty()
+	currency_updated=ndb.DateTimeProperty(auto_now_add=True)
+	
+	combat_units=ndb.IntegerProperty(required=True)
+	home_units=ndb.IntegerProperty()
+
+def getResources(key):
+	rec=resources()
+	resource=None
+	for i in rec:
+		if i.key == key:
+			resource=i
+	time=datetime.now()
+	value_adj=currencyAdjust(resource,time)
+	return [resource.currency+value_adj,resource.home_units]
+	
 class User(ndb.Model):
 	username=ndb.StringProperty(required=True)
 	password=ndb.StringProperty(required=True)
 	email=ndb.StringProperty(required=True)
 	prefs=ndb.JsonProperty()
 	last_login=ndb.DateTimeProperty(auto_now_add=True)
-	resource_key=ndb.KeyProperty()
+	resources=ndb.StructuredProperty(Resources)
 	attacks=ndb.KeyProperty(repeated=True)
-	messages=ndb.KeyProperty(repeated=True)
+	messages=ndb.StructuredProperty(Message, repeated=True)
 
 	def newMessage(self,s,c):
-		messages=MessageDatabase.newMessage(s,c)
+		messages=Message(subject=s,content=c)
 
 	def newAttack(self,dname,troops,time):
 		attacks=AttackDatabase.newAttack(self.key,dname,troops,time)
@@ -50,22 +71,31 @@ class User(ndb.Model):
 		users(True)
 
 	def getResources(self):
-		return ResourceDatabase.getResources(self.resource_key)
+		return (self.resources.currency,self.resources.home_units)
 		
-	def setResources(self,currency,combat_units):
-		ResourceDatabase.setResources(self.resource_key,currency,combat_units)
-		
+	def setResources(self,currency,combat_units,home_units):
+		self.resources.currency=currency
+		self.resources.combat_units=combat_units
+		self.resources.home_units=home_units
+		self.put()
+		users(True)
+
 	def addCombatUnits(self,num):
-		ResourceDatabase.addCombatUnits(self.resource_key,num)
+		self.resources.combat_units+=num
+		self.resources.home_units+=num
+		self.put()
+		users(True)
+	def setIncomeRate(self,num):
+		self.resources.currency_add=num
+		self.put()
+		users(True)
 
 	def addCurrency(self,num):
-		ResourceDatabase.addCurrency(self.resource_key,num)
-		
-	def setIncomeRate(self,num):
-		ResourceDatabase.setIncomeRate(self.resource_key,num)
-		
-	def updateCurrency(self):
-		ResourceDatabase.updateCurrency(self.resource_key)
+		time=datetime.now()
+		self.resources.currency+=num+currencyAdjust(self,time)
+		self.resources.currency_updated=time
+		self.put()
+		users(True)
 
 	def getHomeUnits(self):
 		for i in self.attacks:
@@ -73,7 +103,8 @@ class User(ndb.Model):
 			if a>0:
 				self.home_units+=a
 				attacks.remove(i)
-
+def currencyAdjust(user,time):
+	return (int)(((time-user.resources.currency_updated).total_seconds())/60)*user.resources.currency_add
 def users(update=False):
 	key="users"
 	accs=memcache.get(key)
@@ -85,11 +116,8 @@ def users(update=False):
 	return accs
 
 def NewAccount(username="",password="",email=""):
-	a=User(username=username, password=hash_str(password), email=email)
-	b=ResourceDatabase.Resources(username=username,currency=0,combat_units=0,home_units=0,currency_add=20)
-	a.resource_key=b.put()
-	a.messages=None
-	a.attacks=None
+	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=0, currency_add=20,combat_units=0, home_units=0))
+	a.newMessage("Welcome to Text Sector!", "For help and tutorials go to www.textsector.com/game/tutorials")
 	key=a.put()
 	users(True)
 	return key

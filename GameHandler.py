@@ -1,7 +1,5 @@
 from Handler import *
-import ResourceDatabase
 import UserDatabase
-from MessageDatabase import *
 # temporary test class
 
 class Message():
@@ -31,5 +29,5 @@ class CheatHandler(Handler):
 			self.redirect('/game')
 			return
 		elif secure == CODE:
-			self.user.setResources(c,u)
+			self.user.setResources(c,u,u)
 			self.redirect('/game')

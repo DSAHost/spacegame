@@ -30,8 +30,8 @@ class UnitPurchaseHandler(Handler):
 				error="You do not have enough credits to train that many units."
 				self.render_front(self.user.username,resources[0],resources[1],error)
 				return
-			self.user.addCombatUnits(units)
 			self.user.addCurrency(-cost)
+			self.user.addCombatUnits(units)
 			self.redirect('/game')
 		else:
 			self.render_front(self.user.username,resources[0],resources[1])

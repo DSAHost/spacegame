@@ -13,16 +13,6 @@ class Resources(ndb.Model):
 	
 	combat_units=ndb.IntegerProperty(required=True)
 	home_units=ndb.IntegerProperty()
-
-def getResources(key):
-	rec=resources()
-	resource=None
-	for i in rec:
-		if i.key == key:
-			resource=i
-	time=datetime.now()
-	value_adj=currencyAdjust(resource,time)
-	return [resource.currency+value_adj,resource.home_units]
 	
 class User(ndb.Model):
 	username=ndb.StringProperty(required=True)
@@ -35,15 +25,24 @@ class User(ndb.Model):
 	messages=ndb.StructuredProperty(Message, repeated=True)
 
 	def newMessage(self,s,c):
-		messages=Message(subject=s,content=c)
+		if not self.messages:
+			self.messages=[Message(subject=s,content=c)]
+		else:
+			self.messages.append(Message(subject=s, content=c))
+
+		return self.put()
 
 	def newAttack(self,dname,troops,time):
-		attacks=AttackDatabase.newAttack(self.key,dname,troops,time)
+		if not self.attacks:
+			self.attacks=[AttackDatabase.newAttack(self.key,dname,troops,time)]
+		else:
+			self.attacks.append(AttackDatabase.newAttack(self.key,dname,troops,time))
+		self.put()
 
 	def getMessages(self):
 		mess=[]
 		for i in self.messages:
-			mess.append(i.get())
+			mess.append(i)
 		return mess
 		
 	def setPassword(cookie,password):
@@ -105,13 +104,13 @@ class User(ndb.Model):
 			if a>0:
 				self.home_units+=a
 				attacks.remove(i)
+
 def currencyAdjust(user,time):
 	return (int)(((time-user.resources.currency_updated).total_seconds())/60)*user.resources.currency_add
 def users(update=False):
 	key="users"
 	accs=memcache.get(key)
 	if accs is None or update:
-		logging.error("USER QUERY")
 		accs = ndb.gql("SELECT * FROM User")
 		accs=list(accs)
 		memcache.set(key,accs)
@@ -120,7 +119,7 @@ def users(update=False):
 def NewAccount(username="",password="",email=""):
 	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=0, currency_add=20,combat_units=0, home_units=0))
 	a.newMessage("Welcome to Text Sector!", "For help and tutorials go to www.textsector.com/game/tutorials")
-	key=a.put()
+	key=a.newMessage("You have been awarded 100 currency and 10 units.")
 	users(True)
 	return key
 

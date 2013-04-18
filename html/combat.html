@@ -1,5 +1,10 @@
 {% extends "gamebase.html" %}
 
 {% block content %}
-Hello, combat!
+
+Users:
+{% for user in users %}
+  <li class="{{ loop.cycle('odd', 'even') }}">{{ user.username }}</li>
+{% endfor %}
+
 {% endblock content %}

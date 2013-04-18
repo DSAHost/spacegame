@@ -45,15 +45,21 @@
 	<div class="topbar">
 		<div class="wide_margin">
 			{% block topbar %}
+			<a href="/"> 
 			<div class="logo">
+<<<<<<< HEAD
 				<a href="/"> <img src="../res/img/logo.png" alt="Logo" width="150" height="90"> </a>
+=======
+				<img src="../res/img/logo.png" alt="Logo" width="160" height="120"> 
+>>>>>>> ...
 			</div>
+			</a>
 			<div class="page_top">
 			Space Game
 			</div>
-			<li>Username: {{ username }}</li>
-			<li>Currency: {{ currency }}</li>
-			<li>Units: {{ units }}</li>
+			<li class="topbar">Username: {{ username }}</li>
+			<li class="topbar">Currency: {{ currency }}</li>
+			<li class="topbar">Units: {{ units }}</li>
 			{% endblock %}
 		</div>
 	</div>

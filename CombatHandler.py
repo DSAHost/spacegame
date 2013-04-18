@@ -2,12 +2,14 @@ from Handler import *
 from utils import *
 
 class CombatHandler(Handler):
-	def render_front(self, username, currency, units):
-		self.render("combat.html",username=username,currency=currency, units=units)
+	def render_front(self):
+ 		username=self.user.username
+ 		resources=self.user.getResources()
+ 		users = UserDatabase.users()
+		self.render("combat.html",username=username,currency=resources[0], units=resources[1], users=users)
+
 	def get(self):
 	 	if self.user:
-	 		username=self.user.username
-	 		resources=self.user.getResources()
-	 		self.render_front(username,resources[0],resources[1])
+	 		self.render_front()
 	 	else:
 	 		self.redirect('/login')

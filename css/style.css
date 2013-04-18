@@ -51,9 +51,23 @@ body.fixed_width {
 	font-family:"Futura";
 }
 
-li{
+li.topbar{
 	display: inline;
 	margin: 10px;
+}
+
+li.even {
+	list-style-type: none;
+	background-color:black;
+	text-indent: 5px;
+	width: 500px;
+}
+
+li.odd {
+	list-style-type: none;
+	background-color:gray;
+	text-indent: 5px;
+	width: 500px;
 }
 
 a {
@@ -238,10 +252,20 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 }
 .spoilerbutton[value="Hide"] + .spoiler {
 	padding:0px;
+<<<<<<< HEAD
 } 
+=======
+}
+
+>>>>>>> ...
 div.logo{
 	float: left;
 	position: absolute;
 	left: 10px;
+<<<<<<< HEAD
 	top: 4px;
+=======
+	top: -10px;
+
+>>>>>>> ...
 }

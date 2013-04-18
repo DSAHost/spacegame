@@ -9,7 +9,6 @@ class Message():
 
 class GameHandler(Handler):
 	def render_front(self, username, currency, units, messages):
-		messages=[Message('Hello,','world!'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4'),Message('Attacked by tgillani','You lost: 12 Opponent lost: 4')]
 		self.render("gamefront.html", username=username,currency=currency, units=units, num_messages = range(len(messages)), messages=messages)
 
 	def get(self):

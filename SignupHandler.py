@@ -35,7 +35,10 @@ class SignupHandler(Handler):
 			emailerror="You must enter a valid email address."
 		elif '.' not in email or '@' not in email:
 			emailerror="You must enter a valid email address."
-
+		else:
+			for i in accs:
+				if i.email==email:
+					emailerror="That email address is already in use."
 		if not usererror and not passerror and not verifyerror and not emailerror:
 			key=NewAccount(username,password,email)
 			key1=key.urlsafe()

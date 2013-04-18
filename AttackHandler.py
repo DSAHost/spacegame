@@ -32,6 +32,9 @@ class AttackHandler(Handler):
 
 		if units and target:
 			self.user.newAttack(target, units, int(1000))
+	 		username=self.user.username
+	 		resources=self.user.getResources()
+	 		self.render_front(username,resources[0],resources[1],available_targets=fusrs)
 			return
 
 		if action and attack_id:

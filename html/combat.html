@@ -7,4 +7,9 @@ Users:
   <li class="{{ loop.cycle('odd', 'even') }}">{{ user.username }}</li>
 {% endfor %}
 
+	<form method="POST">
+		Troops to send:
+		<input type="text" name="num_troops">
+		<input class="button" type="submit" value="Attack">
+	</form>
 {% endblock content %}

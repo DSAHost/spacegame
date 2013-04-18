@@ -12,9 +12,16 @@
 	<a href="/game">
 		<button class="buttonBig" value="Submit">Play</button>
 	</a>
-	<a href="/login">
-		<button class="buttonBig" value="Submit">Login</button>
-	</a>
+	{% if username %}
+		<a href="/logout">
+			<button class="buttonBig" value="Submit">Logout</button>
+		</a>
+	{% endif %}
+	{% if not username %}
+		<a href="/login">
+			<button class="buttonBig" value="Submit">Login</button>
+		</a>
+	{% endif %}
 	<a href="/signup">
 		<button class="buttonBig" value="Submit">Signup</button>
 	</a>

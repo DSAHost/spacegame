@@ -6,6 +6,7 @@ class LoginHandler(Handler):
 		self.render("login.html",username=username,error=error)
 	def get(self):	
 		self.render_front()
+
 	def post(self):
 		username=self.request.get('username')
 		password=self.request.get('password')

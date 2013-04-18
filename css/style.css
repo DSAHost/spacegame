@@ -4,7 +4,7 @@ html.space {
 }
 
 input.long {
-width: 95%;
+	width: 95%;
 }
 
 body.space {
@@ -60,9 +60,10 @@ div.sidebar_right {
 	/*background-color: black;*/
 	float: right;
 	position: relative;
+	left:2px;
 	bottom: 110px;
 	color: white;
-	width:150px;
+	width:154px;
 	height: 500px;
 	border-radius: 0px;
 }
@@ -134,6 +135,7 @@ div.message_scrollbox {
 	width: 100px;
 	padding:5px 5px;
 	font-family:"Futura";
+	margin: 5px;
 }
 
 .button:hover{
@@ -173,18 +175,30 @@ div.message_scrollbox {
 }
 
 
-.message_checkbox {
-	float:right;
-}
-
-input[type="checkbox"] {
+input[type=checkbox].css-checkbox {
 	display:none;
 }
-input[type="checkbox"] label span {
+
+input[type=checkbox].css-checkbox + label.css-label {
+	padding-left:20px;
+	height:15px; 
 	display:inline-block;
-	width:19px;
-	height:19px;
-	background-image:url('check_radio_sheet.png') left top no-repeat;
+	line-height:15px;
+	background-repeat:no-repeat;
+	background-position: 0 0;
+	font-size:15px;
+	float:right;
+	margin:8px;
+	vertical-align:middle;
+	cursor:pointer;
+}
+
+input[type=checkbox].css-checkbox:checked + label.css-label {
+	background-position: 0 -15px;
+}
+
+.css-label{
+	background-image:url(../res/img/dark-check-orange.png);
 }
 
 /* animated spoiler CSS by Bloggersentral.com */

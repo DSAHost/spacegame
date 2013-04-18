@@ -21,13 +21,16 @@
 {% block content %}
 <div class="message_scrollbox">
 	<hr>
-	{% for message in messages %}
-	{{message.subject}}
-	<input type="checkbox" class="message_checkbox" id="c1" name="cc" />
-	<label for="c1">Check Box 1</label>
+	{% for i in num_messages %}
+	{{messages[i].subject}}
+	<!-- Checkbox -->
+	<input id="box_{{i}}" class="css-checkbox" type="checkbox" />
+	<label for="box_{{i}}" name="lbl_{{i}}" class="css-label"></label>
+	<!-- Hide/show message button -->
 	<input class="spoilerbutton" type="button" value="Show" onclick="this.value=this.value=='Show'?'Hide':'Show';">
+	<!-- Hidden/showable message -->
 	<div class="spoiler"><div>
-		{{message.content}}
+		{{messages[i].content}}
 	</div></div>
 	<hr>
 	{% endfor %}

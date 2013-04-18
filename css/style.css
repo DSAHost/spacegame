@@ -136,6 +136,11 @@ div.message_scrollbox {
 	font-family:"Futura";
 }
 
+.button:hover{
+	border-color:orange;
+	color:orange;
+}
+
 .buttonBig{
 	background-image:url('url-1.jpeg');
 	color:#F87217;

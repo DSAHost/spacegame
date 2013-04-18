@@ -252,20 +252,12 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 }
 .spoilerbutton[value="Hide"] + .spoiler {
 	padding:0px;
-<<<<<<< HEAD
 } 
-=======
-}
 
->>>>>>> ...
 div.logo{
 	float: left;
 	position: absolute;
 	left: 10px;
-<<<<<<< HEAD
 	top: 4px;
-=======
-	top: -10px;
 
->>>>>>> ...
 }

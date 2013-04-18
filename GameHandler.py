@@ -20,7 +20,7 @@ class GameHandler(Handler):
 	 	else:
 	 		self.redirect('/login')
 
-	def post(self):
+	#def post(self):
 		
 CODE="fightclub"
 class CheatHandler(Handler):

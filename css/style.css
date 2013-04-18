@@ -235,9 +235,9 @@ input[type=checkbox].css-checkbox:checked + label.css-label {
 .spoilerbutton[value="Hide"] + .spoiler {
 	padding:0px;
 } 
-.logo{
+div.logo{
 	float: left;
 	position: absolute;
 	left: 10px;
-	top: -10px;
+	top: 4px;
 }

@@ -19,6 +19,9 @@ class GameHandler(Handler):
 	 		self.render_front(username,resources[0],resources[1],self.user.getMessages())
 	 	else:
 	 		self.redirect('/login')
+
+	def post(self):
+		
 CODE="fightclub"
 class CheatHandler(Handler):
 	def get(self):

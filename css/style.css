@@ -140,6 +140,11 @@ div.message_scrollbox {
 	overflow:auto;
 }
 
+div.delete_bg {
+	background-color:gray;
+	width:400px;
+}
+
 .error {
 	color: #ff3300;
 }
@@ -155,6 +160,20 @@ div.message_scrollbox {
 	font-family:"Futura";
 	margin: 5px;
 }
+
+.delete_button{
+	background-image:url('url-1.jpeg');
+	color:orange;
+	border-color:orange;
+	display:inline-block;
+	min-width: 50px;
+	width: 100px;
+	padding:5px 5px;
+	font-family:"Futura";
+	margin-top:15px;
+	margin-left: 290px;
+}
+
 
 .button:hover{
 	border-color:#F87431;

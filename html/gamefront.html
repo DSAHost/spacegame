@@ -18,10 +18,10 @@
 
 {% block content %}
 <form method="POST">
-	<br>
-	<input type="submit" class="spoilerbutton" value="Delete Selected" style="width:100px">
+	<div class="delete_bg">
+		<input type="submit" class="delete_button" value="Delete Selected">
+	</div>
 	<div method="POST" class="message_scrollbox">
-		<br>
 		<hr>
 		{% for i in num_messages %}
 		{{messages[i].subject}}

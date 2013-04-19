@@ -289,3 +289,10 @@ div.logo{
 	left: 10px;
 	top: 4px;
 }
+
+.news{
+	float: left;
+	position: absolute;
+	font-size: 10px;
+	color: gray;
+}

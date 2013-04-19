@@ -154,6 +154,6 @@ def getResources(key):
 		if i.key==key:
 			return ResourceDatabase.getResources(i.resource_key)
 
-
-
-
+def getUsername(key):
+	a=key.get()
+	return a.username

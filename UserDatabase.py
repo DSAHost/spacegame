@@ -55,6 +55,12 @@ class User(ndb.Model):
 			pass
 		self.put()
 
+	def getAttacks(self):
+		attks=[]
+		for i in self.attacks:
+			attks.append(i)
+		return attks
+		
 	def setPassword(cookie,password):
 		if cookie:
 			key=check_secure_val(cookie)

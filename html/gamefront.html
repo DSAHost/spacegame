@@ -17,6 +17,7 @@
 </html>
 
 {% block content %}
+<<<<<<< HEAD
 <form method="POST">
 	<br>
 	<input type="submit" class="spoilerbutton" value="Delete Selected" style="width:100px">
@@ -38,4 +39,27 @@
 		{% endfor %}
 	</div>
 </form>
+=======
+<div class="message_scrollbox">
+	<hr>
+	Messages
+	<button class="button" style="float: right; height: 25px; width: 0px; font-size: 11px; padding: 3px 3px;">Delete</button>
+	<hr>
+	{% for i in num_messages %}
+	{{messages[i].subject}}
+
+	<!-- Checkbox -->
+	<input id="box_{{i}}" class="css-checkbox" type="checkbox" />
+	<label for="box_{{i}}" name="lbl_{{i}}" class="css-label"></label>
+	<!-- Hide/show message button -->
+	<input class="spoilerbutton" type="button" value="Show" onclick="this.value=this.value=='Show'?'Hide':'Show';">
+	<!-- Hidden/showable message -->
+	<div class="spoiler"><div>
+		{{messages[i].content}}
+	</div></div>
+	<hr>
+	{% endfor %}
+
+</div>
+>>>>>>> del;
 {% endblock content %}

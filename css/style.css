@@ -58,16 +58,20 @@ li.topbar{
 
 li.even {
 	list-style-type: none;
-	background-color:black;
+	background-color: #333333;
 	text-indent: 5px;
 	width: 500px;
+	border-radius:5px;
+	border:1px solid #F87431;
 }
 
 li.odd {
 	list-style-type: none;
-	background-color:gray;
+	background-color: #666666;
 	text-indent: 5px;
 	width: 500px;
+	border-radius:5px;
+	border:1px solid #F87431;
 }
 
 a {
@@ -94,7 +98,6 @@ div.below_sidebar {
 
 div.topbar {
 	text-align: center;
-	background-color: gray;
 	color: white;
 	position: fixed;
 	top: 0px;

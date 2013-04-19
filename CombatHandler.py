@@ -6,7 +6,11 @@ class CombatHandler(Handler):
  		username=self.user.username
  		resources=self.user.getResources()
  		users = UserDatabase.users()
-		self.render("combat.html",username=username,currency=resources[0], units=resources[1], users=users)
+ 		fxusr=[]
+		for i in users:
+			if i.username != username:
+				fxusr.append(i)
+		self.render("combat.html",username=username,currency=resources[0], units=resources[1], users=fxusr)
 
 	def get(self):
 	 	if self.user:

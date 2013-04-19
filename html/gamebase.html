@@ -40,8 +40,9 @@
 				</div>
 				<div class="news">
 					<span class="header">Ongoing Attacks:</span>
-					{% for attack in attacks %}
-							{{attack.defender_name}}
+					{% for i in num_attacks %}
+				  <br>
+						{{times[i]}} seconds -	{{attacks[i].defender_name}}
 					{% endfor %}
 				</div>
 			{% endblock %}

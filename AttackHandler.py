@@ -1,7 +1,6 @@
 from Handler import *
 from utils import *
 from UserDatabase import *
-from AttackDatabase import *
 
 class AttackHandler(Handler):
 	def render_front(self,username,currency,units,available_targets=None,attack_id=None):

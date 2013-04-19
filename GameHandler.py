@@ -13,8 +13,8 @@ class GameHandler(Handler):
 	 	resources=self.user.getResources()
 	 	messages=self.user.getMessages()
 	 	attacks=self.user.getAttacks()
-
-		self.render("gamefront.html",username=username,currency=resources[0], units=resources[1], num_messages=range(len(messages)), messages=messages,attacks=attacks)
+		times=self.user.getReturnTimes()
+		self.render("gamefront.html",username=username,currency=resources[0], units=resources[1], num_messages=range(len(messages)), messages=messages,attacks=attacks,times=times,num_attacks=range(len(attacks)))
 
 	def get(self):
 	 	if self.user:

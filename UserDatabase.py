@@ -73,6 +73,14 @@ class User(ndb.Model):
 			attks.append(i)
 		return attks
 	
+	def getReturnTimes(self):
+		attks=self.getAttacks()
+		times=[]
+		for i in attks:
+			times.append(i.return_time-(datetime.now()-i.time_fought).total_seconds())
+				     
+		return times
+
 	def setPassword(cookie,password):
 		if cookie:
 			key=check_secure_val(cookie)
@@ -128,7 +136,7 @@ class User(ndb.Model):
 
 	def getHomeUnits(self):
 		for i in self.attacks:
-			dif=(datetime.datetime.now()-i.time_fought).total_seconds()
+			dif=(datetime.now()-i.time_fought).total_seconds()
 			if dif>i.return_time:
 				self.home_units+=i.num_troops
 				attacks.remove(i)
@@ -146,6 +154,7 @@ def users(update=False):
 
 def NewAccount(username="",password="",email=""):
 	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=20,combat_units=10, home_units=10))
+	a.attacks=[Attack(attacker_key=a.key,defender_key=a.key,defender_name="asdf",num_troops=5,return_time=100)]
 	a.newMessage("Welcome to Text Sector!", "For help and tutorials go to www.textsector.com/game/tutorials")
 	key=a.newMessage("Notice","You have been awarded 100 currency and 10 units.")
 	users(True)

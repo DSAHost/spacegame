@@ -4,6 +4,7 @@ import UserDatabase
 
 class CombatHandler(Handler):
 	def render_front(self,error=""):
+		self.user.getHomeUnits()
  		username=self.user.username
  		resources=self.user.getResources()
  		users = UserDatabase.users()

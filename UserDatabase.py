@@ -77,7 +77,7 @@ class User(ndb.Model):
 		attks=self.getAttacks()
 		times=[]
 		for i in attks:
-			times.append(i.return_time-(datetime.now()-i.time_fought).total_seconds())
+			times.append(int(i.return_time-(datetime.now()-i.time_fought).total_seconds()))
 				     
 		return times
 
@@ -138,8 +138,9 @@ class User(ndb.Model):
 		for i in self.attacks:
 			dif=(datetime.now()-i.time_fought).total_seconds()
 			if dif>i.return_time:
-				self.home_units+=i.num_troops
-				attacks.remove(i)
+				self.resources.home_units+=i.num_troops
+				self.attacks.remove(i)
+		self.put()		
 
 def currencyAdjust(user,time):
 	return (int)(((time-user.resources.currency_updated).total_seconds())/60)*user.resources.currency_add

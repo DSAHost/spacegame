@@ -3,6 +3,7 @@ from utils import *
 
 class UnitPurchaseHandler(Handler):
 	def render_front(self,error=""):
+		self.user.getHomeUnits()
 		username=self.user.username
 	 	resources=self.user.getResources()
 		attacks=self.user.getAttacks()

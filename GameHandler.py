@@ -9,6 +9,7 @@ class Message():
 
 class GameHandler(Handler):
 	def render_front(self):
+		self.user.getHomeUnits()
 		username=self.user.username
 	 	resources=self.user.getResources()
 	 	messages=self.user.getMessages()

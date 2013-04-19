@@ -191,6 +191,12 @@ div.message_scrollbox {
 	border-color:orange;
 	height: 5px;
 }
+.whr{
+	color:white;
+	background-color: white;
+	border-color:white;
+	height: 5px;
+}
 
 
 input[type=checkbox].css-checkbox {

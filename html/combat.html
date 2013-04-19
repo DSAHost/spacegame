@@ -4,7 +4,7 @@
 
 Users:
 {% for user in users %}
-  <li class="{{ loop.cycle('odd', 'even') }}">{{ user.username }}</li>
+  <li class="{{ loop.cycle('odd', 'even') }}">{{ user.username }}<span class="right">Rank: {{user.resources.currency}}</span></li>
 {% endfor %}
 
 	<form method="POST">

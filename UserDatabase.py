@@ -1,5 +1,11 @@
 from Handler import *
-import AttackDatabase
+
+class Attack(ndb.Model):
+	attacker_key=ndb.KeyProperty(required=True)
+	defender_key=ndb.KeyProperty(required=True)
+	num_troops=ndb.IntegerProperty(required=True)
+	time_fought=ndb.DateTimeProperty(auto_now_add=True)
+	return_time=ndb.IntegerProperty(required=True)
 
 class Message(ndb.Model):
 	subject=ndb.StringProperty(required=True)
@@ -15,7 +21,7 @@ class Resources(ndb.Model):
 	home_units=ndb.IntegerProperty()
 	
 class User(ndb.Model):
-	attacks=ndb.KeyProperty(repeated=True)
+	attacks=ndb.StructuredProperty(Attack,repeated=True)
 	email=ndb.StringProperty(required=True)
 	last_login=ndb.DateTimeProperty(auto_now_add=True)
 	messages=ndb.StructuredProperty(Message, repeated=True)
@@ -33,10 +39,15 @@ class User(ndb.Model):
 		return self.put()
 
 	def newAttack(self,dname,troops,time):
+		accs=users()
+		dkey=None
+		for i in users:
+			if i.username==defender:
+				dkey=i.key
 		if not self.attacks:
-			self.attacks=[AttackDatabase.newAttack(self.key,dname,troops,time)]
+			self.attacks=[Attack(self.key,dkey,troops,time)]
 		else:
-			self.attacks.append(AttackDatabase.newAttack(self.key,dname,troops,time))
+			self.attacks.append(Attack(self.key,dkey,troops,time))
 		self.put()
 
 	def getMessages(self):
@@ -60,7 +71,7 @@ class User(ndb.Model):
 		for i in self.attacks:
 			attks.append(i)
 		return attks
-		
+	
 	def setPassword(cookie,password):
 		if cookie:
 			key=check_secure_val(cookie)
@@ -116,9 +127,9 @@ class User(ndb.Model):
 
 	def getHomeUnits(self):
 		for i in self.attacks:
-			a=AttackDatabase.isFinished(i)
-			if a>0:
-				self.home_units+=a
+			dif=(datetime.datetime.now()-i.time_fought).total_seconds()
+			if dif>i.return_time:
+				self.home_units+=i.num_troops
 				attacks.remove(i)
 
 def currencyAdjust(user,time):

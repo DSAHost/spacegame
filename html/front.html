@@ -24,12 +24,12 @@
 				</a>
 			</li>
 			<li>
-	{% if username %}
+	{% if user %}
 		<a href="/logout">
 			<button class="buttonBig" value="Submit">Logout</button>
 		</a>
 	{% endif %}
-	{% if not username %}
+	{% if not user %}
 		<a href="/login">
 			<button class="buttonBig" value="Submit">Login</button>
 		</a>

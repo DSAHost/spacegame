@@ -40,8 +40,4 @@ def newAttack(attkerkey,defender,troops,time):
 	a=attk.put()
 	attacks(True)
 	return a
-
-def timeToReturn(key):
-	attacks=attacks()
-	for i in attacks:
 		

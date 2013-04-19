@@ -6,7 +6,7 @@ class UnitPurchaseHandler(Handler):
 		username=self.user.username
 	 	resources=self.user.getResources()
 		attacks=self.user.getAttacks()
-		self.render("unitpurchase.html",username=username,currency=currency, units=units, attacks=attackserror=error)
+		self.render("unitpurchase.html",username=username,currency=resources[0], units=resources[1], attacks=attacks,error=error)
 	def get(self):
 	 	if self.user:
 	 		self.render_front()

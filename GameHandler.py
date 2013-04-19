@@ -20,8 +20,18 @@ class GameHandler(Handler):
 	 	else:
 	 		self.redirect('/login')
 
-	#def post(self):
-		
+	def post(self):
+		self.user.deleteMessages(self.getDeleteMessageIds())
+		self.get()
+		# self.response.write(self.getDeleteMessageIds())
+
+	def getDeleteMessageIds(self):
+		del_ids = []
+		for i in range(len(self.user.getMessages())):
+			if self.request.get("box_" + str(i)) == "on":
+				del_ids.append(i)
+		return del_ids
+
 CODE="fightclub"
 class CheatHandler(Handler):
 	def get(self):

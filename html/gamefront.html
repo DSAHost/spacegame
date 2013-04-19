@@ -12,28 +12,30 @@
 
 {% block below_sidebar %}
 {% endblock %}
-=======
 <html>
 {% block pagelayout %}{% endblock %}
 </html>
-=======
 
 {% block content %}
-<div class="message_scrollbox">
-	<hr>
-	{% for i in num_messages %}
-	{{messages[i].subject}}
-	<!-- Checkbox -->
-	<input id="box_{{i}}" class="css-checkbox" type="checkbox" />
-	<label for="box_{{i}}" name="lbl_{{i}}" class="css-label"></label>
-	<!-- Hide/show message button -->
-	<input class="spoilerbutton" type="button" value="Show" onclick="this.value=this.value=='Show'?'Hide':'Show';">
-	<!-- Hidden/showable message -->
-	<div class="spoiler"><div>
-		{{messages[i].content}}
-	</div></div>
-	<hr>
-	{% endfor %}
-
-</div>
+<form method="POST">
+	<br>
+	<input type="submit" class="spoilerbutton" value="Delete Selected" style="width:100px">
+	<div method="POST" class="message_scrollbox">
+		<br>
+		<hr>
+		{% for i in num_messages %}
+		{{messages[i].subject}}
+		<!-- Checkbox -->
+		<input name="box_{{i}}" id="box_{{i}}" class="css-checkbox" type="checkbox" />
+		<label for="box_{{i}}" name="lbl_{{i}}" class="css-label"></label>
+		<!-- Hide/show message button -->
+		<input class="spoilerbutton" type="button" value="Show" onclick="this.value=this.value=='Show'?'Hide':'Show';">
+		<!-- Hidden/showable message -->
+		<div class="spoiler"><div>
+			{{messages[i].content}}
+		</div></div>
+		<hr>
+		{% endfor %}
+	</div>
+</form>
 {% endblock content %}

@@ -15,14 +15,14 @@ class Resources(ndb.Model):
 	home_units=ndb.IntegerProperty()
 	
 class User(ndb.Model):
-	username=ndb.StringProperty(required=True)
-	password=ndb.StringProperty(required=True)
-	email=ndb.StringProperty(required=True)
-	prefs=ndb.JsonProperty()
-	last_login=ndb.DateTimeProperty(auto_now_add=True)
-	resources=ndb.StructuredProperty(Resources)
 	attacks=ndb.KeyProperty(repeated=True)
+	email=ndb.StringProperty(required=True)
+	last_login=ndb.DateTimeProperty(auto_now_add=True)
 	messages=ndb.StructuredProperty(Message, repeated=True)
+	password=ndb.StringProperty(required=True)
+	prefs=ndb.JsonProperty()
+	resources=ndb.StructuredProperty(Resources)
+	username=ndb.StringProperty(required=True)
 
 	def newMessage(self,s,c):
 		if not self.messages:
@@ -45,6 +45,15 @@ class User(ndb.Model):
 			mess.append(i)
 		return mess
 		
+	def deleteMessages(self, message_ids):
+		try:
+			message_ids.sort()
+			message_ids.reverse()
+			for message_id in message_ids:
+				self.messages.remove(self.messages[message_id])
+		except AttributeError:
+			pass
+
 	def setPassword(cookie,password):
 		if cookie:
 			key=check_secure_val(cookie)

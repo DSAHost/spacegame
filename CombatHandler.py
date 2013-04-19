@@ -13,3 +13,6 @@ class CombatHandler(Handler):
 	 		self.render_front()
 	 	else:
 	 		self.redirect('/login')
+
+	def post(self):
+		troops=self.request.get('num_troops')

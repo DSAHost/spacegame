@@ -5,7 +5,8 @@ class Attack(ndb.Model):
 	defender_key=ndb.KeyProperty(required=True)
 	num_troops=ndb.IntegerProperty(required=True)
 	time_fought=ndb.DateTimeProperty(auto_now_add=True)
-	return_time=ndb.IntegerProperty(required=True)
+        return_time=ndb.IntegerProperty(required=True)
+        defender_name=ndb.StringProperty(required=True)
 
 class Message(ndb.Model):
 	subject=ndb.StringProperty(required=True)
@@ -45,9 +46,9 @@ class User(ndb.Model):
 			if i.username==defender:
 				dkey=i.key
 		if not self.attacks:
-			self.attacks=[Attack(self.key,dkey,troops,time)]
+			self.attacks=[Attack(attacker_key=self.key,defender_key=dkey,defender_name=dname,num_troops=troops,return_time=time)]
 		else:
-			self.attacks.append(Attack(self.key,dkey,troops,time))
+			self.attacks.append(Attack(attacker_key=self.key,defender_key=dkey,defender_name=dname,num_troops=troops,return_time=time))
 		self.put()
 
 	def getMessages(self):

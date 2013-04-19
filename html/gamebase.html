@@ -41,8 +41,7 @@
 				<div class="news">
 					<span class="header">Ongoing Attacks:</span>
 					{% for attack in attacks %}
-						<span class="news">
-							{{attack.d}}
+							{{attack.defender_name}}
 					{% endfor %}
 				</div>
 			{% endblock %}

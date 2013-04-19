@@ -299,6 +299,12 @@ div.logo{
 .news{
 	float: left;
 	position: absolute;
+	font-size: 15px;
+	color: white;
+}
+.subnewws{
+	float: left;
+	position: absolute;
 	font-size: 10px;
-	color: gray;
+	color: white;
 }

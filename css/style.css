@@ -64,6 +64,9 @@ li.even {
 	border-radius:5px;
 	border:1px solid #F87431;
 }
+li.even:hover{
+	border-color: #CE2029;
+}
 
 li.odd {
 	list-style-type: none;
@@ -72,6 +75,9 @@ li.odd {
 	width: 500px;
 	border-radius:5px;
 	border:1px solid #F87431;
+}
+li.odd:hover{
+	border-color: #CE2029;
 }
 
 a {

@@ -11,24 +11,6 @@
 			margin: 30px;
 		}
 	</style>
-<center>
-	<a href="/game">
-		<button class="buttonBig" value="Submit">Play</button>
-	</a>
-	{% if username %}
-		<a href="/logout">
-			<button class="buttonBig" value="Submit">Logout</button>
-		</a>
-	{% endif %}
-	{% if not username %}
-		<a href="/login">
-			<button class="buttonBig" value="Submit">Login</button>
-		</a>
-	{% endif %}
-	<a href="/signup">
-		<button class="buttonBig" value="Submit">Signup</button>
-	</a>
-</center>
 {% endblock header %}
 
 {% block body_all %}
@@ -42,9 +24,16 @@
 				</a>
 			</li>
 			<li>
-				<a href="/login">
-					<button class="buttonBig" value="Submit">Login</button>
-				</a>
+	{% if username %}
+		<a href="/logout">
+			<button class="buttonBig" value="Submit">Logout</button>
+		</a>
+	{% endif %}
+	{% if not username %}
+		<a href="/login">
+			<button class="buttonBig" value="Submit">Login</button>
+		</a>
+	{% endif %}
 			</li>
 			<li>
 				<a href="/signup">

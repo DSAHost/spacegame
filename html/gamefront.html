@@ -17,11 +17,38 @@
 </html>
 
 {% block content %}
+<script type="text/javascript">
+	function check() {
+		var checkboxes = new Array(); 
+		var pattern = new RegExp('box',[0-9])
+  		checkboxes = document[formname].getElementsByTagName(pattern);
+  		for (var i=0; i<checkboxes.length; i++)  {
+  			if (checkboxes[i].type == 'checkbox')   {
+  			checkboxes[i].checked = true;
+  			}
+  		}
+	}
+	function uncheck() {
+		var checkboxes = new Array(); 
+  		var pattern = new RegExp('box',[0-9])
+  		checkboxes = document[formname].getElementsByTagName(pattern);
+  		for (var i=0; i<checkboxes.length; i++)  {
+  			if (checkboxes[i].type == 'checkbox')   {
+  			checkboxes[i].checked = false;
+  			}
+  		}
+	}
+</script>
+
 <form method="POST">
 	Messages
+
 	<div class="delete_bg">
-		<input type="submit" class="delete_button" value="Delete Selected">
+		<input type="button" class="msg_button" value="Select All" onclick="check">
+		<input type="button" class="msg_button" value="Deselect All" onclick="uncheck">
+		<input type="submit" class="msg_button" value="Delete Selected">
 	</div>
+
 	<div method="POST" class="message_scrollbox">
 		<hr class="bb">
 		{% for i in num_messages %}

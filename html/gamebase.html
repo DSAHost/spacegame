@@ -37,16 +37,18 @@
 					</a>
 					</body>					
 					<hr class="bb">
-					</center>
+					
 					<div class="fix_div">
-					Ongoing Attacks:<br>
-					{% for i in num_attacks %}
+						<div class="fix_div_cont">
+						Ongoing Attacks:<br>
+						{% for i in num_attacks %}
 				  		<br>
 						<span class="subnews">{{attacks[i].defender_name}}: {{attacks[i].num_troops}} return in {{times[i]}} seconds.</span>
-					{% endfor %}
+						{% endfor %}
+						</div>
 					</div>
 					<hr class="bb">
-
+				</center>
 				</div>
 			{% endblock %}
 				

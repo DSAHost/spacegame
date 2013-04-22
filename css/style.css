@@ -162,11 +162,11 @@ div.delete_bg {
 	background-image:url('url-1.jpeg');
 	color:orange;
 	border-color:orange;
+	font-family:"Futura";
 	display:inline-block;
 	min-width: 50px;
 	width: 100px;
 	padding:5px 5px;
-	font-family:"Futura";
 	margin: 5px;
 }
 
@@ -316,10 +316,19 @@ div.logo{
 }
 
 .fix_div{
-	background: black;
+	background-image:url('8bolt.jpeg');
+	background-size:120px 65px;
+	background-repeat:no-repeat;
 	width: 120px;
 	height: 65px;
-	font-size: 80%;
 	margin: 15px;
 }
-\
+
+.fix_div_cont{
+	margin-right: 15px;
+	margin-left:15px;
+	font-size: 80%;
+	color: white;
+	font-family:"Futura";
+}
+

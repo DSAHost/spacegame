@@ -1,10 +1,17 @@
 {% extends "gamebase.html" %}
 
+{% block head %}
+ <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css" />
+{% endblock head %}
+
+
 {% block content %}
 
 Users:
 {% for user in users %}
-  <li class="{{ loop.cycle('odd', 'even') }}">{{ user.username }}<span class="right">Rank: {{user.resources.currency}}</span></li>
+  <li class="{{ loop.cycle('odd', 'even') }}">{{ user.username }}<span class="right">Rank: {{user.resources.currency}}</span><input type="button" onclick="myFunction()" value="Show alert box"></li>
 {% endfor %}
 
 	<form method="POST">
@@ -13,3 +20,16 @@ Users:
 		<input class="button" type="submit" value="Attack"> <span class="error">{{error}}</span>
 	</form>
 {% endblock content %}
+
+{% block js %}
+
+ <script>
+  $(function() {
+    $( "#dialog" ).dialog();
+  });
+  </script>
+<div id="dialog" title="Basic dialog">
+  <p>This is the default dialog which is useful for displaying information. The dialog window can be moved, resized and closed with the 'x' icon.</p>
+</div>
+
+{% endblock js %}

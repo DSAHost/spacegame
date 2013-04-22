@@ -296,33 +296,30 @@ div.logo{
 	top: 4px;
 }
 
-<<<<<<< HEAD
+\
 .news{
-	float: left;
+	/*float: left;
 	position: absolute;
-	font-size: 15px;
+	font-size: 15px;*/
 	color: white;
+
 }
 .subnewws{
 	float: left;
 	position: absolute;
 	font-size: 10px;
-<<<<<<< HEAD
 	color: white;
 }
 .right{
 	float: right;
 	padding-right: 3px;
 }
-=======
-	color: gray;
-}
-=======
+
 .fix_div{
 	background: black;
 	width: 120px;
 	height: 65px;
 	font-size: 80%;
+	margin: 15px;
 }
->>>>>>> gg
->>>>>>> gg
+\

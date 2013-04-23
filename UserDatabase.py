@@ -113,6 +113,7 @@ class User(ndb.Model):
 		self.resources.home_units+=num
 		self.put()
 		users(True)
+		
 	def setIncomeRate(self,num):
 		self.resources.currency_add=num
 		self.put()
@@ -120,7 +121,7 @@ class User(ndb.Model):
 
 	def addCurrency(self,num):
 		time=datetime.now()
-		self.resources.currency+=num+currencyAdjust(self,time)
+		self.resources.currency+=num+int(currencyAdjust(self,time))
 		self.resources.currency_updated=time
 		self.put()
 		users(True)

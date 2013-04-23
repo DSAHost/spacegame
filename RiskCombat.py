@@ -24,7 +24,7 @@ def combat(attacking_troops, defending_troops):
 		i+=1
 	return (attacking_troops,defending_troops)
 
-def spoils_of_war(attackers_dead,defenders_dead,defender_currency):
+def spoilsOfWar(attackers_dead,defenders_dead,defender_currency):
 	if defenders_dead>(1.5*attackers_dead):
 		return .15*defender_currency
 	if defenders_dead>(.8*attackers_dead):

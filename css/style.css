@@ -67,7 +67,9 @@ li.even {
 li.even:hover{
 	border-color: #CE2029;
 }
-
+li.even:select{
+	border-color: #f4f4f4;
+}
 li.odd {
 	list-style-type: none;
 	background-color: #666666;
@@ -78,6 +80,9 @@ li.odd {
 }
 li.odd:hover{
 	border-color: #CE2029;
+}
+li.odd:select{
+	border-color: #f4f4f4;
 }
 
 a {

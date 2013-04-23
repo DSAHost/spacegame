@@ -1,17 +1,19 @@
 {% extends "gamebase.html" %}
+
 {% block body_all %}
 {{ super() }}
 <body>
 	<form method="post">
 		Target:
 		<select name="target">
-			{% for tgt in available_targets %}
-			<option value={{tgt}}>{{tgt}}</option>
+			{% for tgt in users %}
+			<option value={{tgt.username}}>{{tgt.username}}</option>
 			{% endfor %}
 		</select>
 		<br>
 		Troops to send:
-		<input type="text" name="num_troops">
+		<input type="text" name="num_troops"> <span class="error">{{error}}</span>
+		<br>
 		<input type="submit">
 	</form>
 </body>

@@ -1,48 +1,53 @@
 from Handler import *
 from utils import *
 from UserDatabase import *
+import RiskCombat
 
 class AttackHandler(Handler):
-	def render_front(self,username,currency,units,available_targets=None,attack_id=None):
-		if attack_id:
-			self.render("attack.html",attack_id=attack_id,num_troops=attks[attack_id].num_troops,username=username,currency=currency, units=units)
-		else:
-			self.render("attack_creator.html",available_targets=available_targets,username=username,currency=currency, units=units)
+	def render_front(self,error=""):
+		self.user.getHomeUnits()
+ 		username=self.user.username
+ 		resources=self.user.getResources()
+ 		users = UserDatabase.users()
+ 		attacks=self.user.getAttacks()
+ 		times=self.user.getReturnTimes()	
+ 		fxusr=[]
+		for i in users:
+			if i.username != username:
+				fxusr.append(i)
+		self.render("attack_creator.html",username=username,currency=resources[0], units=resources[1], users=fxusr, attacks=attacks,error=error,times=times,num_attacks=range(len(attacks)))
+
 	def get(self):
-		units = self.request.get('num_troops')
-		usrs=users()
-		usrs=list(usrs)
-		fusrs=[]
-		for i in usrs:
-			if i != self.user:
-				fusrs.append(i.username)
-		if self.user:
-	 		username=self.user.username
-	 		resources=self.user.getResources()
-	 		self.render_front(username,resources[0],resources[1],available_targets=fusrs)
+	 	if self.user:
+	 		self.render_front()
 	 	else:
 	 		self.redirect('/login')
 		
 	def post(self):
-		units = int(self.request.get('num_troops'))
-		target = str(self.request.get('target'))  #username
-		action = self.request.get('action')
-		attack_id = self.request.get('attack_id')
-
-		if units and target:
-			self.user.newAttack(target, units, int(1000))
-	 		username=self.user.username
-	 		resources=self.user.getResources()
-	 		self.render_front(username,resources[0],resources[1],available_targets=fusrs)
+		troops=self.request.get('num_troops')
+		person=self.request.get('target')
+		person=str(person)
+		try:
+			troops=int(troops)
+		except ValueError:
+			self.render_front("You must enter a valid number.")
 			return
-
-		if action and attack_id:
-			attack = attacks()[attack_id]
-			if action == 'attack':
-				defender = getResources(attack.defender_key)
-				attack.num_troops, defender.home_units = combat(attack.units, defender.home_units)
-				return
-				
-			if action == 'retreat':
-				attack.return_time = datetime().now + datetime.timedelta(minutes = return_time)
-				return
+		if troops<4:
+			error="You must send at least 4 troops to attack."
+			self.render_front(error)
+			return
+		accs=users()
+		accs=list(accs)
+		if troops and person:
+			for i in accs:
+				if i.username == person:
+					self.user.addCombatUnits(-1*troops)
+					om=troops
+					myunits=troops
+					theirunits=i.getHomeUnits()
+					ot=theirunits
+					myunits,theirunits=RiskCombat.combat(myunits,theirunits)
+					self.user.newAttack(i.username,myunits,60)
+					self.user.addCurrency(10)
+					self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered 10 Currency." % (om-myunits))
+		self.redirect('/game')

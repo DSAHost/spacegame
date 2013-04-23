@@ -2,11 +2,10 @@ from Handler import *
 
 class Attack(ndb.Model):
 	attacker_key=ndb.KeyProperty(required=True)
-	defender_key=ndb.KeyProperty(required=True)
 	num_troops=ndb.IntegerProperty(required=True)
 	time_fought=ndb.DateTimeProperty(auto_now_add=True)
-        return_time=ndb.IntegerProperty(required=True)
-        defender_name=ndb.StringProperty(required=True)
+	return_time=ndb.IntegerProperty(required=True)
+	defender_name=ndb.StringProperty(required=True)
 
 class Message(ndb.Model):
 	subject=ndb.StringProperty(required=True)
@@ -41,14 +40,10 @@ class User(ndb.Model):
 
 	def newAttack(self,dname,troops,time):
 		accs=users()
-		dkey=None
-		for i in users:
-			if i.username==defender:
-				dkey=i.key
 		if not self.attacks:
-			self.attacks=[Attack(attacker_key=self.key,defender_key=dkey,defender_name=dname,num_troops=troops,return_time=time)]
+			self.attacks=[Attack(attacker_key=self.key,defender_name=dname,num_troops=troops,return_time=time)]
 		else:
-			self.attacks.append(Attack(attacker_key=self.key,defender_key=dkey,defender_name=dname,num_troops=troops,return_time=time))
+			self.attacks.append(Attack(attacker_key=self.key,defender_name=dname,num_troops=troops,return_time=time))
 		self.put()
 
 	def getMessages(self):
@@ -156,7 +151,7 @@ def users(update=False):
 
 def NewAccount(username="",password="",email=""):
 	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=20,combat_units=10, home_units=10))
-	a.attacks=[Attack(attacker_key=a.key,defender_key=a.key,defender_name="asdf",num_troops=5,return_time=20)]
+	a.attacks=[Attack(attacker_key=a.key,defender_name="asdf",num_troops=5,return_time=20)]
 	a.newMessage("Welcome to Text Sector!", "For help and tutorials go to www.textsector.com/game/tutorials")
 	key=a.newMessage("Notice","You have been awarded 100 currency and 10 units.")
 	users(True)

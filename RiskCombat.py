@@ -1,3 +1,4 @@
+
 def combat(attacking_troops, defending_troops):
 	attack = [random.randint(1,6)]
 	if attacking_troops >= 3:

@@ -1,3 +1,4 @@
+import random
 
 def combat(attacking_troops, defending_troops):
 	attack = [random.randint(1,6)]

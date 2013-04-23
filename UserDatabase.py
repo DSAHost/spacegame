@@ -16,9 +16,7 @@ class Resources(ndb.Model):
 	currency=ndb.IntegerProperty(required=True)
 	currency_add=ndb.IntegerProperty()
 	currency_updated=ndb.DateTimeProperty(auto_now_add=True)
-	
-	combat_units=ndb.IntegerProperty(required=True)
-	home_units=ndb.IntegerProperty()
+	home_units=ndb.IntegerProperty(required=True)
 	
 class User(ndb.Model):
 	attacks=ndb.StructuredProperty(Attack,repeated=True)
@@ -105,15 +103,13 @@ class User(ndb.Model):
 		value_adj=currencyAdjust(self,time)
 		return [self.resources.currency+value_adj,self.resources.home_units]
 		
-	def setResources(self,currency,combat_units,home_units):
+	def setResources(self,currency,home_units):
 		self.resources.currency=currency
-		self.resources.combat_units=combat_units
 		self.resources.home_units=home_units
 		self.put()
 		users(True)
 
 	def addCombatUnits(self,num):
-		self.resources.combat_units+=num
 		self.resources.home_units+=num
 		self.put()
 		users(True)
@@ -130,6 +126,8 @@ class User(ndb.Model):
 		users(True)
 
 	def getHomeUnits(self):
+		if not self.attacks:
+			return
 		for i in self.attacks:
 			dif=(datetime.now()-i.time_fought).total_seconds()
 			if dif>i.return_time:
@@ -150,8 +148,7 @@ def users(update=False):
 	return accs
 
 def NewAccount(username="",password="",email=""):
-	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=20,combat_units=10, home_units=10))
-	a.attacks=[Attack(attacker_key=a.key,defender_name="asdf",num_troops=5,return_time=20)]
+	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=20,home_units=10))
 	a.newMessage("Welcome to Text Sector!", "For help and tutorials go to www.textsector.com/game/tutorials")
 	key=a.newMessage("Notice","You have been awarded 100 currency and 10 units.")
 	users(True)

@@ -46,5 +46,5 @@ class CheatHandler(Handler):
 			self.redirect('/game')
 			return
 		elif secure == CODE:
-			self.user.setResources(c,u,u)
+			self.user.setResources(c,u)
 			self.redirect('/game')

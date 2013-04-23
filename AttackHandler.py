@@ -36,6 +36,11 @@ class AttackHandler(Handler):
 			error="You must send at least 4 troops to attack."
 			self.render_front(error)
 			return
+		elif troops>self.user.resources.home_units:
+			error="You do not have enough units."
+			self.render_front(error)
+			return
+
 		accs=users()
 		accs=list(accs)
 		if troops and person:
@@ -44,7 +49,7 @@ class AttackHandler(Handler):
 					self.user.addCombatUnits(-1*troops)
 					om=troops
 					myunits=troops
-					theirunits=i.getHomeUnits()
+					theirunits=i.resources.home_units
 					ot=theirunits
 					myunits,theirunits=RiskCombat.combat(myunits,theirunits)
 					self.user.newAttack(i.username,myunits,60)

@@ -106,6 +106,7 @@ class User(ndb.Model):
 	def setResources(self,currency,home_units):
 		self.resources.currency=currency
 		self.resources.home_units=home_units
+		self.resources.currency_updated=datetime.now()
 		self.put()
 		users(True)
 
@@ -128,12 +129,17 @@ class User(ndb.Model):
 
 	def getHomeUnits(self):
 		if not self.attacks:
-			return
-		for i in self.attacks:
-			dif=(datetime.now()-i.time_fought).total_seconds()
-			if dif>i.return_time:
-				self.resources.home_units+=i.num_troops
-				self.attacks.remove(i)
+			return self.resources.home_units
+		i=0
+		n=len(self.attacks)
+		while i<n:
+			dif=(datetime.now()-self.attacks[i].time_fought).total_seconds()
+			if dif>self.attacks[i].return_time:
+				self.resources.home_units+=self.attacks[i].num_troops
+				self.attacks.remove(self.attacks[i])
+				i-=1
+			i+=1
+			n=len(self.attacks)
 		self.put()
 		users(True)	
 		return self.resources.home_units

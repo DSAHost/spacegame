@@ -49,7 +49,7 @@ class AttackHandler(Handler):
 					self.user.addCombatUnits(-1*troops)
 					om=troops
 					myunits=troops
-					theirunits=i.getHomeUnits()
+					theirunits=int(i.getHomeUnits())
 					ot=theirunits
 					myunits,theirunits=RiskCombat.combat(myunits,theirunits)
 					i.addCombatUnits(-1*(ot-theirunits))
@@ -60,5 +60,5 @@ class AttackHandler(Handler):
 					i.addCurrency(-1*spoils)
 					self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered %d currency." % (om-myunits,spoils))
 					i.newMessage("You were attacked by %s." % self.user.username, "You lost %d troops and %d currency." % (ot-theirunits,spoils))
-					return
+					break
 		self.redirect('/game')

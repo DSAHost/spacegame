@@ -1,11 +1,5 @@
 from Handler import *
 import UserDatabase
-# temporary test class
-
-class Message():
-	def __init__(self,subject,content):
-		self.subject=subject
-		self.content=content
 
 class GameHandler(Handler):
 	def render_front(self):

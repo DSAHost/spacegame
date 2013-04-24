@@ -135,7 +135,8 @@ class User(ndb.Model):
 				self.resources.home_units+=i.num_troops
 				self.attacks.remove(i)
 		self.put()
-		users(True)		
+		users(True)	
+		return self.resources.home_units
 
 def currencyAdjust(user,time):
 	return (int)(((time-user.resources.currency_updated).total_seconds())/60)*user.resources.currency_add

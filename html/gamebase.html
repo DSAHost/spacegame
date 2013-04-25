@@ -35,37 +35,31 @@
 					<a href="/game/buyunits">
 						<button class="button" value="Submit">Train Units</button>
 					</a>
-				</body>					
-				<hr class="bb">
-				<div method="POST" class="message_scrollbox" style="	background-color: black;
-				border: 4px single orange;
-				border-radius: 5px;
-				color: orange;
-				width:120px;
-				height:170px;
-				line-height:3em;
-				padding: 2px;
-				max-width: 110px;">
-				
-			</body>					
-			<hr class="bb">
-			Ongoing Attacks:<br>
-			<div class="fix_div">
-				<div class="fix_div_cont">
-					{% for i in num_attacks %}
-					<br><span class="subnews">{{attacks[i].defender_name}}: {{attacks[i].num_troops}} return in {{times[i]}} seconds.</span>
-					<div class="info">
+								
+					<hr class="bb">
+
+					<div class="title"> Ongoing Attacks </div>
+					
+
+					<div method="POST" class="info">
+					<div class="fix_div_cont">
+						{% for i in num_attacks %}
+						<br><span class="subnews">{{attacks[i].defender_name}}: {{attacks[i].num_troops}} return in {{times[i]}} seconds.</span>
+						<div class="info">
+						</div>
+						<hr class="bb">
+						{% endfor %}
+					</div>
 					</div>
 					<hr class="bb">
-					{% endfor %}
-				</div>
-			</center>
-		</div>
-		{% endblock sidebar %}
+				</center>
+			</div>
+			{% endblock sidebar %}
 		
 
+		</div>
 	</div>
-</div>
+</body>	
 
 <div class="content">{% block content %}{% endblock %}</div>
 <div class="topbar">

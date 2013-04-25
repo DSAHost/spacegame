@@ -331,15 +331,23 @@ div.logo{
 
 .info{
 	background-color: black;
-	border: 4px single orange;
+	border: 4px ridge orange;
 	border-radius: 5px;
 	color: orange;
 	width:120px;
 	height:170px;
-	line-height:3em;
-	padding: 2px;
-	max-width: 110px;
-
+	overflow:auto;
+	font-size: 15px;
+	word-wrap:break-word;
+}
+.title{
+	background-color: black;
+	border: 4px ridge orange;
+	border-radius: 5px;
+	color:orange;
+	width:120px;
+	margin:5px;
+	padding: 3px;
 
 }
 
@@ -349,6 +357,7 @@ div.logo{
 .fix_div_cont{
 	color: black;
 	float: left;
+	width:50px;
 	margin-left: 2px;
 	margin-right:2px;
 }

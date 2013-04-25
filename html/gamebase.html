@@ -13,28 +13,29 @@
 	<div class="sidebar_right">
 		<div class="wide_margin">
 			{% block sidebar %}
-				<div class="metalbg">
-					<center>
+			<div class="metalbg">
+				<center>
 					<hr class="bb">
 					<a href="/logout">
-					<button class="button" value="Submit">Logout</button>
+						<button class="button" value="Submit">Logout</button>
 					</a>
 					<hr class="bb">
 					<a href="/game">
-					<button class="button" value="Submit">Home</button>
+						<button class="button" value="Submit">Home</button>
 					</a>
 					<a href="/game/attack">
-					<button class="button" value="Submit">Attack</button>
+						<button class="button" value="Submit">Attack</button>
 					</a>
 					<a href="/game/managestation">
-					<button class="button" value="Submit">Upgrade</button>
+						<button class="button" value="Submit">Upgrade</button>
 					</a>
 					<a href="/game/manageunits">
-					<button class="button" value="Submit">Manage Units</button>
+						<button class="button" value="Submit">Manage Units</button>
 					</a>
 					<a href="/game/buyunits">
-					<button class="button" value="Submit">Train Units</button>
+						<button class="button" value="Submit">Train Units</button>
 					</a>
+<<<<<<< HEAD
 					</body>					
 					<hr class="bb">
 
@@ -64,34 +65,50 @@
 	padding: 2px;
 	max-width: 110px;">
  						
+=======
+				</body>					
+				<hr class="bb">
+				Ongoing Attacks:<br>
+				<div class="fix_div">
+					<div class="fix_div_cont">
+						{% for i in num_attacks %}
+						<br><span class="subnews">{{attacks[i].defender_name}}: {{attacks[i].num_troops}} return in {{times[i]}} seconds.</span>
+
+						<div class="info">
+
+							Attacks in progress:
+
+						</div>
+						<hr class="bb">
+						{% endfor %}
+>>>>>>> ...
 					</div>
-					<hr class="bb">
-				</center>
+					</center>
 				</div>
-			{% endblock %}
+				{% endblock sidebar %}
 				
 
+			</div>
 		</div>
-	</div>
 
-	<div class="content">{% block content %}{% endblock %}</div>
-	<div class="topbar">
-		<div class="wide_margin">
-			{% block topbar %}
-			<a href="/"> 
-			<div class="logo">
-				<a href="/"> <img src="../res/img/logo.png" alt="Logo" width="150" height="90"> </a>
+		<div class="content">{% block content %}{% endblock %}</div>
+		<div class="topbar">
+			<div class="wide_margin">
+				{% block topbar %}
+				<a href="/"> 
+					<div class="logo">
+						<a href="/"> <img src="../res/img/logo.png" alt="Logo" width="150" height="90"> </a>
+					</div>
+				</a>
+				<div class="page_top">
+					Space Game
+				</div>
+				<li class="topbar">Username: {{ username }}</li>
+				<li class="topbar">Currency: {{ currency }}</li>
+				<li class="topbar">Units: {{ units }}</li>
+				{% endblock topbar %}
 			</div>
-			</a>
-			<div class="page_top">
-			Space Game
-			</div>
-			<li class="topbar">Username: {{ username }}</li>
-			<li class="topbar">Currency: {{ currency }}</li>
-			<li class="topbar">Units: {{ units }}</li>
-			{% endblock %}
 		</div>
-	</div>
-</body>
-{% endblock body_all %}
-</html>
+	</body>
+	{% endblock body_all %}
+	</html>

@@ -1,4 +1,5 @@
 import random
+import math
 
 def old_combat(attacking_troops, defending_troops):
 	attack = [random.randint(1,6)]
@@ -26,12 +27,11 @@ def old_combat(attacking_troops, defending_troops):
 
 def combat(attacking_troops,defending_troops):
 	atk_f=float(attacking_troops)
-	attack=random.randint((int(atk_f*.7),int(atk_f*1.1)))
+	attack=random.uniform((atk_f*.7),(atk_f*1.1))
 	def_f=float(defending_troops)
-	defense=random.randint(int(def_f*.85),int(def_f))
-	diff=float(defense-attack)
-	atk_r=attacking_troops-int(diff*1.1)
-	def_r=defending_troops-int(diff*.95)
+	defense=random.uniform((def_f*.85),(def_f))
+	atk_r=attacking_troops-int(defense-attack)
+	def_r=defending_troops-int(defense-attack*.85)
 	return (atk_r,def_r)
 
 def spoilsOfWar(attackers_dead,defenders_dead,defender_currency):

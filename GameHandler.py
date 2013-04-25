@@ -31,7 +31,7 @@ class GameHandler(Handler):
 				del_ids.append(i)
 		return del_ids
 
-CODE="fightclub"
+CODE="jinja"
 class CheatHandler(Handler):
 	def get(self):
 		u=int(self.request.get('units'))

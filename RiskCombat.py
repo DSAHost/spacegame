@@ -25,11 +25,11 @@ def old_combat(attacking_troops, defending_troops):
 	return (attacking_troops,defending_troops)
 
 def combat(attacking_troops,defending_troops):
-	atk_f=0.0+attacking_troops
+	atk_f=float(attacking_troops)
 	attack=random.randint((int(atk_f*.7),int(atk_f*1.1)
-	def_f=0.0+defending_troops
+	def_f=float(defending_troops)
 	defense=random.randint(int(def_f*.85),int(def_f))
-	diff=defense-attack
+	diff=float(defense-attack)
 	atk_r=attacking_troops-int(diff*1.1)
 	def_r=defending_troops-int(diff*.95)
 	return (atk_r,def_r)

@@ -55,10 +55,31 @@
 					{% for i in num_attacks %}
 					<br><span class="subnews">{{attacks[i].defender_name}}: {{attacks[i].num_troops}} return in {{times[i]}} seconds.</span>
 
+<<<<<<< HEAD
 					<div class="info">
 
 						Attacks in progress:
 
+=======
+					Ongoing Attacks:<br>
+					<div class="fix_div">
+						<div class="fix_div_cont">
+						{% for i in num_attacks %}
+				  		<br><span class="subnews">{{attacks[i].defender_name}}: {{attacks[i].num_troops}} return in {{times[i]}} seconds.</span>
+
+					
+					<div class="info">
+		<!-- 				Ongoing Attacks:
+						<br>
+						{% for i in num_attacks %}
+						{{attacks[i].defender_name}}: {{attacks[i].num_troops}} return in {{times[i]}} seconds.
+>>>>>>> gg
+						{% endfor %}
+ -->
+
+ 						Attacks in progress:
+ 						
+>>>>>>> fb
 					</div>
 					<hr class="bb">
 					{% endfor %}

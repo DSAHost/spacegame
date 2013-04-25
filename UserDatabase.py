@@ -1,8 +1,11 @@
 from Handler import *
 
 class Ship(ndb.Model):
-	strength=ndb.IntegerProperty(required=True)
-	
+	armor=ndb.IntegerProperty(required=True)
+	damage=ndb.IntegerProperty(required=True)
+	mobility=ndb.IntegerProperty(required=True)
+	shipclass=ndb.StringProperty(required=True)
+
 class Attack(ndb.Model):
 	attacker_key=ndb.KeyProperty(required=True)
 	num_troops=ndb.IntegerProperty(required=True)
@@ -30,6 +33,13 @@ class User(ndb.Model):
 	prefs=ndb.JsonProperty()
 	resources=ndb.StructuredProperty(Resources)
 	username=ndb.StringProperty(required=True)
+	fleet=ndb.StructuredProperty(Ship,repeated=True)
+
+	def addShip(self,ship):
+		if not self.fleet:
+			self.fleet=[ship]
+		else:
+			self.fleet.append(ship)
 
 	def newMessage(self,s,c):
 		if not self.messages:

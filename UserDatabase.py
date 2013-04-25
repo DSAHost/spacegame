@@ -1,5 +1,8 @@
 from Handler import *
 
+class Ship(ndb.Model):
+	strength=ndb.IntegerProperty(required=True)
+	
 class Attack(ndb.Model):
 	attacker_key=ndb.KeyProperty(required=True)
 	num_troops=ndb.IntegerProperty(required=True)

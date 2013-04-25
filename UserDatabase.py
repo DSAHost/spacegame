@@ -68,18 +68,11 @@ class User(ndb.Model):
 	def deleteMessages(self, message_ids):
 		try:
 			message_ids.sort()
-<<<<<<< HEAD
-			message_ids.reverse()
-			# logging.error(message_ids)
-			for message_id in message_ids:
-				self.messages.remove(self.messages[message_id])
-=======
 			i=len(self.messages)
 			while i>=0:
 				if i in message_ids:
 					self.messages.remove(self.messages[i])
 				i-=1
->>>>>>> adsf
 		except AttributeError:
 			pass
 		self.put()

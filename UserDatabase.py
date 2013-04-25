@@ -56,7 +56,7 @@ class User(ndb.Model):
 	def deleteMessages(self, message_ids):
 		try:
 			message_ids.sort()
-			message_ids.reverse()
+			# message_ids.reverse()
 			for message_id in message_ids:
 				self.messages.remove(self.messages[message_id])
 		except AttributeError:

@@ -9,7 +9,9 @@ class GameHandler(Handler):
 	 	messages=self.user.getMessages()
 	 	attacks=self.user.getAttacks()
 		times=self.user.getReturnTimes()
-		self.render("gamefront.html",username=username,currency=resources[0], units=resources[1], num_messages=range(len(messages)), messages=messages,attacks=attacks,times=times,num_attacks=range(len(attacks)))
+		mess_list = range(len(messages))
+		mess_list.reverse()
+		self.render("gamefront.html",username=username,currency=resources[0], units=resources[1], num_messages=mess_list, messages=messages,attacks=attacks,times=times,num_attacks=range(len(attacks)))
 
 	def get(self):
 	 	if self.user:

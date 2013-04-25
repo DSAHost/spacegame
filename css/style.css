@@ -329,6 +329,23 @@ div.logo{
 	margin: 10px;
 }
 
+.info{
+	background-color: black;
+	border: 4px single orange;
+	border-radius: 5px;
+	color: orange;
+	width:120px;
+	height:170px;
+	line-height:3em;
+	padding: 2px;
+	max-width: 110px;
+
+
+}
+
+
+}
+
 .fix_div_cont{
 	color: black;
 	float: left;

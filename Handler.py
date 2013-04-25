@@ -37,6 +37,19 @@ class Handler(webapp2.RequestHandler):
 	# returns html from jinja template with parameters as a string
 	# takes template file name as first argument
 	def render_str(self, template, **params):
+		if self.user:
+			self.user.getHomeUnits()
+			username=self.user.username.capitalize()
+			resources=self.user.getResources()
+			attacks=self.user.getAttacks()
+			times=self.user.getReturnTimes()
+			num_attacks=range(len(attacks))
+			params['username']=username
+			params['currency']=resources[0]
+			params['units']=resources[1]
+			params['attacks']=attacks
+			params['times']=times
+			params['num_attacks']=num_attacks
 		t = self.jinja_env.get_template(template)
 		return t.render(params)
 

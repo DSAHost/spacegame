@@ -3,15 +3,10 @@ import UserDatabase
 
 class GameHandler(Handler):
 	def render_front(self):
-		self.user.getHomeUnits()
-		username=self.user.username
-	 	resources=self.user.getResources()
 	 	messages=self.user.getMessages()
-	 	attacks=self.user.getAttacks()
-		times=self.user.getReturnTimes()
 		mess_list = range(len(messages))
 		mess_list.reverse()
-		self.render("gamefront.html",username=username,currency=resources[0], units=resources[1], num_messages=mess_list, messages=messages,attacks=attacks,times=times,num_attacks=range(len(attacks)))
+		self.render("gamefront.html", num_messages=mess_list, messages=messages)
 
 	def get(self):
 	 	if self.user:
@@ -22,8 +17,7 @@ class GameHandler(Handler):
 	def post(self):
 		self.user.deleteMessages(self.getDeleteMessageIds())
 		self.get()
-		# self.response.write(self.getDeleteMessageIds())
-
+		
 	def getDeleteMessageIds(self):
 		del_ids = []
 		for i in range(len(self.user.getMessages())):

@@ -3,5 +3,12 @@
 {% block title %}Manage Units{% endblock %}
 
 {% block content %}
-Hello, manageunits!
+{% for ship in ships %}
+<img src="../res/img/used/{{ship.name}}.png" alt="{{ship.name}}">
+{{ship.cost}} Credits
+<input class="button" type="Submit"value="Sell {{ship.name}}">
+		<br>
+		Armor: {{ship.armor}} Mobility: {{ship.mobility}}
+Damage: {{ship.damage}}
+{% endfor %}
 {% endblock content %}

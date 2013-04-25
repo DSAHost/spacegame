@@ -3,13 +3,7 @@ from utils import *
 
 class ManageStationHandler(Handler):
 	def render_front(self):
-		self.user.getHomeUnits()
-		username=self.user.username
-	 	resources=self.user.getResources()
-	 	attacks=self.user.getAttacks()
-		times=self.user.getReturnTimes()
-
-		self.render("managestation.html",username=username,currency=resources[0], units=resources[1],attacks=attacks,times=times,num_attacks=range(len(attacks)))
+		self.render("managestation.html")
 	def get(self):
 	 	if self.user:
 	 		self.render_front()

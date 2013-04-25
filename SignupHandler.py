@@ -18,12 +18,11 @@ class SignupHandler(Handler):
 		passerror=""
 		emailerror=""
 		accs=users()
-
 		if not username:
 			usererror="You must enter a username."
 		else:
 			for i in accs:
-				if i.username == username:
+				if i.username == username.lower():
 					usererror="That username is taken."
 		if not password:
 			passerror="You must enter a password."

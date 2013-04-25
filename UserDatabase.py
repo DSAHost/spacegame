@@ -5,6 +5,8 @@ class Ship(ndb.Model):
 	damage=ndb.IntegerProperty(required=True)
 	mobility=ndb.IntegerProperty(required=True)
 	shipclass=ndb.StringProperty(required=True)
+	name=ndb.StringProperty(required=True)
+	cost=ndb.IntegerProperty(required=True)
 
 class Attack(ndb.Model):
 	attacker_key=ndb.KeyProperty(required=True)
@@ -66,10 +68,18 @@ class User(ndb.Model):
 	def deleteMessages(self, message_ids):
 		try:
 			message_ids.sort()
+<<<<<<< HEAD
 			message_ids.reverse()
 			# logging.error(message_ids)
 			for message_id in message_ids:
 				self.messages.remove(self.messages[message_id])
+=======
+			i=len(self.messages)
+			while i>=0:
+				if i in message_ids:
+					self.messages.remove(self.messages[i])
+				i-=1
+>>>>>>> adsf
 		except AttributeError:
 			pass
 		self.put()
@@ -146,16 +156,19 @@ class User(ndb.Model):
 			return self.resources.home_units
 		i=0
 		n=len(self.attacks)
+		needUpdate=False
 		while i<n:
 			dif=(datetime.now()-self.attacks[i].time_fought).total_seconds()
 			if dif>self.attacks[i].return_time:
 				self.resources.home_units+=self.attacks[i].num_troops
 				self.attacks.remove(self.attacks[i])
+				needUpdate=True
 				i-=1
 			i+=1
 			n=len(self.attacks)
-		self.put()
-		users(True)	
+		if needUpdate:
+			self.put()
+			users(True)	
 		return self.resources.home_units
 
 def currencyAdjust(user,time):
@@ -170,7 +183,7 @@ def users(update=False):
 	return accs
 
 def NewAccount(username="",password="",email=""):
-	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=20,home_units=10))
+	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=10,home_units=10))
 	a.newMessage("Welcome to Text Sector!", "For help and tutorials go to www.textsector.com/game/tutorials")
 	key=a.newMessage("Notice","You have been awarded 100 currency and 10 units.")
 	users(True)

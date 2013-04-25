@@ -13,7 +13,7 @@ class LoginHandler(Handler):
 
 		cookieval=""
 
-		login=isValidLogin(username,password)
+		login=isValidLogin(username.lower(),password)
 		strlogin=None
 		if login:
 			strlogin=login.urlsafe()

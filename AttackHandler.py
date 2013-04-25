@@ -5,17 +5,12 @@ import RiskCombat
 
 class AttackHandler(Handler):
 	def render_front(self,error=""):
-		self.user.getHomeUnits()
- 		username=self.user.username
- 		resources=self.user.getResources()
  		users = UserDatabase.users()
- 		attacks=self.user.getAttacks()
- 		times=self.user.getReturnTimes()	
  		fxusr=[]
 		for i in users:
-			if i.username != username:
+			if i.username != self.user.username:
 				fxusr.append(i)
-		self.render("attack_creator.html",username=username,currency=resources[0], units=resources[1], users=fxusr, attacks=attacks,error=error,times=times,num_attacks=range(len(attacks)))
+		self.render("attack_creator.html",users=fxusr,error=error)
 
 	def get(self):
 	 	if self.user:
@@ -24,6 +19,9 @@ class AttackHandler(Handler):
 	 		self.redirect('/login')
 		
 	def post(self):
+
+
+		
 		troops=self.request.get('num_troops')
 		person=self.request.get('target')
 		person=str(person)

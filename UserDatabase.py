@@ -8,10 +8,15 @@ class Ship(ndb.Model):
 	name=ndb.StringProperty(required=True)
 	cost=ndb.IntegerProperty(required=True)
 	
+	def toString(self):
+		s=str(self.armor) + "," + str(self.damage) + "," + str(self.mobility) + "," + str(self.shipclass) + "," + self.name + "," + str(self.cost)
+def stringToShip(s):
+	stats=s.split(',')
+	return Ship(stats[0],stats[1],stats[2],stats[3],stats[4],stats[5])
 
 class Attack(ndb.Model):
 	attacker_key=ndb.KeyProperty(required=True)
-	all_ships=ndb.StructuredProperty(Ship,repeated=True)
+	all_ships=ndb.StringProperty()
 	time_fought=ndb.DateTimeProperty(auto_now_add=True)
 	return_time=ndb.IntegerProperty(required=True)
 	defender_name=ndb.StringProperty(required=True)
@@ -51,12 +56,15 @@ class User(ndb.Model):
 
 		return self.put()
 
-	def newAttack(self,dname,troops,time):
+	def newAttack(self,dname,ships,time):
 		accs=users()
+		serial=""
+		for ship in ships:
+			serial+=ship.toString() + "|"
 		if not self.attacks:
-			self.attacks=[Attack(attacker_key=self.key,defender_name=dname,num_troops=troops,return_time=time)]
+			self.attacks=[Attack(attacker_key=self.key,defender_name=dname,all_ships=serial,return_time=time)]
 		else:
-			self.attacks.append(Attack(attacker_key=self.key,defender_name=dname,num_troops=troops,return_time=time))
+			self.attacks.append(Attack(attacker_key=self.key,defender_name=dname,all_ships=serial,return_time=time))
 		self.put()
 
 	def getMessages(self):
@@ -140,7 +148,7 @@ class User(ndb.Model):
 
 	def getHomeUnits(self):
 		if not self.attacks:
-			return fleet
+			return self.fleet
 		i=0
 		n=len(self.attacks)
 		needUpdate=False
@@ -157,7 +165,7 @@ class User(ndb.Model):
 		if needUpdate:
 			self.put()
 			users(True)	
-		return fleet
+		return self.fleet
 
 def currencyAdjust(user,time):
 	return (int)(((time-user.resources.currency_updated).total_seconds())/60)*user.resources.currency_add

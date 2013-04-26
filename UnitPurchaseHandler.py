@@ -27,7 +27,7 @@ class UnitPurchaseHandler(Handler):
 	 		self.redirect('/login')
 
 	def post(self):
-		id="Songbird" #testing.  This must correspond to which buy button was pressed
+		id=self.request.get("ship") #testing.  This must correspond to which buy button was pressed
 		ship=match[id]
 		if ship.cost<self.user.getResources()[0]:
 			self.user.addShip(ship)

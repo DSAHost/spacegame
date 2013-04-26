@@ -2,22 +2,66 @@
 
 {% block title %}Purchase Units{% endblock %}
 
+
+{% block head %}
+<style>
+
+form.buy_ship {
+	border-radius:5px;
+	border:1px solid #F87431;
+	margin:5px;
+}
+
+div.buy_ship {
+	margin:5px;
+}
+
+div.ship_stats {
+	display: inline;
+	position:relative;
+	left: 670px;
+}
+
+div.ship_price {
+
+}
+
+img.ship{
+	
+}
+
+div.buy_ship_button{
+	float:right;
+}
+
+</style>
+{% endblock head %}
+
 {% block content %}
-
-<form method="POST">
+<br>
 {% for ship in ships %}
-
-	<center>
-		<img src="../res/img/used/{{ship.name}}.png" alt="{{ship.name}}">{{ship.cost}} Credits
-		<br>
-		Armor: {{ship.armor}} Mobility: {{ship.mobility}} Damage: {{ship.damage}}
-		<input class="button" type="Submit"value="Buy {{ship.name}}">
-		<br>
-		{% if name==ship.name %}
-			<span class="error">{{error}}</span>
-		{% endif %}
-		<br>
-	<center>
+<form method="POST" class="buy_ship">
+	<div class="buy_ship">
+		<img src="../res/img/used/{{ship.name}}.png" alt="{{ship.name}}" class="ship">
+		<div class="buy_ship_button">
+			<input class="button" type="Submit" value="Buy {{ship.name}}">
+		</div>
+		<div class="ship_stats">
+			<table border="0">
+				<tr><td>Cost:</td><td>{{ship.cost}}</td></tr>
+				<tr><td>Armor:</td><td>{{ship.armor}}</td></tr>
+				<tr><td>Mobility:</td><td>{{ship.mobility}}</td></tr>
+				<tr><td>Damage:</td><td>{{ship.damage}}</td></tr>
+			</table>
+		</div>
+		<span name="ship" value={{ship.name}}></span>
+	</div>
+</form>
+{% if name==ship.name %}
+{{error}}
+{% endif %}
+<br>
+>>>>>>> Ship purchase
 {% endfor %}
 </form>
 {% endblock content %}

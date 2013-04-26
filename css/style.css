@@ -311,7 +311,7 @@ div.logo{
 }
 .subnews{
 	float: left;
-	position: absolute;
+	position: center;
 	font-size: 10px;
 	font-weight:bold;
 }

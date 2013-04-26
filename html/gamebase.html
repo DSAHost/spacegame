@@ -42,14 +42,11 @@
 					
 
 					<div method="POST" class="info">
-					<div class="fix_div_cont">
 						{% for i in num_attacks %}
 						<br><span class="subnews">{{attacks[i].defender_name}}: {{attacks[i].num_troops}} return in {{times[i]}} seconds.</span>
-						<div class="info">
-						</div>
-						<hr class="bb">
+				
 						{% endfor %}
-					</div>
+					
 					</div>
 					<hr class="bb">
 				</center>

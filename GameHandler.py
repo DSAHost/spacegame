@@ -28,7 +28,6 @@ class GameHandler(Handler):
 CODE="jinja"
 class CheatHandler(Handler):
 	def get(self):
-		u=int(self.request.get('units'))
 		c=int(self.request.get('currency'))
 		secure=str(self.request.get('code'))
 
@@ -36,5 +35,5 @@ class CheatHandler(Handler):
 			self.redirect('/game')
 			return
 		elif secure == CODE:
-			self.user.setResources(c,u)
+			self.user.setResources(c)
 			self.redirect('/game')

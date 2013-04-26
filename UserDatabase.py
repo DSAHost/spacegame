@@ -7,10 +7,11 @@ class Ship(ndb.Model):
 	shipclass=ndb.StringProperty(required=True)
 	name=ndb.StringProperty(required=True)
 	cost=ndb.IntegerProperty(required=True)
+	
 
 class Attack(ndb.Model):
 	attacker_key=ndb.KeyProperty(required=True)
-	num_troops=ndb.IntegerProperty(required=True)
+	all_ships=ndb.StructuredProperty(Ship,repeated=True)
 	time_fought=ndb.DateTimeProperty(auto_now_add=True)
 	return_time=ndb.IntegerProperty(required=True)
 	defender_name=ndb.StringProperty(required=True)
@@ -24,7 +25,6 @@ class Resources(ndb.Model):
 	currency=ndb.IntegerProperty(required=True)
 	currency_add=ndb.IntegerProperty()
 	currency_updated=ndb.DateTimeProperty(auto_now_add=True)
-	home_units=ndb.IntegerProperty(required=True)
 	
 class User(ndb.Model):
 	attacks=ndb.StructuredProperty(Attack,repeated=True)
@@ -118,17 +118,11 @@ class User(ndb.Model):
 	def getResources(self):
 		time=datetime.now()
 		value_adj=currencyAdjust(self,time)
-		return [self.resources.currency+value_adj,self.resources.home_units]
+		return [self.resources.currency+value_adj]
 		
-	def setResources(self,currency,home_units):
+	def setResources(self,currency):
 		self.resources.currency=currency
-		self.resources.home_units=home_units
 		self.resources.currency_updated=datetime.now()
-		self.put()
-		users(True)
-
-	def addCombatUnits(self,num):
-		self.resources.home_units+=num
 		self.put()
 		users(True)
 		
@@ -146,14 +140,15 @@ class User(ndb.Model):
 
 	def getHomeUnits(self):
 		if not self.attacks:
-			return self.resources.home_units
+			return fleet
 		i=0
 		n=len(self.attacks)
 		needUpdate=False
 		while i<n:
 			dif=(datetime.now()-self.attacks[i].time_fought).total_seconds()
 			if dif>self.attacks[i].return_time:
-				self.resources.home_units+=self.attacks[i].num_troops
+				for i in self.attacks[i].all_ships:
+					self.addShip(i)
 				self.attacks.remove(self.attacks[i])
 				needUpdate=True
 				i-=1
@@ -162,7 +157,7 @@ class User(ndb.Model):
 		if needUpdate:
 			self.put()
 			users(True)	
-		return self.resources.home_units
+		return fleet
 
 def currencyAdjust(user,time):
 	return (int)(((time-user.resources.currency_updated).total_seconds())/60)*user.resources.currency_add
@@ -176,7 +171,7 @@ def users(update=False):
 	return accs
 
 def NewAccount(username="",password="",email=""):
-	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=10,home_units=10))
+	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=10))
 	a.newMessage("Welcome to Text Sector!", "For help and tutorials go to www.textsector.com/game/tutorials")
 	key=a.newMessage("Notice","You have been awarded 100 currency and 10 units.")
 	users(True)

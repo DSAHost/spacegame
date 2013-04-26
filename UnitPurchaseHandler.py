@@ -36,25 +36,3 @@ class UnitPurchaseHandler(Handler):
 			return
 		else:
 			self.render_front(error="You do not have enough credits to purchase this ship.",name=id)
-		units = self.request.get("units")
-		resources=self.user.getResources()
-		if units:
-			try:
-				units=int(units)
-			except ValueError:
-				self.render_front("You must enter a valid number.")
-				return
-			if units<=0:
-				self.render_front("You must enter a valid number.")
-				return
-			cost = units*10
-		
-			if cost>resources[0]:
-				error="You do not have enough credits to train that many units."
-				self.render_front(error)
-				return
-			self.user.addCurrency(-cost)
-			self.user.addCombatUnits(units)
-			self.redirect('/game')
-		else:
-			self.render_front()

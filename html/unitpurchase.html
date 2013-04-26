@@ -20,19 +20,4 @@
 	<center>
 {% endfor %}
 </form>
-
-<form method="POST">
-	<script type="text/javascript">
-	function showValue(newValue)
-	{
-		document.getElementById("cost").innerHTML=newValue*10;
-	}
-	</script>
-	Number of units:
-	<input type="text" value="0" name="units" onchange="showValue(this.value)"> <span class="error">{{error}}</span>
-	<br>
-	Cost: <span name="cost" id="cost" value="10">0</span> credits
-	<br>
-	<input class="button" type="submit" value="Train">
-</form>
 {% endblock content %}

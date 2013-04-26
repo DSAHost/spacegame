@@ -11,13 +11,12 @@
 		<img src="../res/img/used/{{ship.name}}.png" alt="{{ship.name}}">{{ship.cost}} Credits
 		<br>
 		Armor: {{ship.armor}} Mobility: {{ship.mobility}} Damage: {{ship.damage}}
-		<input class="button"
-		type="Submit"value="Buy {{ship.name}}">
+		<input class="button" type="Submit"value="Buy {{ship.name}}">
+		<br>
 		{% if name==ship.name %}
-			{{error}}
+		<span class="error">{{error}}</span>
 		{% endif %}
 	<center>
-	<br>
 {% endfor %}
 </form>
 

@@ -4,6 +4,7 @@
 {{ super() }}
 <body>
 	<form method="post">
+		<br>
 		Target:
 		<select name="target">
 			{% for tgt in users %}
@@ -12,9 +13,11 @@
 		</select>
 		<br>
 		Troops to send:
-		<input type="text" name="num_troops"> <span class="error">{{error}}</span>
+		<input type="text" name="num_troops"> 
+		<span class="error">{{error}}</span>
 		<br>
-		<input type="submit">
+		<button class="button" type="submit"> Attack
+		<br>
 	</form>
 </body>
 {% endblock %}

@@ -1,6 +1,6 @@
 {% extends "gamebase.html" %}
 
-<<<<<<< HEAD
+
 {% block title %}Combat{% endblock %}
 
 {% block head %}
@@ -8,14 +8,13 @@
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
 <link rel="stylesheet" href="/resources/demos/style.css" />
-=======
->>>>>>> ...
+
 
 
 
 {% block content %}
 
-
+<br>
 Users:
 {% for user in users %}
 <li class="{{ loop.cycle('odd', 'even') }}">{{ user.username }}<span class="right">Rank: {{user.resources.currency}}</span><input type="button" onclick="myFunction()" value="Show alert box"></li>
@@ -24,7 +23,7 @@ Users:
 <form method="POST">
 	Troops to send:
 	<input type="text" name="num_troops">
-	<input class="button" type="submit" value="Attack"> <span class="error">{{error}}</span>
+	<button class="button" type="submit" value="Attack"> <span class="error">{{error}}</span>
 </form>
 {% endblock content %}
 

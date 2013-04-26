@@ -4,11 +4,11 @@
 
 {% block content %}
 {% for ship in ships %}
-<img src="../res/img/used/{{ship.name}}.png" alt="{{ship.name}}">
-{{ship.cost}} Credits
-<input class="button" type="Submit"value="Sell {{ship.name}}">
-		<br>
-		Armor: {{ship.armor}} Mobility: {{ship.mobility}}
-Damage: {{ship.damage}}
+	<br>
+	<img src="../res/img/used/{{ship.name}}.png" alt="{{ship.name}}">
+	{{ship.cost}} Credits
+	<input class="button" type="Submit"value="Sell {{ship.name}}"><input class="button" type="Submit"value="Upgrade">
+	<br>
+	Armor: {{ship.armor}} Mobility: {{ship.mobility}} Damage: {{ship.damage}}
 {% endfor %}
 {% endblock content %}

@@ -4,40 +4,12 @@
 
 
 {% block head %}
-<style>
-
-form.buy_ship {
-	border-radius:5px;
-	border:1px solid #F87431;
-	margin:5px;
-}
-
-div.buy_ship {
-	margin:5px;
-}
-
-div.ship_stats {
-	display: inline;
-	position:relative;
-	left: 670px;
-}
-
-div.ship_price {
-
-}
-
-img.ship{
-	
-}
-
-div.buy_ship_button{
-	float:right;
-}
-
-</style>
 {% endblock head %}
 
 {% block content %}
+<center>
+	Available Ships
+</center>
 <br>
 {% for ship in ships %}
 <form method="POST" class="buy_ship">

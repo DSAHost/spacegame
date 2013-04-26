@@ -19,44 +19,31 @@ class AttackHandler(Handler):
 	 		self.redirect('/login')
 		
 	def post(self):
+		Parrot=Ship(armor=99,damage=124,mobility=1,shipclass="Capital",cost=28000,name="Parrot")
 
+		s=[Parrot]  #testing only.  s will be a list of all the ships you choose to send on an attack
+  
+		if not s:
+			error="You must send at least 1 ship to attack."
+			self.render_front(error)
+			return
 
-		
-		troops=self.request.get('num_troops')
 		person=self.request.get('target')
 		person=str(person)
-		try:
-			troops=int(troops)
-		except ValueError:
-			self.render_front("You must enter a valid number.")
-			return
-		if troops<4:
-			error="You must send at least 4 troops to attack."
-			self.render_front(error)
-			return
-		elif troops>self.user.resources.home_units:
-			error="You do not have enough units."
-			self.render_front(error)
-			return
 
 		accs=users()
 		accs=list(accs)
-		if troops and person:
+		if s and person:
 			for i in accs:
 				if i.username == person:
-					self.user.addCombatUnits(-1*troops)
-					om=troops
-					myunits=troops
-					theirunits=int(i.getHomeUnits())
-					ot=theirunits
-					myunits,theirunits=RiskCombat.combat(myunits,theirunits)
-					i.addCombatUnits(-1*(ot-theirunits))
-					self.user.newAttack(i.username,myunits,60)
-					spoils=RiskCombat.spoilsOfWar(om-myunits,ot-theirunits,i.getResources()[0])
-					spoils=int(spoils)
-					self.user.addCurrency(spoils)
-					i.addCurrency(-1*spoils)
-					self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered %d currency." % (om-myunits,spoils))
-					i.newMessage("You were attacked by %s." % self.user.username, "You lost %d troops and %d currency." % (ot-theirunits,spoils))
+					for ship in s:
+						self.user.fleet.remove(ship) 
+					# self.user.newAttack() with ships that made it back
+					#spoils=RiskCombat.spoilsOfWar()
+					#spoils=int(spoils)
+					#self.user.addCurrency(spoils)
+					#i.addCurrency(-1*spoils)
+					#self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered %d currency." % (om-myunits,spoils))
+					#i.newMessage("You were attacked by %s." % self.user.username, "You lost %d troops and %d currency." % (ot-theirunits,spoils))
 					break
 		self.redirect('/game')

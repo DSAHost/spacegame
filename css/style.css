@@ -314,6 +314,8 @@ div.logo{
 	position: center;
 	font-size: 10px;
 	font-weight:bold;
+/*	margin-top: 4px;*/
+	padding-top: 4px;
 }
 .right{
 	float: right;

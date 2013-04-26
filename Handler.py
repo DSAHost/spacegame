@@ -46,7 +46,6 @@ class Handler(webapp2.RequestHandler):
 			num_attacks=range(len(attacks))
 			params['username']=username
 			params['currency']=resources[0]
-			params['units']=resources[1]
 			params['attacks']=attacks
 			params['times']=times
 			params['num_attacks']=num_attacks

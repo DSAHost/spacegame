@@ -30,8 +30,14 @@ def combat(attacking_troops,defending_troops):
 	attack=random.uniform((atk_f*.7),(atk_f*1.1))
 	def_f=float(defending_troops)
 	defense=random.uniform((def_f*.85),(def_f))
-	atk_r=attacking_troops-int(defense-attack)
-	def_r=defending_troops-int(defense-attack*.85)
+	atk_r=0.0
+	def_r=0.0
+	if defense>attack:
+		atk_r=attacking_troops-int(defense-attack)
+		def_r=defending_troops-int(defense-attack*.8)
+	else:
+		atk_r=attacking_troops-int(defense*.74-attack)
+		def_r=defending_troops-int(defense-attack)
 	return (atk_r,def_r)
 
 def spoilsOfWar(attackers_dead,defenders_dead,defender_currency):

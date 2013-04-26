@@ -54,7 +54,7 @@ div.buy_ship_button{
 				<tr><td>Damage:</td><td>{{ship.damage}}</td></tr>
 			</table>
 		</div>
-		<span name="ship" value={{ship.name}}></span>
+		<input type="hidden" name="ship" value={{ship.name}}></input>
 	</div>
 </form>
 {% if name==ship.name %}

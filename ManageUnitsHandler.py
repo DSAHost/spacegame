@@ -10,7 +10,8 @@ class ManageUnitsHandler(Handler):
 	 	else:
 	 		self.redirect('/login')
 
-	 def post:
-	 	id=self.request.get("ship")
-	 	for ship in self.user.fleet:
-	 		if ship.
+	def post(self):
+		id=self.request.get('ship')
+		for ship in self.user.fleet:
+			return
+	 		

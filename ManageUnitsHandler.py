@@ -12,7 +12,8 @@ class ManageUnitsHandler(Handler):
 
 	def post(self):
 		ids=self.request.get('ship')
-		ids=list(ids)
+		ids=int(ids)
+		ids=[ids]
 		if ids:
 			self.user.sellShips(ids)
 		self.redirect('/game')

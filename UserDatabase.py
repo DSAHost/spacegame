@@ -54,7 +54,9 @@ class User(ndb.Model):
 		else:
 			self.messages.append(Message(subject=s, content=c))
 
-		return self.put()
+		key=self.put()
+		users(True)
+		return key
 
 	def newAttack(self,dname,ships,time):
 		accs=users()
@@ -66,7 +68,7 @@ class User(ndb.Model):
 		else:
 			self.attacks.append(Attack(attacker_key=self.key,defender_name=dname,all_ships=serial,return_time=time))
 		self.put()
-
+		users(True)
 	def getMessages(self):
 		mess=[]
 		for i in self.messages:
@@ -84,6 +86,21 @@ class User(ndb.Model):
 		except AttributeError:
 			pass
 		self.put()
+		users(True)
+
+	def sellShips(self, ship_ids):
+		try:
+			ship_ids.sort()
+			i=len(self.fleet)
+			while i>=0:
+				if i in ship_ids:
+					self.addCurrency(int(self.fleet[i].cost*.5))
+					self.fleet.remove(self.fleet[i])
+				i-=1
+		except AttributeError:
+			pass
+		self.put()
+		users(True)
 
 	def getAttacks(self):
 		attks=[]

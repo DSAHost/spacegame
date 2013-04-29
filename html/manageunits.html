@@ -7,22 +7,22 @@
 	Manage Your Fleet
 </center>
 <br>
-{% for ship in ships %}
+{% for i in num_ships %}
 <form method="POST" class="buy_ship">
 	<div class="buy_ship">
-		<img src="../res/img/used/{{ship.name}}.png" alt="{{ship.name}}" class="ship">
+		<img src="../res/img/used/{{ships[i].name}}.png" alt="{{ships[i].name}}" class="ship">
 		<div class="buy_ship_button">
-			<input class="button" type="Submit" value="Sell {{ship.name}}">
+			<input class="button" type="Submit" value="Sell {{ships[i].name}}">
 		</div>
 		<div class="ship_stats">
 			<table border="0">
-				<tr><td>Value:</td><td>{{ship.cost}}</td></tr>
-				<tr><td>Armor:</td><td>{{ship.armor}}</td></tr>
-				<tr><td>Mobility:</td><td>{{ship.mobility}}</td></tr>
-				<tr><td>Damage:</td><td>{{ship.damage}}</td></tr>
+				<tr><td>Value:</td><td>{{ships[i].cost / 2}}</td></tr>
+				<tr><td>Armor:</td><td>{{ships[i].armor}}</td></tr>
+				<tr><td>Mobility:</td><td>{{ships[i].mobility}}</td></tr>
+				<tr><td>Damage:</td><td>{{ships[i].damage}}</td></tr>
 			</table>
 		</div>
-		<input type="hidden" name="ship" value={{ship.name}}></input>
+		<input type="hidden" name="ship" value={{i}}></input>
 	</div>
 </form>
 <br>

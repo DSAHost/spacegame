@@ -25,3 +25,7 @@ class ManageStationHandler(Handler):
 	 	if cost>resources:
 	 		self.render_front(error="You do not have enough credits.")
 	 		return
+	 	if buying:
+	 		self.user.addCurrency(-cost)
+	 		self.user.addDrones(buying)
+	 		self.redirect('/game')

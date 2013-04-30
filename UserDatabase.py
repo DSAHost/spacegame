@@ -51,6 +51,8 @@ class User(ndb.Model):
 			self.fleet=[newship]
 		else:
 			self.fleet.append(newship)
+		self.put()
+		users(True)
 
 	def newMessage(self,s,c):
 		if not self.messages:
@@ -154,6 +156,29 @@ class User(ndb.Model):
 		self.put()
 		users(True)
 
+	def addDrones(self,num):
+		self.drones+=num
+		if self.drones<=100:
+			self.resources.currency_add=self.drones
+		elif self.drones<=200:
+			self.resources.currency_add=100+(0.8*(self.drones-100))
+		elif self.drones<=300:
+			self.resources.currency_add=180+(0.6*(self.drones-200))
+		elif self.drones<=700:
+			self.resources.currency_add=240+(0.4*(self.drones-300))
+		elif self.drones<=1000:
+			self.resources.currency_add=400+(0.333333333*(self.drones-700))
+		elif self.drones<=2000:
+			self.resources.currency_add=500+(0.1*(self.drones-1000))
+		elif self.drones<=7000:
+			self.resources.currency_add=600+(0.05*(self.drones-2000))
+		else:
+			self.resources.currency_add=700+(0.01*(self.drones-7000))
+
+		self.resources.currency_add=int(self.resources.currency_add)
+		self.put()
+		users(True)
+
 	def getResources(self):
 		time=datetime.now()
 		value_adj=currencyAdjust(self,time)
@@ -213,7 +238,7 @@ def users(update=False):
 	return accs
 
 def NewAccount(username="",password="",email=""):
-	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=10),drones=5)
+	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=5),drones=5)
 	a.newMessage("Welcome to Text Sector!", "For help and tutorials go to www.textsector.com/game/tutorials")
 	key=a.newMessage("Notice","You have been awarded 100 currency and 10 units.")
 	users(True)

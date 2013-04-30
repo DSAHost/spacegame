@@ -63,7 +63,7 @@ function timer()
 					<div method="POST" class="info">
 						<span id="clock">5</span>
 						{% for i in num_attacks %}
-						<span class="subnews"><b>{{attacks[i].defender_name}}</b>: <b>{{attacks[i].num_troops}}</b> return in <b>{{times[i]}} </b>seconds.
+						<span class="subnews"><b>{{attacks[i].defender_name}}</b>: <b>{{attacks[i].num_troops}}</b> return in <span id="clock">{{times[i]}} </span>seconds.
 						<hr>
 						</span>
 				
@@ -93,6 +93,7 @@ function timer()
 		<br>
 		<li class="topbar">Username: {{ username }}</li>
 		<li class="topbar">Credits: {{ currency }}</li>
+		<li class="topbar">Drones: {{ drones }}</li>
 		{% endblock topbar %}
 	</div>
 </div>

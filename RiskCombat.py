@@ -26,6 +26,7 @@ def old_combat(attacking_troops, defending_troops):
 
 def combat(attacking_troops,defending_troops):
 	# troops are now lists!
+	logging.error(attacking_troops)
 
 	atk_all_fighters=[]
 	atk_all_bombers=[]
@@ -146,8 +147,8 @@ def combat(attacking_troops,defending_troops):
 
 	atk_damage_to_small=random.uniform((atk_fighters_damage+atk_corvettes_damage*2)*.7,(atk_fighters_damage+atk_corvettes_damage*2)*1.1)
 	def_damage_to_small=random.uniform((def_fighters_damage+def_corvettes_damage*2)*.85,(def_fighters_damage+def_corvettes_damage*2)*1.15)
-	def_fighters_to_del=atk_damage_to_small/(def_fighters_armor*def_fighters_mobility)
-	atk_fighters_to_del=def_damage_to_small/(atk_fighters_armor*atk_fighters_mobility)-def_fighters_to_del/3
+	def_fighters_to_del=atk_damage_to_small/(def_fighters_armor*def_fighters_mobility+1)
+	atk_fighters_to_del=def_damage_to_small/(atk_fighters_armor*atk_fighters_mobility+1)-def_fighters_to_del/3
 	randomDestroy(def_all_fighters,def_fighters_to_del,.75)
 	randomDestroy(def_all_bombers,def_fighters_to_del/3,.24)
 	randomDestroy(atk_all_fighters,atk_fighters_to_del,.75)
@@ -155,15 +156,15 @@ def combat(attacking_troops,defending_troops):
 
 	atk_damage_to_big=random.uniform((atk_bombers_damage*2+atk_big_damage)*.7,(atk_bombers_damage*2+atk_big_damage)*1.1)
 	def_damage_to_big=random.uniform((def_bombers_damage*2+def_big_damage)*.85,(def_bombers_damage*2+def_big_damage)*1.15)
-	def_frigates_to_del=atk_damage_to_big/def_big_armor
-	atk_frigates_to_del=def_damage_to_big/atk_big_armor
+	def_frigates_to_del=atk_damage_to_big/(def_big_armor+1)
+	atk_frigates_to_del=def_damage_to_big/(atk_big_armor+1)
 	randomDestroy(def_all_frigates,def_frigates_to_del,.75)
 	randomDestroy(def_all_capitals,def_frigates_to_del/3,.24)
 	randomDestroy(atk_all_frigates,atk_frigates_to_del,.75)
 	randomDestroy(atk_all_capitals,atk_frigates_to_del/3,.24)
 
-	atk_extra_dead=(def_damage_to_big*1.5+def_damage_to_small)/(atk_num_corvettes+atk_num_bombers+atk_corvettes_mobility)
-	def_extra_dead=(atk_damage_to_big*1.4+atk_damage_to_small)/(def_num_corvettes*.9+def_num_bombers+def_corvettes_mobility)
+	atk_extra_dead=(def_damage_to_big*1.5+def_damage_to_small)/(atk_num_corvettes+atk_num_bombers+atk_corvettes_mobility+1)
+	def_extra_dead=(atk_damage_to_big*1.4+atk_damage_to_small)/(def_num_corvettes*.9+def_num_bombers+def_corvettes_mobility+1)
 	randomDestroy(def_all_corvettes,def_extra_dead,.85)
 	randomDestroy(atk_all_corvettes,atk_extra_dead,.83)
 

@@ -19,9 +19,7 @@ class AttackHandler(Handler):
 	 		self.redirect('/login')
 		
 	def post(self):
-		Parrot=Ship(armor=99,damage=124,mobility=1,shipclass="Capital",cost=28000,name="Parrot")
-
-		s=[Parrot]  #testing only.  s will be a list of all the ships you choose to send on an attack
+		s=self.user.fleet  #testing only.  s will be a list of all the ships you choose to send on an attack
   
 		if not s:
 			error="You must send at least 1 ship to attack."
@@ -38,12 +36,21 @@ class AttackHandler(Handler):
 				if i.username == person:
 					for ship in s:
 						self.user.fleet.remove(ship) 
-					# self.user.newAttack() with ships that made it back
-					#spoils=RiskCombat.spoilsOfWar()
-					#spoils=int(spoils)
-					#self.user.addCurrency(spoils)
-					#i.addCurrency(-1*spoils)
-					#self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered %d currency." % (om-myunits,spoils))
-					#i.newMessage("You were attacked by %s." % self.user.username, "You lost %d troops and %d currency." % (ot-theirunits,spoils))
+					self.user.newAttack(person,s,60)
+					(natk,ndef)=RiskCombat.combat(s,i.fleet)
+					datk=[]
+					ddef=[]
+					for ship in natk:
+						if ship in s:
+							datk.append(ship)
+					for ship in ndef:
+						if ship in i.fleet:
+							ddef.append(ship)
+					spoils=RiskCombat.spoilsOfWar(datk,ddef,i.resources.currency)
+					spoils=int(spoils)
+					self.user.addCurrency(spoils)
+					i.addCurrency(-1*spoils)
+					self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered %d currency." % (om-myunits,spoils))
+					i.newMessage("You were attacked by %s." % self.user.username, "You lost %d troops and %d currency." % (ot-theirunits,spoils))
 					break
 		self.redirect('/game')

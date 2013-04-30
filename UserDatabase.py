@@ -10,6 +10,8 @@ class Ship(ndb.Model):
 	
 	def toString(self):
 		s=str(self.armor) + "," + str(self.damage) + "," + str(self.mobility) + "," + str(self.shipclass) + "," + self.name + "," + str(self.cost)
+		return s
+
 def stringToShip(s):
 	stats=s.split(',')
 	return Ship(stats[0],stats[1],stats[2],stats[3],stats[4],stats[5])
@@ -70,6 +72,7 @@ class User(ndb.Model):
 			self.attacks.append(Attack(attacker_key=self.key,defender_name=dname,all_ships=serial,return_time=time))
 		self.put()
 		users(True)
+		
 	def getMessages(self):
 		mess=[]
 		for i in self.messages:

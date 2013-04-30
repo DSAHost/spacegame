@@ -3,5 +3,29 @@
 {% block title %}Manage Station{% endblock %}
 
 {% block content %}
-Hello, managestation!
+	Active Drones: {{user.drones}}
+	<br>
+	<br>
+	Drone Effectiveness:
+	<table border="0">
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+		<tr><td></td></tr>
+	</table>
+	<br>
+	<form method="POST">
+		<script type="text/javascript">
+		function showValue(newValue)
+		{
+			document.getElementById("cost").innerHTML=newValue*35;
+		}
+		</script>
+		Number of Drones:
+		<input type="text" value="0" name="units" onchange="showValue(this.value)"> <span class="error">{{error}}</span>
+		<br>
+		Cost: <span name="cost" id="cost" value="10">0</span> credits
+		<br>
+		<input class="button" type="submit" value="Train">
+	</form>
 {% endblock content %}

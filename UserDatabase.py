@@ -43,6 +43,7 @@ class User(ndb.Model):
 	resources=ndb.StructuredProperty(Resources)
 	username=ndb.StringProperty(required=True)
 	fleet=ndb.StructuredProperty(Ship,repeated=True)
+	drones=ndb.IntegerProperty(required=True)
 
 	def addShip(self,ship):
 		newship=Ship(armor=ship.armor,damage=ship.damage,mobility=ship.mobility,shipclass=ship.shipclass,cost=int(ship.cost/2),name=ship.name)
@@ -185,8 +186,11 @@ class User(ndb.Model):
 		while i<n:
 			dif=(datetime.now()-self.attacks[i].time_fought).total_seconds()
 			if dif>self.attacks[i].return_time:
-				for i in self.attacks[i].all_ships:
-					self.addShip(i)
+				s=self.attacks[i].all_ships.split('|')
+				for ind in s:
+					attributes=ind.split(',')
+					add=Ship(armor=attributes[0],damage=attributes[1],mobility=attributes[2],shipclass=attributes[3],name=attributes[4],cost=attributes[5])
+					self.addShip(add)
 				self.attacks.remove(self.attacks[i])
 				needUpdate=True
 				i-=1
@@ -209,7 +213,7 @@ def users(update=False):
 	return accs
 
 def NewAccount(username="",password="",email=""):
-	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=10))
+	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=10),drones=5)
 	a.newMessage("Welcome to Text Sector!", "For help and tutorials go to www.textsector.com/game/tutorials")
 	key=a.newMessage("Notice","You have been awarded 100 currency and 10 units.")
 	users(True)

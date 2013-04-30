@@ -27,7 +27,7 @@
 						<button class="button" value="Submit">Attack</button>
 					</a>
 					<a href="/game/managestation">
-						<button class="button" value="Submit">Upgrade</button>
+						<button class="button" value="Submit">Station</button>
 					</a>
 					<a href="/game/manageunits">
 						<button class="button" value="Submit">Hangar</button>
@@ -59,8 +59,6 @@
 		</div>
 	</div>
 </body>	
-
-<div class="content">{% block content %}{% endblock %}</div>
 <div class="topbar">
 	<div class="wide_margin">
 		{% block topbar %}
@@ -79,5 +77,6 @@
 	</div>
 </div>
 </body>
+<div class="content">{% block content %}{% endblock %}</div>
 {% endblock body_all %}
 </html>

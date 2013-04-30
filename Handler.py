@@ -49,6 +49,7 @@ class Handler(webapp2.RequestHandler):
 			params['attacks']=attacks
 			params['times']=times
 			params['num_attacks']=num_attacks
+			params['user']=self.user
 		t = self.jinja_env.get_template(template)
 		return t.render(params)
 

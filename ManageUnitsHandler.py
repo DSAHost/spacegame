@@ -13,7 +13,7 @@ class ManageUnitsHandler(Handler):
 	def post(self):
 		x=self.request.get('ship')
 		variable = x[0]
-		ids = x[1]
+		ids = x[3]
 		ids=int(ids)
 		ids=[ids]
 		if x == 'sell':

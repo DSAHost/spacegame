@@ -189,7 +189,7 @@ class User(ndb.Model):
 				s=self.attacks[i].all_ships.split('|')
 				for ind in s:
 					attributes=ind.split(',')
-					add=Ship(armor=int(attributes[0]),damage=int(attributes[1]),mobility=int(attributes[2]),shipclass=str(attributes[3]),name=str(attributes[4]),cost=int(attributes[5])
+					add=Ship(armor=int(attributes[0]),damage=int(attributes[1]),mobility=int(attributes[2]),shipclass=str(attributes[3]),name=str(attributes[4]),cost=int(attributes[5]))
 					self.addShip(add)
 				self.attacks.remove(self.attacks[i])
 				needUpdate=True

@@ -8,6 +8,25 @@
 	{% block head %}{% endblock head %}
 </head>
 
+<script type="text/javascript">
+
+var counter=setInterval(timer, 1000);
+
+function timer()
+{
+	count = document.getElementById("clock").innerHTML;
+	count=count-1;
+	if (count < 0)
+	{
+		clearInterval(counter);
+		return;
+	}
+
+ document.getElementById("clock").innerHTML=count;
+}
+
+</script>
+
 {% block body_all %}
 <body class="game" >
 	<div class="sidebar_right">
@@ -42,6 +61,7 @@
 					
 
 					<div method="POST" class="info">
+						<span id="clock">5</span>
 						{% for i in num_attacks %}
 						<span class="subnews"><b>{{attacks[i].defender_name}}</b>: <b>{{attacks[i].num_troops}}</b> return in <b>{{times[i]}} </b>seconds.
 						<hr>

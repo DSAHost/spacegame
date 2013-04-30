@@ -10,7 +10,7 @@ class AttackHandler(Handler):
 		for i in users:
 			if i.username != self.user.username:
 				fxusr.append(i)
-		self.render("attack_creator.html",users=fxusr,error=error)
+		self.render("attack_creator.html",users=fxusr,error=error,ships=self.user.fleet,num_ships=range(len(self.user.fleet)))
 
 	def get(self):
 	 	if self.user:

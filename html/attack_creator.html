@@ -5,17 +5,30 @@
 <body>
 	<form method="post">
 		<br>
-		Target:
+		<div class="buy_ship">
+			Target:
 		<select name="target">
 			{% for tgt in users %}
 			<option value={{tgt.username}}>{{tgt.username}}</option>
 			{% endfor %}
 		</select>
+	</div>
 		<br>
-		Troops to send:
-		<input type="text" name="num_troops"> 
-		<span class="error">{{error}}</span>
-		<br>
+
+	{% for i in num_ships %}
+		<div class="buy_ship">
+			<img src="../res/img/used/{{ships[i].name}}.png" alt="{{ships[i].name}}" class="ship">
+			<div>
+				<table border="0">
+					<tr><td>Value:</td><td>{{ships[i].cost / 2}}</td></tr>
+					<tr><td>Armor:</td><td>{{ships[i].armor}}</td></tr>
+					<tr><td>Mobility:</td><td>{{ships[i].mobility}}</td></tr>
+					<tr><td>Damage:</td><td>{{ships[i].damage}}</td></tr>
+				</table>
+			</div>
+		</div>
+	{% endfor %}
+
 		<button class="button" type="submit"> Attack
 		<br>
 	</form>

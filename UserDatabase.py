@@ -43,6 +43,7 @@ class User(ndb.Model):
 	fleet=ndb.StructuredProperty(Ship,repeated=True)
 
 	def addShip(self,ship):
+		ship.cost=(int) (ship.cost/2)
 		if not self.fleet:
 			self.fleet=[ship]
 		else:
@@ -97,7 +98,7 @@ class User(ndb.Model):
 				logging.error(i)
 				if i in ship_ids:
 					logging.error("if")
-					self.addCurrency(int(self.fleet[i].cost*.5))
+					self.addCurrency(int(self.fleet[i].cost))
 					self.fleet.remove(self.fleet[i])
 				i-=1
 		except AttributeError:

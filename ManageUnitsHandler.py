@@ -16,11 +16,11 @@ class ManageUnitsHandler(Handler):
 		ids = x[1]
 		ids=int(ids)
 		ids=[ids]
-		if x = 'sell':
+		if x == 'sell':
 			if ids:
 				self.user.sellShips(ids)
 			self.redirect('/game')
-		if x = 'upgrade':
+		if x == 'upgrade':
 			self.user.upgradeShip(ids)
 			self.redirect('/game')
 

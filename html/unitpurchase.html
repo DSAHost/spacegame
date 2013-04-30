@@ -20,10 +20,10 @@
 		</div>
 		<div class="ship_stats">
 			<table border="0">
-				<tr><td><img src="../res/img/used/coin.png" alt= "Value:" width=20px height=20px></td><td>{{ships[i].cost}}</td></tr>
-				<tr><td><img src="../res/img/used/shield.png" alt= "Armor:" width=20px height=20px></td><td>{{ships[i].armor}}</td></tr>
-				<tr><td><img src="../res/img/used/mobility.png" alt= "Mobility:" width=20px height=20px></td><td>{{ships[i].mobility}}</td></tr>
-				<tr><td><img src="../res/img/used/sword.png" alt= "Damage:" width=20px height=20px></td><td>{{ships[i].damage}}</td></tr>
+				<tr><td><img src="../res/img/used/coin.png" alt= "Value:" width=20px height=20px></td><td>{{ships.cost}}</td></tr>
+				<tr><td><img src="../res/img/used/shield.png" alt= "Armor:" width=20px height=20px></td><td>{{ships.armor}}</td></tr>
+				<tr><td><img src="../res/img/used/mobility.png" alt= "Mobility:" width=20px height=20px></td><td>{{ship.mobility}}</td></tr>
+				<tr><td><img src="../res/img/used/sword.png" alt= "Damage:" width=20px height=20px></td><td>{{ships.damage}}</td></tr>
 			</table>
 		</div>
 		<input type="hidden" name="ship" value={{ship.name}}></input>
@@ -34,4 +34,5 @@
 {% endif %}
 <br>
 {% endfor %}
+</form>
 {% endblock content %}

@@ -393,14 +393,16 @@ div.buy_ship {
 	margin:5px;
 }
 
-div.buy_ship {
+/*div.buy_ship {
 	margin:5px;
-}
+}*/
 
 div.ship_stats {
+
 	display: inline;
 	position:relative;
-	left: 670px;
+
+	left: 50px;
 }
 
 div.ship_price {
@@ -408,6 +410,9 @@ div.ship_price {
 }
 
 img.ship{
+	float: left;
+	margin-top:10px;
+	margin-left:10px;
 	
 }
 

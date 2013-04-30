@@ -43,11 +43,11 @@ class User(ndb.Model):
 	fleet=ndb.StructuredProperty(Ship,repeated=True)
 
 	def addShip(self,ship):
-		ship.cost=(int) (ship.cost/2)
+		newship=Ship(armor=ship.armor,damage=ship.damage,mobility=ship.mobility,shipclass=ship.shipclass,cost=int(ship.cost/2),name=ship.name)
 		if not self.fleet:
-			self.fleet=[ship]
+			self.fleet=[newship]
 		else:
-			self.fleet.append(ship)
+			self.fleet.append(newship)
 
 	def newMessage(self,s,c):
 		if not self.messages:

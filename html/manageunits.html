@@ -8,14 +8,26 @@
 </center>
 <br>
 {% for i in num_ships %}
-<form method="POST" class="buy_ship">
-	<div class="buy_ship">
+<div class="buy_ship">
+	
 		<img src="../res/img/used/{{ships[i].name}}.png" alt="{{ships[i].name}}" class="ship">
-
+<!-- Sell -->
+		<form method="POST" class="buy_ship">	
 		<div class="buy_ship_button">
-			<input class="button" type="Submit" value="Upgrade {{ships[i].name}}">
  			<input class="button" type="Submit" value="Sell {{ships[i].name}}">
 		</div>
+		<input type="hidden" name="ship" value=sell,{{i}}></input> <!-- was {{i}} instead of sell -->
+		</form>
+
+<!-- Upgrade -->
+		<form method="POST" class="buy_ship">	
+		<div class="buy_ship_button">
+ 			<input class="button" type="Submit" value="Upgrade {{ships[i].name}}">
+		</div>
+		<input type="hidden" name="ship" value=upgrade,{{i}}></input>
+		</form>
+		<br>
+
 		<div class="ship_stats">
 			<table border="0">
 				<tr><td><img src="../res/img/used/coin.png" alt= "Value:" width=20px height=20px></td><td>{{ships[i].cost}}</td></tr>
@@ -24,9 +36,10 @@
 				<tr><td><img src="../res/img/used/sword.png" alt= "Damage:" width=20px height=20px></td><td>{{ships[i].damage}}</td></tr>
 			</table>
 		</div>
-		<input type="hidden" name="ship" value={{i}}></input>
-	</div>
-</form>
+		
+
+</div>
+
 <br>
 {% endfor %}
 {% endblock content %}

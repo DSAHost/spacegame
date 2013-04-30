@@ -387,7 +387,7 @@ div.logo{
 
 }
 
-form.buy_ship {
+div.buy_ship {
 	border-radius:5px;
 	border:1px solid #F87431;
 	margin:5px;
@@ -412,5 +412,5 @@ img.ship{
 }
 
 div.buy_ship_button{
-	/*float:right;*/
+	float:right;
 }

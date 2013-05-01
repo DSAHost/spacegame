@@ -410,7 +410,7 @@ div.ship_price {
 }
 
 img.ship{
-	float: left;
+	/*float: left;*/
 	margin-top:10px;
 	margin-left:10px;
 	

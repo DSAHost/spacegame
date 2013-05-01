@@ -127,6 +127,7 @@ class User(ndb.Model):
 							ship.armor += int(ship.armor*.2+1)
 							ship.damage += int(ship.damage*.2+1)
 							ship.mobilty += int(ship.mobility*.2+1)
+							ship.cost += int(ship.cost*.2)
 							num_of_upgrades+=1
 							self.addCurrency(-1*int(self.fleet[i].cost*.2))
 					i-=1

@@ -227,18 +227,10 @@ class User(ndb.Model):
 			dif=(datetime.now()-self.attacks[i].time_fought).total_seconds()
 			if dif>self.attacks[i].return_time:
 				s=self.attacks[i].all_ships.split('|')
-<<<<<<< HEAD
-				logging.error(s)
 				for j in range(len(s)-1):
 					attributes=s[j].split(',')
 					add=stringToShip(s[j])
-					self.addShip(add)
-=======
-				for ind in s:
-					attributes=ind.split(',')
-					add=Ship(armor=int(attributes[0]),damage=int(attributes[1]),mobility=int(attributes[2]),shipclass=str(attributes[3]),name=str(attributes[4]),cost=int(attributes[5]))
 					self.addShip(add,False)
->>>>>>> a
 				self.attacks.remove(self.attacks[i])
 				needUpdate=True
 				i-=1

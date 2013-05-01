@@ -46,8 +46,13 @@ class User(ndb.Model):
 	fleet=ndb.StructuredProperty(Ship,repeated=True)
 	drones=ndb.IntegerProperty(required=True)
 
-	def addShip(self,ship):
-		newship=Ship(armor=ship.armor,damage=ship.damage,mobility=ship.mobility,shipclass=ship.shipclass,cost=int(ship.cost/2),name=ship.name)
+	def addShip(self,ship,half=True):
+		newship=None
+		if half:
+			newship=Ship(armor=ship.armor,damage=ship.damage,mobility=ship.mobility,shipclass=ship.shipclass,cost=int(ship.cost/2),name=ship.name)
+		else:
+			newship=Ship(armor=ship.armor,damage=ship.damage,mobility=ship.mobility,shipclass=ship.shipclass,cost=int(ship.cost),name=ship.name)
+
 		if not self.fleet:
 			self.fleet=[newship]
 		else:
@@ -120,7 +125,7 @@ class User(ndb.Model):
 						if ship.num_of_upgrades < 3:
 							ship.armor += int(ship.armor*.2+1)
 							ship.damage += int(ship.damage*.2+1)
-							ship.mobilty += int(ship.mobility*.2+1)
+							ship.mobilty += (1+int(ship.mobility*.2))
 							ship.cost += int(ship.cost*.2)
 							num_of_upgrades+=1
 							self.addCurrency(-1*int(self.fleet[i].cost*.2))
@@ -222,11 +227,18 @@ class User(ndb.Model):
 			dif=(datetime.now()-self.attacks[i].time_fought).total_seconds()
 			if dif>self.attacks[i].return_time:
 				s=self.attacks[i].all_ships.split('|')
+<<<<<<< HEAD
 				logging.error(s)
 				for j in range(len(s)-1):
 					attributes=s[j].split(',')
 					add=stringToShip(s[j])
 					self.addShip(add)
+=======
+				for ind in s:
+					attributes=ind.split(',')
+					add=Ship(armor=int(attributes[0]),damage=int(attributes[1]),mobility=int(attributes[2]),shipclass=str(attributes[3]),name=str(attributes[4]),cost=int(attributes[5]))
+					self.addShip(add,False)
+>>>>>>> a
 				self.attacks.remove(self.attacks[i])
 				needUpdate=True
 				i-=1

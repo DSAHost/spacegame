@@ -23,6 +23,6 @@ class ManageUnitsHandler(Handler):
 		if variable == 'upgrade':
 			if ids:
 				self.user.upgradeShip(ids)
-		self.redirect('/game')
+		self.redirect('/game/manageunits')
 
 	 		

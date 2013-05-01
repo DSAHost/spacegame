@@ -113,11 +113,24 @@ class User(ndb.Model):
 		users(True)
 
 	def upgradeShip(self, ship_ids):
-		ship_ids = int(ship_ids)
-		ship = self.fleet[ship_ids]
-		ship.armor += ship.armor*.2
-		ship.damage += ship.damage*.2
-		ship.mobilty += ship.mobility*.2
+			try:
+				ship_ids.sort()
+				i=len(self.fleet)
+				while i>=0:
+					logging.error(ship_ids)
+					logging.error(i)
+					if i in ship_ids:
+						logging.error("if")
+						ship = self.fleet[int(i)]
+						ship.armor += int(ship.armor*.2+1)
+						ship.damage += int(ship.damage*.2+1)
+						ship.mobilty += int(ship.mobility*.2+1)
+						self.addCurrency(-1*int(self.fleet[i].cost*.2))
+					i-=1
+			except AttributeError:
+				pass
+			self.put()
+			users(True)
 
 	def getAttacks(self):
 		attks=[]

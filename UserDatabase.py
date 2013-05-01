@@ -123,7 +123,7 @@ class User(ndb.Model):
 					if i in ship_ids:
 						ship = self.fleet[int(i)]
 						if self.user.getResources[0] > int(self.fleet[i].cost*.2):
-							if ship.num_of_upgrades < 3:
+							#if ship.num_of_upgrades < 3:
 								ship.armor += int(ship.armor*.2+1)
 								ship.damage += int(ship.damage*.2+1)
 								ship.mobility += int(ship.mobility*.2+1)

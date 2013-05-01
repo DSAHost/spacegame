@@ -27,12 +27,12 @@ class UnitPurchaseHandler(Handler):
 	 		self.redirect('/login')
 
 	def post(self):
-		id=self.request.get("ship") #testing.  This must correspond to which buy button was pressed
-		ship=match[id]
+		ids=self.request.get("ship") #testing.  This must correspond to which buy button was pressed
+		ship=match[ids]
 		if ship.cost<=self.user.getResources()[0]:
 			self.user.addShip(ship)
 			self.user.addCurrency(-ship.cost)
 			self.redirect('/game')
 			return
 		else:
-			self.render_front(error="You do not have enough credits to purchase this ship.",name=id)
+			self.render_front(error="You do not have enough credits to purchase this ship.",name=ids)

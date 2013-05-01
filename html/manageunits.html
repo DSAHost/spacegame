@@ -25,7 +25,10 @@
 							<tr><td><img src="../res/img/used/shield.png" alt= "Armor:" width=20px height=20px></td><td>{{ships[i].armor}}</td></tr>
 							<tr><td><img src="../res/img/used/mobility.png" alt= "Mobility:" width=20px height=20px></td><td>{{ships[i].mobility}}</td></tr>
 							<tr><td><img src="../res/img/used/sword.png" alt= "Damage:" width=20px height=20px></td><td>{{ships[i].damage}}</td></tr>
-							<tr><td><img src="../res/img/used/ga.png" alt= "Upgrade:" width=20px height=20px></td><td>{{ships[i].num_of_upgrades}}/3</td></tr><span class="error">{{error}}</span>
+							<tr><td><img src="../res/img/used/ga.png" alt= "Upgrade:" width=20px height=20px></td><td>{{ships[i].num_of_upgrades}}/3</td></tr>
+							{% if num==i %}
+								<span class="error">{{error}}</span>
+								{% endif %}
 							
 						</table>
 					</div>

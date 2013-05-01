@@ -46,10 +46,6 @@ class User(ndb.Model):
 	fleet=ndb.StructuredProperty(Ship,repeated=True)
 	drones=ndb.IntegerProperty(required=True)
 
-<<<<<<< HEAD
-	def addShip(self,ship):
-		newship=Ship(armor=ship.armor,damage=ship.damage,mobility=ship.mobility,shipclass=ship.shipclass,cost=int(ship.cost/2),name=ship.name)
-=======
 	def addShip(self,ship,half=True):
 		newship=None
 		if half:
@@ -57,7 +53,6 @@ class User(ndb.Model):
 		else:
 			newship=Ship(armor=ship.armor,damage=ship.damage,mobility=ship.mobility,shipclass=ship.shipclass,cost=int(ship.cost),name=ship.name,num_of_upgrades=ship.num_of_upgrades)
 
->>>>>>> a
 		if not self.fleet:
 			self.fleet=[newship]
 		else:
@@ -202,7 +197,7 @@ class User(ndb.Model):
 	def getResources(self):
 		time=datetime.now()
 		value_adj=currencyAdjust(self,time)
-		return [self.resources.currency+value_adj]
+		return [self.resources.currency+value_adj,self.user.drones]
 		
 	def setResources(self,currency):
 		self.resources.currency=currency

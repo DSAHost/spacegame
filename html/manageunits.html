@@ -9,35 +9,54 @@
 <br>
 {% for i in num_ships %}
 <div class="buy_ship">
-	
-		<img src="../res/img/used/{{ships[i].name}}.png" alt="{{ships[i].name}}" class="ship">
-<!-- Sell -->
-		<form method="POST" class="buy_ship">	
-		<div class="buy_ship_button">
- 			<input class="button" type="Submit" value="Sell {{ships[i].name}}">
-		</div>
-		<input type="hidden" name="ship" value=sell|{{i}}></input> <!-- was {{i}} instead of sell -->
-		</form>
-
-<!-- Upgrade -->
-		<form method="POST" class="buy_ship">	
-		<div class="buy_ship_button">
- 			<input class="button" type="Submit" value="Upgrade {{ships[i].name}}">
-		</div>
-		<input type="hidden" name="ship" value=upgrade|{{i}}></input>
-		</form>
-		<br>
-		<form class="buy_ship">
-		<div class="ship_stats">
-			<table border="0">
-				<tr><td><img src="../res/img/used/coin.png" alt= "Value:" width=20px height=20px></td><td>{{ships[i].cost}}</td></tr>
-				<tr><td><img src="../res/img/used/shield.png" alt= "Armor:" width=20px height=20px></td><td>{{ships[i].armor}}</td></tr>
-				<tr><td><img src="../res/img/used/mobility.png" alt= "Mobility:" width=20px height=20px></td><td>{{ships[i].mobility}}</td></tr>
-				<tr><td><img src="../res/img/used/sword.png" alt= "Damage:" width=20px height=20px></td><td>{{ships[i].damage}}</td></tr>
-				<tr><td>Upgrade: </td><td>{{ships[i].num_of_upgrades}}/3</td></tr>
-			</table>
-		</div>
-		</form>
+	<table border="0" width=800>
+		<tr>
+			<td style="width:550px">
+				<img src="../res/img/used/{{ships[i].name}}.png" alt="{{ships[i].name}}" class="ship">
+			</td>
+			<!-- Ship stats -->
+			<td style="width:100px">
+				<form class="buy_ship">
+					<div class="ship_stats">
+						<table border="0">
+							<tr><td><img src="../res/img/used/coin.png" alt= "Value:" width=20px height=20px></td><td>{{ships[i].cost}}</td></tr>
+							<tr><td><img src="../res/img/used/shield.png" alt= "Armor:" width=20px height=20px></td><td>{{ships[i].armor}}</td></tr>
+							<tr><td><img src="../res/img/used/mobility.png" alt= "Mobility:" width=20px height=20px></td><td>{{ships[i].mobility}}</td></tr>
+							<tr><td><img src="../res/img/used/sword.png" alt= "Damage:" width=20px height=20px></td><td>{{ships[i].damage}}</td></tr>
+							<tr><td>Upgrade: </td><td>{{ships[i].num_of_upgrades}}/3</td></tr>
+						</table>
+					</div>
+				</form>
+			</td>
+			<td style="width:10">
+				<table>
+					<!-- Sell -->
+					<tr>
+						<td>
+							<form method="POST" class="buy_ship">	
+								<div class="buy_ship_button">
+									<input class="button" type="Submit" value="Sell {{ships[i].name}}">
+								</div>
+								<input type="hidden" name="ship" value=sell|{{i}}></input> <!-- was {{i}} instead of sell -->
+							</form>
+						</td>
+					</tr>
+					<!-- Upgrade -->
+					<tr>
+						<td>
+							<form method="POST" class="buy_ship">	
+								<div class="buy_ship_button">
+									<input class="button" type="Submit" value="Upgrade {{ships[i].name}}">
+								</div>
+								<input type="hidden" name="ship" value=upgrade|{{i}}></input>
+							</form>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+>>>>>>> awesomized hangar
 </div>
 
 <br>

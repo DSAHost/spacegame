@@ -101,10 +101,7 @@ class User(ndb.Model):
 			ship_ids.sort()
 			i=len(self.fleet)
 			while i>=0:
-				logging.error(ship_ids)
-				logging.error(i)
 				if i in ship_ids:
-					logging.error("if")
 					self.addCurrency(int(self.fleet[i].cost))
 					self.fleet.remove(self.fleet[i])
 				i-=1
@@ -118,10 +115,7 @@ class User(ndb.Model):
 				ship_ids.sort()
 				i=len(self.fleet)
 				while i>=0:
-					logging.error(ship_ids)
-					logging.error(i)
 					if i in ship_ids:
-						logging.error("if")
 						ship = self.fleet[int(i)]
 						if ship.num_of_upgrades < 3:
 							ship.armor += int(ship.armor*.2+1)

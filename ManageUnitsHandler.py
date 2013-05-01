@@ -12,6 +12,7 @@ class ManageUnitsHandler(Handler):
 
 	def post(self):
 		x=self.request.get('ship')
+		x = x.split("|")
 		variable = x[0]
 		ids = x[3]
 		ids=int(ids)

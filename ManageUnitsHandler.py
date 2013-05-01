@@ -2,8 +2,8 @@ from Handler import *
 from utils import *
 
 class ManageUnitsHandler(Handler):
-	def render_front(self):
-		self.render("manageunits.html",ships=self.user.fleet,num_ships=range(len(self.user.fleet)))
+	def render_front(self,error=""):
+		self.render("manageunits.html",ships=self.user.fleet,num_ships=range(len(self.user.fleet)),error=error)
 	def get(self):
 	 	if self.user:
 	 		self.render_front()
@@ -21,8 +21,16 @@ class ManageUnitsHandler(Handler):
 			if ids:
 				self.user.sellShips(ids)
 		if variable == 'upgrade':
-			if ids:
-				self.user.upgradeShip(ids)
+			resources=self.user.getResources()
+			if int(self.user.fleet[ids[0]].cost*.2)>resources[0]:
+				self.render_front(error="You do not have enough money to upgrade this ship.")
+				return
+			elif self.user.fleet[ids[0]].num_of_upgrades>=3:
+				self.render_front(error="This ship has been fully upgraded.")
+				return
+			else:
+				if ids:
+					self.user.upgradeShip(ids)
 		self.redirect('/game/manageunits')
 
 	 		

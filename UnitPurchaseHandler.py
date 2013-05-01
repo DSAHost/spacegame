@@ -29,7 +29,7 @@ class UnitPurchaseHandler(Handler):
 	def post(self):
 		id=self.request.get("ship") #testing.  This must correspond to which buy button was pressed
 		ship=match[id]
-		if ship.cost<self.user.getResources()[0]:
+		if ship.cost<=self.user.getResources()[0]:
 			self.user.addShip(ship)
 			self.user.addCurrency(-ship.cost)
 			self.redirect('/game')

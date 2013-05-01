@@ -10,7 +10,7 @@ class Ship(ndb.Model):
 	num_of_upgrades=ndb.IntegerProperty(required=True)
 	
 	def toString(self):
-		s=str(self.armor) + "," + str(self.damage) + "," + str(self.mobility) + "," + str(self.shipclass) + "," + self.name + "," + str(self.cost)
+		s=str(self.armor) + "," + str(self.damage) + "," + str(self.mobility) + "," + str(self.shipclass) + "," + self.name + "," + str(self.cost) + "," + self.num_of_upgrades
 		return s
 
 def stringToShip(s):

@@ -161,21 +161,19 @@ class User(ndb.Model):
 		if self.drones<=100:
 			self.resources.currency_add=self.drones
 		elif self.drones<=200:
-			self.resources.currency_add=100+(0.8*(self.drones-100))
+			self.resources.currency_add=int(100+(0.8*(self.drones-100)))
 		elif self.drones<=300:
-			self.resources.currency_add=180+(0.6*(self.drones-200))
+			self.resources.currency_add=int(180+(0.6*(self.drones-200)))
 		elif self.drones<=700:
-			self.resources.currency_add=240+(0.4*(self.drones-300))
+			self.resources.currency_add=int(240+(0.4*(self.drones-300)))
 		elif self.drones<=1000:
-			self.resources.currency_add=400+(0.333333333*(self.drones-700))
+			self.resources.currency_add=int(400+(0.333333333*(self.drones-700)))
 		elif self.drones<=2000:
-			self.resources.currency_add=500+(0.1*(self.drones-1000))
+			self.resources.currency_add=int(500+(0.1*(self.drones-1000)))
 		elif self.drones<=7000:
-			self.resources.currency_add=600+(0.05*(self.drones-2000))
+			self.resources.currency_add=int(600+(0.05*(self.drones-2000)))
 		else:
-			self.resources.currency_add=700+(0.01*(self.drones-7000))
-
-		self.resources.currency_add=int(self.resources.currency_add)
+			self.resources.currency_add=int(700+(0.01*(self.drones-7000)))
 		self.put()
 		users(True)
 

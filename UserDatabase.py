@@ -10,12 +10,12 @@ class Ship(ndb.Model):
 	num_of_upgrades=ndb.IntegerProperty(required=True)
 	
 	def toString(self):
-		s=str(self.armor) + "," + str(self.damage) + "," + str(self.mobility) + "," + str(self.shipclass) + "," + self.name + "," + str(self.cost) + "," + self.num_of_upgrades
+		s=str(self.armor) + "," + str(self.damage) + "," + str(self.mobility) + "," + str(self.shipclass) + "," + self.name + "," + str(self.cost) + "," + str(self.num_of_upgrades)
 		return s
 
 def stringToShip(s):
 	stats=s.split(',')
-	return Ship(armor=int(stats[0]),damage=int(stats[1]),mobility=int(stats[2]),shipclass=str(stats[3]),name=str(stats[4]),cost=int(stats[5]))
+	return Ship(armor=int(stats[0]),damage=int(stats[1]),mobility=int(stats[2]),shipclass=str(stats[3]),name=str(stats[4]),cost=int(stats[5]),num_of_upgrades=int(stats[6]))
 
 class Attack(ndb.Model):
 	attacker_key=ndb.KeyProperty(required=True)
@@ -46,8 +46,18 @@ class User(ndb.Model):
 	fleet=ndb.StructuredProperty(Ship,repeated=True)
 	drones=ndb.IntegerProperty(required=True)
 
+<<<<<<< HEAD
 	def addShip(self,ship):
 		newship=Ship(armor=ship.armor,damage=ship.damage,mobility=ship.mobility,shipclass=ship.shipclass,cost=int(ship.cost/2),name=ship.name)
+=======
+	def addShip(self,ship,half=True):
+		newship=None
+		if half:
+			newship=Ship(armor=ship.armor,damage=ship.damage,mobility=ship.mobility,shipclass=ship.shipclass,cost=int(ship.cost/2),name=ship.name,num_of_upgrades=0)
+		else:
+			newship=Ship(armor=ship.armor,damage=ship.damage,mobility=ship.mobility,shipclass=ship.shipclass,cost=int(ship.cost),name=ship.name,num_of_upgrades=ship.num_of_upgrades)
+
+>>>>>>> a
 		if not self.fleet:
 			self.fleet=[newship]
 		else:
@@ -120,7 +130,7 @@ class User(ndb.Model):
 						if ship.num_of_upgrades < 3:
 							ship.armor += int(ship.armor*.2+1)
 							ship.damage += int(ship.damage*.2+1)
-							ship.mobility += int(ship.mobility*.2+1)
+							ship.mobility += (1+int(ship.mobility*.2))
 							ship.cost += int(ship.cost*.2)
 							ship.num_of_upgrades+=1
 							self.addCurrency(-1*int(self.fleet[i].cost*.2))

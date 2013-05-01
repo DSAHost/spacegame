@@ -9,13 +9,15 @@
 <br>
 {% for i in num_ships %}
 <div class="buy_ship">
-	<table border="0" width=800>
+	<table border="0" width=800 style="margin-top:20px">
 		<tr>
-			<td style="width:550px">
+			<td style="width:500px">
+				<center>
 				<img src="../res/img/used/{{ships[i].name}}.png" alt="{{ships[i].name}}" class="ship">
+			</center>
 			</td>
 			<!-- Ship stats -->
-			<td style="width:100px">
+			<td style="width:100px align:left">
 				<form class="buy_ship">
 					<div class="ship_stats">
 						<table border="0">
@@ -29,7 +31,7 @@
 					</div>
 				</form>
 			</td>
-			<td style="width:10">
+			<td style="width:100px">
 				<table>
 					<!-- Sell -->
 					<tr>

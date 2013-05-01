@@ -20,8 +20,7 @@ class AttackHandler(Handler):
 		
 	def post(self):
 		s=self.user.fleet  #testing only.  s will be a list of all the ships you choose to send on an attack
-  
-		if not s:
+  		if not s:
 			error="You must send at least 1 ship to attack."
 			self.render_front(error)
 			return
@@ -30,7 +29,6 @@ class AttackHandler(Handler):
 		person=str(person)
 		accs=users()
 		accs=list(accs)
-
 		na=0
 		nd=0
 		ta=0
@@ -39,9 +37,9 @@ class AttackHandler(Handler):
 		if s and person:
 			for i in accs:
 				if i.username == person:
-					for ship in s:
-						self.user.fleet.remove(ship) 
-						na+=1
+					na=len(s)
+					for j in xrange(len(s) - 1, -1, -1):
+						self.user.fleet.remove(s[j]) 
 					self.user.newAttack(person,s,60)
 					if i.fleet:
 						nd=len(i.fleet)
@@ -51,18 +49,23 @@ class AttackHandler(Handler):
 						for ship in natk:
 							if ship in s:
 								datk.append(ship)
-								ta+=1
+						ta=len(natk)
 						for ship in ndef:
 							if ship in i.fleet:
 								ddef.append(ship)
-								td+=1
+						td=len(ndef)
 						spoils=RiskCombat.spoilsOfWar(datk,ddef,i.resources.currency)
 						spoils=int(spoils)
 						self.user.addCurrency(spoils)
 					else:
 						spoils=int(i.resources.currency*.65)
 						self.user.addCurrency(spoils)
+						ta=na
 					i.addCurrency(-1*spoils)
+					logging.error(na)
+					logging.error(ta)
+					logging.error(nd)
+					logging.error(td)
 					self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered %d currency." % (na-ta,spoils))
 					i.newMessage("You were attacked by %s." % self.user.username, "You lost %d troops and %d currency." % (nd-td,spoils))
 					break

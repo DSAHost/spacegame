@@ -226,7 +226,6 @@ class User(ndb.Model):
 			dif=(datetime.now()-self.attacks[i].time_fought).total_seconds()
 			if dif>self.attacks[i].return_time:
 				s=self.attacks[i].all_ships.split('|')
-				logging.error(s)
 				for j in range(len(s)-1):
 					attributes=s[j].split(',')
 					add=stringToShip(s[j])

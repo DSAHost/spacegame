@@ -197,7 +197,7 @@ class User(ndb.Model):
 	def getResources(self):
 		time=datetime.now()
 		value_adj=currencyAdjust(self,time)
-		return [self.resources.currency+value_adj,self.user.drones]
+		return [self.resources.currency+value_adj,self.drones]
 		
 	def setResources(self,currency):
 		self.resources.currency=currency

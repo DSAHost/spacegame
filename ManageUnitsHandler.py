@@ -15,17 +15,14 @@ class ManageUnitsHandler(Handler):
 		x = x.split("|")
 		variable = x[0]
 		ids = x[1]
-		print variable
-		print ids
 		ids=int(ids)
 		ids=[ids]
-		if x == 'sell':
+		if variable == 'sell':
 			if ids:
 				self.user.sellShips(ids)
-		self.redirect('/game')
-		if x == 'upgrade':
+		if variable == 'upgrade':
 			if ids:
 				self.user.upgradeShip(ids)
-			self.redirect('/game')
+		self.redirect('/game')
 
 	 		

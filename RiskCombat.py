@@ -1,4 +1,5 @@
 import random
+import logging
 
 def old_combat(attacking_troops, defending_troops):
 	attack = [random.randint(1,6)]
@@ -26,8 +27,6 @@ def old_combat(attacking_troops, defending_troops):
 
 def combat(attacking_troops,defending_troops):
 	# troops are now lists!
-	logging.error(attacking_troops)
-
 	atk_all_fighters=[]
 	atk_all_bombers=[]
 	atk_all_corvettes=[]
@@ -57,6 +56,7 @@ def combat(attacking_troops,defending_troops):
 	atk_num_corvettes=0
 	atk_num_frigates=0
 	for i in attacking_troops:
+		i=Ship(i)
 		atk_num_ships+=1
 		if i.shipclass=="Fighter":
 			atk_fighters_armor+=i.armor
@@ -110,6 +110,7 @@ def combat(attacking_troops,defending_troops):
 	def_num_corvettes=0
 	def_num_frigates=0
 	for i in defending_troops:
+		i=Ship(i)
 		def_num_ships+=1
 		if i.shipclass=="Fighter":
 			def_fighters_armor+=i.armor
@@ -144,11 +145,11 @@ def combat(attacking_troops,defending_troops):
 	def_corvettes_mobility/=def_num_corvettes
 	def_big_mobility/=def_num_fighters
 	def_big_armor+=def_num_frigates
-
 	atk_damage_to_small=random.uniform((atk_fighters_damage+atk_corvettes_damage*2)*.7,(atk_fighters_damage+atk_corvettes_damage*2)*1.1)
 	def_damage_to_small=random.uniform((def_fighters_damage+def_corvettes_damage*2)*.85,(def_fighters_damage+def_corvettes_damage*2)*1.15)
 	def_fighters_to_del=atk_damage_to_small/(def_fighters_armor*def_fighters_mobility+1)
 	atk_fighters_to_del=def_damage_to_small/(atk_fighters_armor*atk_fighters_mobility+1)-def_fighters_to_del/3
+
 	randomDestroy(def_all_fighters,def_fighters_to_del,.75)
 	randomDestroy(def_all_bombers,def_fighters_to_del/3,.24)
 	randomDestroy(atk_all_fighters,atk_fighters_to_del,.75)

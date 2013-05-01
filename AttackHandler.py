@@ -28,29 +28,42 @@ class AttackHandler(Handler):
 
 		person=self.request.get('target')
 		person=str(person)
-
 		accs=users()
 		accs=list(accs)
+
+		na=0
+		nd=0
+		ta=0
+		td=0
+
 		if s and person:
 			for i in accs:
 				if i.username == person:
 					for ship in s:
 						self.user.fleet.remove(ship) 
+						na+=1
 					self.user.newAttack(person,s,60)
-					(natk,ndef)=RiskCombat.combat(s,i.fleet)
-					datk=[]
-					ddef=[]
-					for ship in natk:
-						if ship in s:
-							datk.append(ship)
-					for ship in ndef:
-						if ship in i.fleet:
-							ddef.append(ship)
-					spoils=RiskCombat.spoilsOfWar(datk,ddef,i.resources.currency)
-					spoils=int(spoils)
-					self.user.addCurrency(spoils)
+					if i.fleet:
+						nd=len(i.fleet)
+						(natk,ndef)=RiskCombat.combat(s,i.fleet)
+						datk=[]
+						ddef=[]
+						for ship in natk:
+							if ship in s:
+								datk.append(ship)
+								ta+=1
+						for ship in ndef:
+							if ship in i.fleet:
+								ddef.append(ship)
+								td+=1
+						spoils=RiskCombat.spoilsOfWar(datk,ddef,i.resources.currency)
+						spoils=int(spoils)
+						self.user.addCurrency(spoils)
+					else:
+						spoils=int(i.resources.currency*.65)
+						self.user.addCurrency(spoils)
 					i.addCurrency(-1*spoils)
-					self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered %d currency." % (om-myunits,spoils))
-					i.newMessage("You were attacked by %s." % self.user.username, "You lost %d troops and %d currency." % (ot-theirunits,spoils))
+					self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered %d currency." % (na-ta,spoils))
+					i.newMessage("You were attacked by %s." % self.user.username, "You lost %d troops and %d currency." % (nd-td,spoils))
 					break
 		self.redirect('/game')

@@ -15,7 +15,7 @@ class Ship(ndb.Model):
 
 def stringToShip(s):
 	stats=s.split(',')
-	return Ship(stats[0],stats[1],stats[2],stats[3],stats[4],stats[5])
+	return Ship(armor=int(stats[0]),damage=int(stats[1]),mobility=int(stats[2]),shipclass=str(stats[3]),name=str(stats[4]),cost=int(stats[5]))
 
 class Attack(ndb.Model):
 	attacker_key=ndb.KeyProperty(required=True)
@@ -227,9 +227,10 @@ class User(ndb.Model):
 			dif=(datetime.now()-self.attacks[i].time_fought).total_seconds()
 			if dif>self.attacks[i].return_time:
 				s=self.attacks[i].all_ships.split('|')
-				for ind in s:
-					attributes=ind.split(',')
-					add=Ship(armor=int(attributes[0]),damage=int(attributes[1]),mobility=int(attributes[2]),shipclass=str(attributes[3]),name=str(attributes[4]),cost=int(attributes[5]))
+				logging.error(s)
+				for j in range(len(s)-1):
+					attributes=s[j].split(',')
+					add=stringToShip(s[j])
 					self.addShip(add)
 				self.attacks.remove(self.attacks[i])
 				needUpdate=True

@@ -14,7 +14,7 @@ class ManageUnitsHandler(Handler):
 		x=self.request.get('ship')
 		x = x.split("|")
 		variable = x[0]
-		ids = x[3]
+		ids = x[1]
 		ids=int(ids)
 		ids=[ids]
 		if x == 'sell':

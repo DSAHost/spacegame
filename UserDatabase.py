@@ -113,7 +113,8 @@ class User(ndb.Model):
 		users(True)
 
 	def upgradeShip(self, ship_ids):
-		ship = fleet[i]
+		ship_ids = int(ship_ids)
+		ship = self.fleet[ship_ids]
 		ship.armor += ship.armor*.2
 		ship.damage += ship.damage*.2
 		ship.mobilty += ship.mobility*.2

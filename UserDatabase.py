@@ -7,6 +7,7 @@ class Ship(ndb.Model):
 	shipclass=ndb.StringProperty(required=True)
 	name=ndb.StringProperty(required=True)
 	cost=ndb.IntegerProperty(required=True)
+	num_of_upgrades=ndb.IntegerProperty(required=True)
 	
 	def toString(self):
 		s=str(self.armor) + "," + str(self.damage) + "," + str(self.mobility) + "," + str(self.shipclass) + "," + self.name + "," + str(self.cost)
@@ -122,10 +123,12 @@ class User(ndb.Model):
 					if i in ship_ids:
 						logging.error("if")
 						ship = self.fleet[int(i)]
-						ship.armor += int(ship.armor*.2+1)
-						ship.damage += int(ship.damage*.2+1)
-						ship.mobilty += int(ship.mobility*.2+1)
-						self.addCurrency(-1*int(self.fleet[i].cost*.2))
+						if ship.num_of_upgrades < 3:
+							ship.armor += int(ship.armor*.2+1)
+							ship.damage += int(ship.damage*.2+1)
+							ship.mobilty += int(ship.mobility*.2+1)
+							num_of_upgrades+=1
+							self.addCurrency(-1*int(self.fleet[i].cost*.2))
 					i-=1
 			except AttributeError:
 				pass

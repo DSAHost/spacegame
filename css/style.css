@@ -124,6 +124,7 @@ div.topbar {
 	background: -ms-linear-gradient(top,  #7d7e7d 0%,#0e0e0e 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #7d7e7d 0%,#0e0e0e 100%); /* W3C */
 	font-family:"DroidSansRegular";
+	z-index: 1000;
 }
 
 div.content {
@@ -398,7 +399,6 @@ div.buy_ship {
 }*/
 
 div.ship_stats {
-
 	display: inline;
 	position:relative;
 	left: 50px;

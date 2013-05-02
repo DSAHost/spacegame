@@ -29,10 +29,8 @@ class AttackHandler(Handler):
 		person=str(person)
 		accs=users()
 		accs=list(accs)
-		na=0
-		nd=0
-		ta=0
-		td=0
+		da=0
+		dd=0
 
 		if s and person:
 			for i in accs:
@@ -59,7 +57,6 @@ class AttackHandler(Handler):
 					else:
 						spoils=int(i.resources.currency*.65)
 						self.user.addCurrency(spoils)
-						ta=na
 					i.addCurrency(-1*spoils)
 					self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered %d currency." % (da,spoils))
 					i.newMessage("You were attacked by %s." % self.user.username, "You lost %d troops and %d currency." % (dd,spoils))

@@ -39,7 +39,7 @@ class AttackHandler(Handler):
 				if i.username == person:
 					na=len(s)
 					self.user.newAttack(person,s,60)
-					for j in xrange(len(s) - 1, -1, -1):
+					for j in xrange(len(s)-1):
 						self.user.fleet.remove(s[j]) 
 					if i.fleet:
 						nd=len(i.fleet)

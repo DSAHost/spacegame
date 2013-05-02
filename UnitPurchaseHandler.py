@@ -14,11 +14,11 @@ Flounder=Ship(armor=15,damage=18,mobility=9,shipclass="Frigate",cost=3700,name="
 Longbow=Ship(armor=20,damage=22,mobility=9,shipclass="Frigate",cost=5000,name="Longbow")
 Parrot=Ship(armor=99,damage=124,mobility=1,shipclass="Capital",cost=28000,name="Parrot")
 
-ships=[Songbird,Dagger,Hawk,Pestilence,Flounder,Frisbee,Longbow,Artifact,Ogre,Infringer,Parrot]
+shipss=[Songbird,Dagger,Hawk,Pestilence,Flounder,Frisbee,Longbow,Artifact,Ogre,Infringer,Parrot]
 match={"Songbird":Songbird,"Dagger":Dagger,"Hawk":Hawk,"Pestilence":Pestilence,"Flounder":Flounder,"Frisbee":Frisbee,"Longbow":Longbow,"Artifact":Artifact,"Ogre":Ogre,"Infringer":Infringer,"Parrot":Parrot}
 class UnitPurchaseHandler(Handler):
 	def render_front(self,error="",name=""):
-		self.render("unitpurchase.html",ships=ships,error=error,name=name)
+		self.render("unitpurchase.html",shipss=shipss,error=error,name=name)
 	
 	def get(self):
 	 	if self.user:

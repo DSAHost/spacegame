@@ -10,20 +10,23 @@
 
 <script type="text/javascript">
 
-var counter=setInterval(timer, 1000);
+{% for i in num_attacks %}
 
-function timer()
+var counter{{i}}=setInterval(timer{{i}}, 1000);
+function timer{{i}}()
 {
-	count = document.getElementById("clock").innerHTML;
+	count = document.getElementById("clock{{i}}").innerHTML;
 	count=count-1;
 	if (count < 0)
 	{
-		clearInterval(counter);
+		clearInterval(counter{{i}});
 		return;
 	}
 
- document.getElementById("clock").innerHTML=count;
+ document.getElementById("clock{{i}}").innerHTML=count;
 }
+
+{% endfor %}
 
 </script>
 
@@ -59,14 +62,13 @@ function timer()
 
 					<div class="title"> Ongoing Attacks </div>
 					
-
+					<!-- Outstanding attacks -->
 					<div method="POST" class="info">
-						<span id="clock">5</span>
 						{% for i in num_attacks %}
-						<span class="subnews"><b>{{attacks[i].defender_name}}</b>: <b>{{attacks[i].num_troops}}</b> return in {{times[i]}} seconds.
+						<span class="subnews"><b>{{attacks[i].defender_name}}</b>: <b>{{attacks[i].num_troops}}</b> return in <span id="clock{{i}}">{{times[i]}}</span> seconds.
 						<hr>
 						</span>
-				
+
 						{% endfor %}
 					
 					</div>

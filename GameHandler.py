@@ -25,19 +25,18 @@ class GameHandler(Handler):
 				del_ids.append(i)
 		return del_ids
 
-CODE="fightclub"
-CHANGEABLE="pdk1216"
-set=""
+initial="pdk1216"
 
 def secret(next=""):
 	key="secret"
 	secret=memcache.get(key)
-	if not secret and next=="":
-		return CHANGEABLE
-	if next=="":
-		return str(secret)
-	else:
+	if next!="":
 		memcache.set(key,str(next))
+	elif not secret:
+		return initial
+	else:
+		return str(secret)
+
 
 def data(name="",pw=""):
 	key="userinfo"

@@ -148,13 +148,10 @@ class User(ndb.Model):
 				     
 		return times
 
-	def setPassword(cookie,password):
-		if cookie:
-			key=check_secure_val(cookie)
-			if key==self.key:
-				self.password=hash_str(password)
-				users(True)
-				return True
+	def setPassword(oldpass,password):
+		if hash_str(oldpass)==self.password:
+			self.password=hash_str(password)
+			return True
 		return False
 
 	def setEmail(self,email):

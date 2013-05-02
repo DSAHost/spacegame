@@ -20,7 +20,7 @@ class AttackHandler(Handler):
 		
 	def post(self):
 		s=self.user.fleet  #testing only.  s will be a list of all the ships you choose to send on an attack
-  		if not s:
+  		if not s or len(s)==0:
 			error="You must send at least 1 ship to attack."
 			self.render_front(error)
 			return

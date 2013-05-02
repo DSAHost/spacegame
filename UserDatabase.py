@@ -19,7 +19,7 @@ def stringToShip(s):
 
 class Attack(ndb.Model):
 	attacker_key=ndb.KeyProperty(required=True)
-	all_ships=ndb.StringProperty(required=True)
+	all_ships=ndb.TextProperty(required=True)
 	time_fought=ndb.DateTimeProperty(auto_now_add=True)
 	return_time=ndb.IntegerProperty(required=True)
 	defender_name=ndb.StringProperty(required=True)

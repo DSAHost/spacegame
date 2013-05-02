@@ -38,9 +38,9 @@ class AttackHandler(Handler):
 			for i in accs:
 				if i.username == person:
 					na=len(s)
+					self.user.newAttack(person,s,60)
 					for j in xrange(len(s) - 1, -1, -1):
 						self.user.fleet.remove(s[j]) 
-					self.user.newAttack(person,s,60)
 					if i.fleet:
 						nd=len(i.fleet)
 						(natk,ndef)=RiskCombat.combat(s,i.fleet)

@@ -3,7 +3,7 @@ from utils import *
 
 class ManageUnitsHandler(Handler):
 	def render_front(self,error="",num=""):
-		self.render("manageunits.html",ships=self.user.fleet,num_ships=range(len(self.user.fleet)),error=error,num=num)
+		self.render("manageunits.html",error=error,num=num)
 	def get(self):
 	 	if self.user:
 	 		self.render_front()

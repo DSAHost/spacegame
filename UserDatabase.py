@@ -19,7 +19,7 @@ def stringToShip(s):
 
 class Attack(ndb.Model):
 	attacker_key=ndb.KeyProperty(required=True)
-	all_ships=ndb.StringProperty()
+	all_ships=ndb.StringProperty(required=True)
 	time_fought=ndb.DateTimeProperty(auto_now_add=True)
 	return_time=ndb.IntegerProperty(required=True)
 	defender_name=ndb.StringProperty(required=True)
@@ -227,9 +227,8 @@ class User(ndb.Model):
 			if dif>self.attacks[i].return_time:
 				s=self.attacks[i].all_ships.split('|')
 				for j in range(len(s)-1):
-					attributes=s[j].split(',')
 					add=stringToShip(s[j])
-					self.addShip(add)
+					self.addShip(add,False)
 				self.attacks.remove(self.attacks[i])
 				needUpdate=True
 				i-=1

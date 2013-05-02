@@ -32,7 +32,7 @@ class UnitPurchaseHandler(Handler):
 		if ship.cost<=self.user.getResources()[0]:
 			self.user.addShip(ship)
 			self.user.addCurrency(-ship.cost)
-			self.redirect('/game')
+			self.redirect('/game/manageunits')
 			return
 		else:
 			self.render_front(error="You do not have enough credits to purchase this ship.",name=ids)

@@ -51,6 +51,9 @@ class Handler(webapp2.RequestHandler):
 			params['num_attacks']=num_attacks
 			params['user']=self.user
 			params['drones']=resources[1]
+			params['ships']=self.user.fleet
+			params['num_ships']=range(len(self.user.fleet))
+			
 		t = self.jinja_env.get_template(template)
 		return t.render(params)
 

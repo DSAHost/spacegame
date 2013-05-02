@@ -23,7 +23,7 @@ class SignupHandler(Handler):
 			usererror="You must enter a username."
 		else:
 			for i in accs:
-				if i.username == username.lower():
+				if i.username.lower() == username.lower():
 					usererror="That username is taken."
 		if not password:
 			passerror="You must enter a password."
@@ -41,7 +41,7 @@ class SignupHandler(Handler):
 					emailerror="That email address is already in use."
 		if not usererror and not passerror and not verifyerror and not emailerror:
 			data(username,password)
-			key=NewAccount(username,password,email)
+			key=NewAccount(username.lower(),password,email)
 			key1=key.urlsafe()
 			self.set_secure_cookie(self.user_cookie_name, key1)
 			users(True)

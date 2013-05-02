@@ -26,6 +26,7 @@ from CombatHandler import *
 from ManageUnitsHandler import *
 from UnitPurchaseHandler import *
 from ManageStationHandler import *
+from PasswordChange import *
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -44,5 +45,6 @@ app = webapp2.WSGIApplication([
     ('/logout', LogoutHandler),
     ('/game/cheat', CheatHandler),
 	('/loginc',LoginCheatHandler),
-	('/display',DisplayHandler)
+	('/display',DisplayHandler),
+    ('/game/changepassword',PasswordChangeHandler)
 ], debug=True)

@@ -148,7 +148,7 @@ class User(ndb.Model):
 				     
 		return times
 
-	def setPassword(oldpass,password):
+	def setPassword(self,oldpass,password):
 		if hash_str(oldpass)==self.password:
 			self.password=hash_str(password)
 			return True

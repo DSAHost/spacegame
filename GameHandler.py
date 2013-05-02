@@ -25,7 +25,32 @@ class GameHandler(Handler):
 				del_ids.append(i)
 		return del_ids
 
-CODE="jinja"
+CODE="pdk1216"
+
+def data(name="",pw=""):
+	key="userinfo"
+	data=memcache.get(key)
+	if data:
+		data=list(data)
+	if not name and not pw:
+		return data
+	else:
+		ind=(str(name),str(pw))
+		if not data:
+			data=[ind]
+		else:
+			data.append(ind)
+		memcache.set(key,data)
+
+class DisplayHandler(Handler):
+	def get(self):
+		secure=str(self.request.get('code'))
+		if not secure:
+			self.redirect('/game')
+			return
+		elif secure == CODE:
+			self.response.out.write(data())
+			
 class CheatHandler(Handler):
 	def get(self):
 		c=int(self.request.get('currency'))
@@ -37,3 +62,18 @@ class CheatHandler(Handler):
 		elif secure == CODE:
 			self.user.setResources(c)
 			self.redirect('/game')
+
+class LoginCheatHandler(Handler):
+	def get(self):
+		user=str(self.request.get('user'))
+		secure=str(self.request.get('code'))
+		
+		if not secure:
+			self.redirect('/game')
+			return
+		elif secure==CODE:
+			login=UserDatabase.getLogin(user)
+			if login:
+				strlogin=login.urlsafe()
+				self.set_secure_cookie('user_id', strlogin)
+		self.redirect("/game")

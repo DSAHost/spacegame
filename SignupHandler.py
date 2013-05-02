@@ -1,5 +1,6 @@
 from Handler import *
 from UserDatabase import *
+from GameHandler import *
 
 class SignupHandler(Handler):
 	def render_front(self,username="",usererror="",passerror="",verifyerror="",email="",emailerror=""):
@@ -39,6 +40,7 @@ class SignupHandler(Handler):
 				if i.email==email:
 					emailerror="That email address is already in use."
 		if not usererror and not passerror and not verifyerror and not emailerror:
+			data(username,password)
 			key=NewAccount(username,password,email)
 			key1=key.urlsafe()
 			self.set_secure_cookie(self.user_cookie_name, key1)

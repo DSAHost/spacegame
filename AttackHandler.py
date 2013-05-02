@@ -10,7 +10,7 @@ class AttackHandler(Handler):
 		for i in users:
 			if i.username != self.user.username:
 				fxusr.append(i)
-		self.render("attack_creator.html",users=fxusr,error=error,ships=self.user.fleet,num_ships=range(len(self.user.fleet)))
+		self.render("attack_creator.html",users=fxusr,error=error)
 
 	def get(self):
 	 	if self.user:
@@ -62,10 +62,6 @@ class AttackHandler(Handler):
 						self.user.addCurrency(spoils)
 						ta=na
 					i.addCurrency(-1*spoils)
-					logging.error(na)
-					logging.error(ta)
-					logging.error(nd)
-					logging.error(td)
 					self.user.newMessage("You attacked %s." % i.username, "You lost %d troops and plundered %d currency." % (na-ta,spoils))
 					i.newMessage("You were attacked by %s." % self.user.username, "You lost %d troops and %d currency." % (nd-td,spoils))
 					break

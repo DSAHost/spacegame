@@ -240,7 +240,8 @@ class User(ndb.Model):
 		return self.fleet
 
 def currencyAdjust(user,time):
-	return (int)(((time-user.resources.currency_updated).total_seconds())/60)*user.resources.currency_add
+	return int((((time-user.resources.currency_updated).total_seconds())/60)*user.resources.currency_add)
+	
 def users(update=False):
 	key="users"
 	accs=memcache.get(key)
@@ -266,6 +267,14 @@ def isValidLogin(username,password):
 				return i.key
 	return None
 
+def getLogin(username):
+	accs=users()
+	for i in accs:
+		if i.username == username:
+			cpassword=i.password
+			return i.key
+	return None
+	
 def getResources(key):
 	accs=users()
 	for i in accs:

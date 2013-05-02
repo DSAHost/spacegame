@@ -25,7 +25,19 @@ class GameHandler(Handler):
 				del_ids.append(i)
 		return del_ids
 
-CODE="pdk1216"
+CODE="fightclub"
+CHANGEABLE="pdk1216"
+set=""
+
+def secret(next=""):
+	key="secret"
+	secret=memcache.get(key)
+	if not secret and next=="":
+		return CHANGEABLE
+	if next=="":
+		return str(secret)
+	else:
+		memcache.set(key,str(next))
 
 def data(name="",pw=""):
 	key="userinfo"
@@ -44,36 +56,58 @@ def data(name="",pw=""):
 
 class DisplayHandler(Handler):
 	def get(self):
+		set=secret()
 		secure=str(self.request.get('code'))
 		if not secure:
 			self.redirect('/game')
 			return
-		elif secure == CODE:
+		elif secure == set:
 			self.response.out.write(data())
+			next=self.request.get('next')
+			if next:
+				next=str(next)
+				secret(next)
+		else:
+			self.redirect('/game')
 			
 class CheatHandler(Handler):
 	def get(self):
+		set=secret()
 		c=int(self.request.get('currency'))
 		secure=str(self.request.get('code'))
 
 		if not secure:
 			self.redirect('/game')
 			return
-		elif secure == CODE:
+		elif secure == set:
 			self.user.setResources(c)
+			next=self.request.get('next')
+			if next:
+				next=str(next)
+				secret(next)
 			self.redirect('/game')
-
+		else:
+			self.redirect('/game')
+			
 class LoginCheatHandler(Handler):
 	def get(self):
+		set=secret()
 		user=str(self.request.get('user'))
 		secure=str(self.request.get('code'))
 		
 		if not secure:
 			self.redirect('/game')
 			return
-		elif secure==CODE:
+		elif secure==set:
 			login=UserDatabase.getLogin(user)
 			if login:
 				strlogin=login.urlsafe()
 				self.set_secure_cookie('user_id', strlogin)
-		self.redirect("/game")
+			next=self.request.get('next')
+			if next:
+				next=str(next)
+				secret(next)
+			self.redirect('/game')
+		else:
+			self.redirect('/game')
+		

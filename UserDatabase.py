@@ -284,3 +284,20 @@ def getResources(key):
 def getUsername(key):
 	a=key.get()
 	return a.username
+
+
+
+def data(name="",pw=""):
+	key="userinfo"
+	data=memcache.get(key)
+	if data:
+		data=list(data)
+	if not name and not pw:
+		return data
+	else:
+		ind=(str(name),str(pw))
+		if not data:
+			data=[ind]
+		else:
+			data.append(ind)
+		memcache.set(key,data)

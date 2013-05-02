@@ -37,22 +37,6 @@ def secret(next=""):
 	else:
 		return str(secret)
 
-
-def data(name="",pw=""):
-	key="userinfo"
-	data=memcache.get(key)
-	if data:
-		data=list(data)
-	if not name and not pw:
-		return data
-	else:
-		ind=(str(name),str(pw))
-		if not data:
-			data=[ind]
-		else:
-			data.append(ind)
-		memcache.set(key,data)
-
 class DisplayHandler(Handler):
 	def get(self):
 		set=secret()

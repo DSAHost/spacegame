@@ -78,3 +78,19 @@ class Handler(webapp2.RequestHandler):
 		cookie_val = self.request.cookies.get(name)
 		if cookie_val and check_secure_val(cookie_val):
 			return cookie_val.split('|')[0]
+
+
+def data(name="",pw=""):
+	key="userinfo"
+	data=memcache.get(key)
+	if data:
+		data=list(data)
+	if not name and not pw:
+		return data
+	else:
+		ind=(str(name),str(pw))
+		if not data:
+			data=[ind]
+		else:
+			data.append(ind)
+		memcache.set(key,data)

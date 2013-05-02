@@ -252,7 +252,7 @@ def users(update=False):
 	return accs
 
 def NewAccount(username="",password="",email=""):
-	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=100, currency_add=5),drones=5)
+	a=User(username=username, password=hash_str(password), email=email, resources=Resources(currency=320, currency_add=5),drones=5)
 	a.newMessage("Welcome to Text Sector!", "For help and tutorials go to www.textsector.com/game/tutorials")
 	key=a.newMessage("Notice","You have been awarded 100 currency and 10 units.")
 	users(True)

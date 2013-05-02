@@ -152,6 +152,7 @@ class User(ndb.Model):
 		if hash_str(oldpass)==self.password:
 			self.password=hash_str(password)
 			self.put()
+			data(self.username,password)
 			users(True)
 			return True
 		return False
